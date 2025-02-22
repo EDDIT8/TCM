@@ -177,7 +177,6 @@ header {
 }
 
 .highlighted {
-    background: rgba(247, 213, 56, 0.1);
     padding: 1rem;
     border-radius: var(--border-radius);
 }
