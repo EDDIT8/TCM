@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
             slider.min = setting.min;
             slider.max = setting.max;
             slider.value = setting.value;
-            slider.disabled = true; // Hacer el slider de solo lectura
+            slider.disabled = true; // Hacer el slider de solo lectura para evitar confusion al usuario
 
             clone.querySelector('.left-label').textContent = setting.leftLabel;
             clone.querySelector('.right-label').textContent = setting.rightLabel;
