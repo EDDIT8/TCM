@@ -1,5 +1,3 @@
-import { carsData } from './data.js';
-
 document.addEventListener('DOMContentLoaded', () => {
     const carGrid = document.getElementById('carGrid');
     const categoryTabs = document.getElementById('categoryTabs');
