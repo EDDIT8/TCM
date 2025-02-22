@@ -1,12 +1,18 @@
+import { carsData } from './data.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const carId = urlParams.get('id');
     
     const car = carsData.cars.find(c => c.id === carId);
     if (!car) {
+        console.error('Car not found:', carId);
         window.location.href = 'index.html';
         return;
     }
+
+    // Actualizar el título de la página
+    document.getElementById('pageTitle').textContent = `${car.name} - The Crew Motorfest`;
 
     // Actualizar información básica del auto
     document.getElementById('brandLogo').src = car.brand.logo;
@@ -44,9 +50,16 @@ document.addEventListener('DOMContentLoaded', () => {
             slider.min = setting.min;
             slider.max = setting.max;
             slider.value = setting.value;
+            slider.disabled = true; // Hacer el slider de solo lectura
 
             clone.querySelector('.left-label').textContent = setting.leftLabel;
             clone.querySelector('.right-label').textContent = setting.rightLabel;
+
+            // Añadir el valor actual como texto
+            const valueDisplay = document.createElement('span');
+            valueDisplay.className = 'slider-value';
+            valueDisplay.textContent = setting.value;
+            container.appendChild(valueDisplay);
 
             groupElement.appendChild(clone);
         });
