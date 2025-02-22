@@ -1,3 +1,5 @@
+import { carsData } from './data.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const carId = urlParams.get('id');
@@ -7,8 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = 'index.html';
         return;
     }
-    
-   document.getElementById('pageTitle').textContent = `${car.name} - The Crew Motorfest`;
+
+    // Actualizar el título de la página
+    document.getElementById('pageTitle').textContent = `${car.name} - The Crew Motorfest`;
+
     // Actualizar información básica del auto
     document.getElementById('brandLogo').src = car.brand.logo;
     document.getElementById('brandLogo').alt = car.brand.name;
