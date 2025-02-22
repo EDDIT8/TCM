@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = 'index.html';
         return;
     }
+
     // Actualizar información básica del auto
     document.getElementById('brandLogo').src = car.brand.logo;
     document.getElementById('brandLogo').alt = car.brand.name;
