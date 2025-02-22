@@ -160,7 +160,7 @@ header {
 
 .slider {
     flex: 1;
-    -webkit-appearance: none;
+    --webkit-appearance: none;
     height: 4px;
     background: #4a4a4a;
     border-radius: 2px;
