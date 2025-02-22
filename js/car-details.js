@@ -7,8 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = 'index.html';
         return;
     }
-
-    document.getElementById('pageTitle').textContent = `${car.name} - The Crew Motorfest`;
     
     // Actualizar información básica del auto
     document.getElementById('brandLogo').src = car.brand.logo;
