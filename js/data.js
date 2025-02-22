@@ -20,8 +20,8 @@ const carsData = {
                             value: 0,
                             min: -100,
                             max: 100,
-                            leftLabel: "Corto",
-                            rightLabel: "Largo",
+                            leftLabel: "Corto -20%",
+                            rightLabel: "0% Largo",
                             highlighted: true
                         }
                     }
