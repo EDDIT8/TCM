@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Auto - The Crew Motorfest</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="details-page">
+    <header>
+        <a href="index.html" class="back-button">← Volver</a>
+    </header>
+
+    <main id="carDetails" class="car-details">
+        <div class="car-header">
+            <img id="brandLogo" class="brand-logo" src="/placeholder.svg" alt="">
+            <div>
+                <h1 id="carName"></h1>
+                <p id="carInfo"></p>
+            </div>
+        </div>
+
+        <div class="details-grid">
+            <div class="car-image-section">
+                <img id="carImage" src="/placeholder.svg" alt="">
+                <p id="carDescription"></p>
+            </div>
+
+            <div class="tuning-section">
+                <div id="tuningControls"></div>
+            </div>
+        </div>
+    </main>
+
+    <template id="tuningSliderTemplate">
+        <div class="tuning-group">
+            <h2 class="group-title"></h2>
+            <div class="slider-container">
+                <label class="slider-label"></label>
+                <div class="slider-control">
+                    <span class="left-label"></span>
+                    <input type="range" class="slider">
+                    <span class="right-label"></span>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <script src="js/data.js"></script>
+    <script src="js/car-details.js"></script>
+</body>
+</html>
