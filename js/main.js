@@ -1,3 +1,5 @@
+import { carsData } from './data.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     const carGrid = document.getElementById('carGrid');
     const categoryTabs = document.getElementById('categoryTabs');
@@ -39,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const card = clone.querySelector('.car-card');
             card.addEventListener('click', () => {
-                window.location.href = `car-details.html?id=${car.id}`;
+                window.location.href = `car-details.html?id=${encodeURIComponent(car.id)}`;
             });
 
             carGrid.appendChild(clone);
