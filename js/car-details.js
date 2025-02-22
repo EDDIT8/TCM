@@ -1,5 +1,3 @@
-import { carsData } from './data.js';
-
 document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const carId = urlParams.get('id');
