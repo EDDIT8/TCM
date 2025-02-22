@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
     
+   document.getElementById('pageTitle').textContent = `${car.name} - The Crew Motorfest`;
     // Actualizar información básica del auto
     document.getElementById('brandLogo').src = car.brand.logo;
     document.getElementById('brandLogo').alt = car.brand.name;
