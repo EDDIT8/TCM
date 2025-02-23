@@ -69,6 +69,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+
+    // Obtener la categoría guardada
+    const savedCategory = localStorage.getItem('currentCategory') || '';
+
+    // Modificar el enlace "Volver"
+    const backButton = document.querySelector('.back-button');
+    backButton.href = `index.html?category=${encodeURIComponent(savedCategory)}`;
+
+
 function updateSliderPosition(slider, min, max, value) {
     const range = max - min;
     const percentage = ((value - min) / range) * 100;
