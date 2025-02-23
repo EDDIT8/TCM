@@ -18,10 +18,10 @@ const carsData = {
                         finalRatio: {
                             label: "Relación final",
                             value: 0,
-                            min: -100,
-                            max: 100,
-                            leftLabel: "Corto -20%",
-                            rightLabel: "0% Largo",
+                            min: -20,
+                            max: 0,
+                            leftLabel: "0 % Corto",
+                            rightLabel: "Largo",
                             highlighted: true
                         }
                     }
@@ -32,16 +32,16 @@ const carsData = {
                         frontGrip: {
                             label: "Agarre delantero",
                             value: -5,
-                            min: -100,
-                            max: 100,
+                            min: -20,
+                            max: 0,
                             leftLabel: "-5%",
                             rightLabel: ""
                         },
                         rearGrip: {
                             label: "Agarre trasero",
                             value: 0,
-                            min: -100,
-                            max: 100,
+                            min: -20,
+                            max: 0,
                             leftLabel: "0%",
                             rightLabel: ""
                         }
@@ -53,17 +53,17 @@ const carsData = {
                         frontSuspension: {
                             label: "Suspensión delantera",
                             value: 1,
-                            min: -100,
-                            max: 100,
-                            leftLabel: "Suave",
+                            min: -20,
+                            max: +10,
+                            leftLabel: "-3 % Suave",
                             rightLabel: "Rígido"
                         },
                         rearSuspension: {
                             label: "Suspensión trasera",
                             value: 5,
-                            min: -100,
-                            max: 100,
-                            leftLabel: "Suave",
+                            min: -20,
+                            max: +10,
+                            leftLabel: "-3 % Suave",
                             rightLabel: "Rígido"
                         },
                         frontCompression: {
