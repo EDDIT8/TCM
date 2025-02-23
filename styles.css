@@ -113,6 +113,10 @@ main {
 }
 
 /* Estilos para la página de detalles */
+.details-page .container {
+    padding-top: 1rem;  /* Reducido de 2rem para dar espacio al botón */
+}
+
 .back-button {
     display: inline-block;
     color: var(--text-color);
