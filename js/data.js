@@ -8,7 +8,7 @@ const carsData = {
                 logo: "assets/icons/koenigsegg.ico"
             },
             year: 2012,
-            category: "Racing",
+            category: "Hypercar",
             description: "Un hipercoche sueco con prestaciones extraordinarias.",
             image: "assets/cars/koenigsegg.png",
             tuning: {
