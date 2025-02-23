@@ -114,7 +114,6 @@ const carsData = {
                             max: +10,
                             leftLabel: "Suave",
                             rightLabel: "Rígido",
-                            highlighted: true
                         },
                         rearCompression: {
                             label: "Compresión de amortiguador trasero",
@@ -301,7 +300,6 @@ const carsData = {
                             max: +10,
                             leftLabel: "Suave",
                             rightLabel: "Rígido",
-                            highlighted: true
                         },
                         rearCompression: {
                             label: "Compresión de amortiguador trasero",
