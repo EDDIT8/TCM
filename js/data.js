@@ -17,7 +17,7 @@ const carsData = {
                     settings: {
                         finalRatio: {
                             label: "Relación final",
-                            value: 0%,
+                            value: 0,
                             min: -20,
                             max: 0,
                             leftLabel: "Corto",
@@ -51,7 +51,7 @@ const carsData = {
                     settings: {
                         frontSuspension: {
                             label: "Suspensión delantera",
-                            value: -3%,
+                            value: -3,
                             min: -20,
                             max: +10,
                             leftLabel: "Suave",
@@ -59,7 +59,7 @@ const carsData = {
                         },
                         rearSuspension: {
                             label: "Suspensión trasera",
-                            value: -3%,
+                            value: -3,
                             min: -20,
                             max: +10,
                             leftLabel: "Suave",
@@ -67,7 +67,7 @@ const carsData = {
                         },
                         frontCompression: {
                             label: "Compresión de amortiguador delantero",
-                            value: -10%,
+                            value: -10,
                             min: -20,
                             max: +10,
                             leftLabel: "Suave",
@@ -76,7 +76,7 @@ const carsData = {
                         },
                         rearCompression: {
                             label: "Compresión de amortiguador trasero",
-                            value: -15%,
+                            value: -15,
                             min: -20,
                             max: +10,
                             leftLabel: "Suave",
@@ -104,7 +104,7 @@ const carsData = {
                     settings: {
                         finalRatio: {
                             label: "Relación final",
-                            value: 0%,
+                            value: 0,
                             min: -20,
                             max: 0,
                             leftLabel: "Corto",
@@ -138,7 +138,7 @@ const carsData = {
                     settings: {
                         frontSuspension: {
                             label: "Suspensión delantera",
-                            value: +3%,
+                            value: +3,
                             min: -20,
                             max: +10,
                             leftLabel: "Suave",
@@ -183,18 +183,18 @@ const carsData = {
                     settings: {
                         front: {
                             label: "Barra estabiizadora delantera",
-                            value: "+3%",
-                            min: "-20%",
-                            max: "+10%",
-                            leftLabel: "+3% Suave",
+                            value: +3,
+                            min: -20,
+                            max: +10,
+                            leftLabel: "Suave",
                             rightLabel: "Rigido"
                         },
                         Rear: {
                             label: "Barra estabiizadora Trasera",
-                            value: "-3%",
-                            min: "-20%",
-                            max: "+10%",
-                            leftLabel: "-3% Suave",
+                            value: -3,
+                            min: -20,
+                            max: +10,
+                            leftLabel: "Suave",
                             rightLabel: "Rigido"
                         }
                     }
