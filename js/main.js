@@ -44,8 +44,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
             carGrid.appendChild(clone);
         });
+        localStorage.setItem('currentCategory', category);
     }
 
-    // Mostrar la primera categoría por defecto
-    filterCars(categories[0]);
+     // Verificar si hay una categoría en la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoryFromUrl = urlParams.get('category');
+
+    if (categoryFromUrl && categories.includes(categoryFromUrl)) {
+        filterCars(categoryFromUrl);
+    } else {
+        const savedCategory = localStorage.getItem('currentCategory');
+        if (savedCategory && categories.includes(savedCategory)) {
+            filterCars(savedCategory);
+        } else {
+            filterCars(categories[0]); // Categoría por defecto
+        }
+    }
 });
