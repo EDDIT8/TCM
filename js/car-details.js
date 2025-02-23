@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
             slider.min = setting.min;
             slider.max = setting.max;
             slider.value = setting.value;
-            slider.disabled = true; // Hacer el slider de solo lectura para evitar confusion al usuario
+            slider.disabled = true; // Hacer el slider de solo lectura
 
             clone.querySelector('.left-label').textContent = setting.leftLabel;
             clone.querySelector('.right-label').textContent = setting.rightLabel;
@@ -59,9 +59,18 @@ document.addEventListener('DOMContentLoaded', () => {
             valueDisplay.textContent = setting.value;
             container.appendChild(valueDisplay);
 
+            // Actualizar la posición visual del slider
+            updateSliderPosition(slider, setting.min, setting.max, setting.value);
+
             groupElement.appendChild(clone);
         });
 
         tuningControls.appendChild(groupElement);
     });
 });
+
+function updateSliderPosition(slider, min, max, value) {
+    const range = max - min;
+    const percentage = ((value - min) / range) * 100;
+    slider.style.backgroundSize = `${percentage}% 100%`;
+}
