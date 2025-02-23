@@ -8,7 +8,7 @@
 }
 
 * {
-    margin: 5px;
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
@@ -31,7 +31,9 @@ header {
     text-align: center;
     padding: 2rem 0;
 }
-
+main {
+    margin: 10px
+}
 .categories-filter {
     margin-bottom: 2rem;
 }
@@ -111,6 +113,24 @@ header {
 }
 
 /* Estilos para la página de detalles */
+.back-button {
+    display: inline-block;
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    transition: color 0.3s ease;
+}
+
+.back-button:hover {
+    color: var(--primary-color);
+}
+
+.back-button::before {
+    content: '←';
+    margin-right: 0.5rem;
+}
+
 .details-page .container {
     padding-top: 2rem;
 }
