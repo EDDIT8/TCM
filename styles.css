@@ -26,31 +26,99 @@ body {
     padding: 1rem;
 }
 
-.car-details {
+/* Estilos para la página de índice */
+header {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.categories-filter {
+    margin-bottom: 2rem;
+}
+
+.tabs {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.tab-button {
+    padding: 0.5rem 1rem;
+    background: var(--card-background);
+    border: none;
+    border-radius: var(--border-radius);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.tab-button.active {
+    background: var(--primary-color);
+    color: var(--background-color);
+}
+
+.car-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 2rem;
+}
+
+.car-card {
+    background: var(--card-background);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.car-card:hover {
+    transform: translateY(-4px);
+}
+
+.car-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.car-info {
+    padding: 1rem;
 }
 
 .car-header {
     display: flex;
     align-items: center;
     gap: 1rem;
-}
-
-.brand-logo {
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
-}
-
-.car-title h1 {
-    font-size: 2rem;
     margin-bottom: 0.5rem;
 }
 
-.car-subtitle {
+.brand-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.car-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.car-details {
     color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Estilos para la página de detalles */
+.details-page .container {
+    padding-top: 2rem;
+}
+
+.car-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
 .car-image-section {
@@ -59,7 +127,7 @@ body {
     margin: 0 auto;
 }
 
-.car-image {
+.details-page .car-image {
     width: 100%;
     height: auto;
     object-fit: cover;
@@ -154,17 +222,17 @@ body {
 }
 
 @media (min-width: 768px) {
-    .car-details {
+    .details-page .car-details {
         flex-direction: row;
         align-items: flex-start;
     }
 
-    .car-image-section {
+    .details-page .car-image-section {
         flex: 1;
         max-width: 40%;
     }
 
-    .tuning-section {
+    .details-page .tuning-section {
         flex: 1;
         max-width: 60%;
     }
