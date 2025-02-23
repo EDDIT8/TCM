@@ -17,10 +17,10 @@ const carsData = {
                     settings: {
                         finalRatio: {
                             label: "Relación final",
-                            value: 0,
+                            value: 0%,
                             min: -20,
                             max: 0,
-                            leftLabel: "% Corto",
+                            leftLabel: "Corto",
                             rightLabel: "Largo"
                         }
                     }
@@ -33,7 +33,7 @@ const carsData = {
                             value: -5,
                             min: -20,
                             max: 0,
-                            leftLabel: "-5%",
+                            leftLabel: "",
                             rightLabel: ""
                         },
                         rearGrip: {
@@ -41,7 +41,7 @@ const carsData = {
                             value: 0,
                             min: -20,
                             max: 0,
-                            leftLabel: "0%",
+                            leftLabel: "",
                             rightLabel: ""
                         }
                     }
@@ -51,34 +51,34 @@ const carsData = {
                     settings: {
                         frontSuspension: {
                             label: "Suspensión delantera",
-                            value: 1,
+                            value: -3%,
                             min: -20,
                             max: +10,
-                            leftLabel: "-3 % Suave",
+                            leftLabel: "Suave",
                             rightLabel: "Rígido"
                         },
                         rearSuspension: {
                             label: "Suspensión trasera",
-                            value: 5,
+                            value: -3%,
                             min: -20,
                             max: +10,
-                            leftLabel: "-3 % Suave",
+                            leftLabel: "Suave",
                             rightLabel: "Rígido"
                         },
                         frontCompression: {
                             label: "Compresión de amortiguador delantero",
-                            value: -10,
-                            min: -100,
-                            max: 100,
+                            value: -10%,
+                            min: -20,
+                            max: +10,
                             leftLabel: "Suave",
                             rightLabel: "Rígido",
                             highlighted: true
                         },
                         rearCompression: {
                             label: "Compresión de amortiguador trasero",
-                            value: -15,
-                            min: -100,
-                            max: 100,
+                            value: -15%,
+                            min: -20,
+                            max: +10,
                             leftLabel: "Suave",
                             rightLabel: "Rígido"
                         }
@@ -104,11 +104,11 @@ const carsData = {
                     settings: {
                         finalRatio: {
                             label: "Relación final",
-                            value: 0,
-                            min: -100,
-                            max: 100,
-                            leftLabel: "0% Corto",
-                            rightLabel: " Largo",
+                            value: 0%,
+                            min: -20,
+                            max: 0,
+                            leftLabel: "Corto",
+                            rightLabel: "Largo",
                         }
                     }
                 },
@@ -117,18 +117,18 @@ const carsData = {
                     settings: {
                         frontGrip: {
                             label: "Agarre delantero",
-                            value: -5,
-                            min: -100,
-                            max: 100,
-                            leftLabel: "-5%",
+                            value: 0,
+                            min: -20,
+                            max: 0,
+                            leftLabel: "",
                             rightLabel: ""
                         },
                         rearGrip: {
                             label: "Agarre trasero",
                             value: 0,
-                            min: -100,
-                            max: 100,
-                            leftLabel: "0%",
+                            min: -20,
+                            max: 0,
+                            leftLabel: "",
                             rightLabel: ""
                         }
                     }
@@ -138,9 +138,9 @@ const carsData = {
                     settings: {
                         frontSuspension: {
                             label: "Suspensión delantera",
-                            value: 1,
-                            min: -100,
-                            max: 100,
+                            value: +3%,
+                            min: -20,
+                            max: +10,
                             leftLabel: "Suave",
                             rightLabel: "Rígido"
                         },
