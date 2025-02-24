@@ -377,7 +377,7 @@ const carsData = {
                             value: -0.25,
                             min: -0.25,
                             midPoint: 0,
-                            max: +0.25,
+                            max: 0.25,
                             leftLabel: "",
                             rightLabel: ""
                         },
@@ -386,7 +386,7 @@ const carsData = {
                             value: -0.25,
                             min: -0.25,
                             midPoint: 0,
-                            max: +0.25,
+                            max: 0.25,
                             leftLabel: "",
                             rightLabel: ""
                         }
@@ -573,7 +573,7 @@ const carsData = {
                             value: -0.22,
                             min: -0.25,
                             midPoint: 0,
-                            max: +0.25,
+                            max: 0.25,
                             leftLabel: "",
                             rightLabel: ""
                         },
@@ -582,7 +582,7 @@ const carsData = {
                             value: -0.15,
                             min: -0.25,
                             midPoint: 0,
-                            max: +0.25,
+                            max: 0.25,
                             leftLabel: "",
                             rightLabel: ""
                         }
@@ -778,7 +778,7 @@ const carsData = {
                             value: -0.25,
                             min: -0.25,
                             midPoint: 0,
-                            max: +0.25,
+                            max: 0.25,
                             leftLabel: "",
                             rightLabel: ""
                         },
@@ -787,7 +787,7 @@ const carsData = {
                             value: -0.25,
                             min: -0.25,
                             midPoint: 0,
-                            max: +0.25,
+                            max: 0.25,
                             leftLabel: "",
                             rightLabel: ""
                         }
@@ -973,7 +973,7 @@ const carsData = {
                             label: "Ángulo de caida delantero",
                             value: -0.25,
                             min: -0.25,
-                            max: +0.25,
+                            max: 0.25,
                             leftLabel: "",
                             rightLabel: ""
                         },
@@ -981,7 +981,7 @@ const carsData = {
                             label: "Ángulo de caida trasero",
                             value: -0.25,
                             min: -0.25,
-                            max: +0.25,
+                            max: 0.25,
                             leftLabel: "",
                             rightLabel: ""
                         }
