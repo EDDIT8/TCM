@@ -44,10 +44,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             carGrid.appendChild(clone);
         });
+
+        // Guardar la categoría actual en el almacenamiento local
         localStorage.setItem('currentCategory', category);
     }
 
-     // Verificar si hay una categoría en la URL
+    // Verificar si hay una categoría en la URL
     const urlParams = new URLSearchParams(window.location.search);
     const categoryFromUrl = urlParams.get('category');
 
@@ -61,4 +63,11 @@ document.addEventListener('DOMContentLoaded', () => {
             filterCars(categories[0]); // Categoría por defecto
         }
     }
+
+    // Manejar errores de carga de imágenes
+    document.querySelectorAll('.car-image, .brand-logo').forEach(img => {
+        img.onerror = function() {
+            this.src = '/placeholder.svg';
+        }
+    });
 });
