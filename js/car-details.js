@@ -50,8 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
             slider.value = setting.value;
             slider.disabled = true; // Hacer el slider de solo lectura
 
-            clone.querySelector('.left-label').textContent = setting.leftLabel;
-            clone.querySelector('.right-label').textContent = setting.rightLabel;
+            clone.querySelector('.left-label').textContent = setting.leftLabel || setting.min;
+            clone.querySelector('.right-label').textContent = setting.rightLabel || setting.max;
 
             // Añadir el valor actual como texto
             const valueDisplay = document.createElement('span');
@@ -59,8 +59,16 @@ document.addEventListener('DOMContentLoaded', () => {
             valueDisplay.textContent = setting.value;
             container.appendChild(valueDisplay);
 
+             // Añadir marcador de punto medio si es necesario
+            if (setting.midPoint !== undefined) {
+                const midPointMarker = document.createElement('div');
+                midPointMarker.className = 'mid-point-marker';
+                container.appendChild(midPointMarker);
+                positionMidPointMarker(midPointMarker, setting.min, setting.max, setting.midPoint);
+            }
+
             // Actualizar la posición visual del slider
-            updateSliderPosition(slider, setting.min, setting.max, setting.value);
+            updateSliderPosition(slider, setting.min, setting.max, setting.value, setting.midPoint);
 
             groupElement.appendChild(clone);
         });
@@ -78,8 +86,27 @@ document.addEventListener('DOMContentLoaded', () => {
     backButton.href = `index.html?category=${encodeURIComponent(savedCategory)}`;
 
 
-function updateSliderPosition(slider, min, max, value) {
+function updateSliderPosition(slider, min, max, value, midPoint) {
     const range = max - min;
-    const percentage = ((value - min) / range) * 100;
+    let percentage;
+    
+    if (midPoint !== undefined) {
+        // Si hay un punto medio definido, ajustamos el cálculo
+        if (value < midPoint) {
+            percentage = ((value - min) / (midPoint - min)) * 50;
+        } else {
+            percentage = 50 + ((value - midPoint) / (max - midPoint)) * 50;
+        }
+    } else {
+        // Si no hay punto medio, usamos el cálculo normal
+        percentage = ((value - min) / range) * 100;
+    }
+
     slider.style.backgroundSize = `${percentage}% 100%`;
+}
+
+function positionMidPointMarker(marker, min, max, midPoint) {
+    const range = max - min;
+    const percentage = ((midPoint - min) / range) * 100;
+    marker.style.left = `calc(${percentage}% + 8px)`; // 8px es la mitad del ancho del thumb
 }
