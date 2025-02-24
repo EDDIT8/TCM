@@ -398,7 +398,7 @@ const carsData = {
                         },
                         potencia: {
                             label: "Distribución de potencia",
-                            value: "45 %",
+                            value: 45,
                             min: 60,
                             max: 80,
                             leftLabel: "Delantero",
