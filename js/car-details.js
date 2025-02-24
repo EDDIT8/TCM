@@ -50,8 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
             slider.value = setting.value;
             slider.disabled = true; // Hacer el slider de solo lectura
 
-            clone.querySelector('.left-label').textContent = setting.leftLabel || setting.min;
-            clone.querySelector('.right-label').textContent = setting.rightLabel || setting.max;
+            clone.querySelector('.left-label').textContent = setting.leftLabel;
+            clone.querySelector('.right-label').textContent = setting.rightLabel;
 
             // Añadir el valor actual como texto
             const valueDisplay = document.createElement('span');
