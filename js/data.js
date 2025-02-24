@@ -111,7 +111,7 @@ const carsData = {
                             label: "Compresión de amortiguador delantero",
                             value: -10,
                             min: -20,
-                            max: +10,
+                            max: +20,
                             leftLabel: "Suave",
                             rightLabel: "Rígido",
                         },
@@ -119,7 +119,7 @@ const carsData = {
                             label: "Compresión de amortiguador trasero",
                             value: -15,
                             min: -20,
-                            max: +10,
+                            max: +20,
                             leftLabel: "Suave",
                             rightLabel: "Rígido"
                         },
@@ -127,7 +127,7 @@ const carsData = {
                             label: "Rebote delantero",
                             value: +6,
                             min: -20,
-                            max: +10,
+                            max: +20,
                             leftLabel: "Suave",
                             rightLabel: "Rigido"
                         },
@@ -135,7 +135,7 @@ const carsData = {
                             label: "Rebote trasero",
                             value: +1,
                             min: -20,
-                            max: +10,
+                            max: +20,
                             leftLabel: "Suave",
                             rightLabel: "Rigido"
                         }
@@ -297,7 +297,7 @@ const carsData = {
                             label: "Compresión de amortiguador delantero",
                             value: -10,
                             min: -20,
-                            max: +10,
+                            max: +20,
                             leftLabel: "Suave",
                             rightLabel: "Rígido",
                         },
@@ -305,7 +305,7 @@ const carsData = {
                             label: "Compresión de amortiguador trasero",
                             value: -15,
                             min: -20,
-                            max: +10,
+                            max: +20,
                             leftLabel: "Suave",
                             rightLabel: "Rígido"
                         },
@@ -313,7 +313,7 @@ const carsData = {
                             label: "Rebote delantero",
                             value: +6,
                             min: -20,
-                            max: +10,
+                            max: +20,
                             leftLabel: "Suave",
                             rightLabel: "Rigido"
                         },
@@ -321,7 +321,7 @@ const carsData = {
                             label: "Rebote trasero",
                             value: +1,
                             min: -20,
-                            max: +10,
+                            max: +20,
                             leftLabel: "Suave",
                             rightLabel: "Rigido"
                         }
