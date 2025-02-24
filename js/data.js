@@ -567,7 +567,7 @@ const carsData = {
             year: 2020,
             category: "Street Tire 2",
             description: "4x4 • 722CV • 361km/h • 2.33s", 
-            image: "assets/cars/porshce-4s.png",
+            image: "assets/cars/porsche-4s.png",
             tuning: {
                 transmission: {
                     title: "Transmisión",
