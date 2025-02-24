@@ -1737,19 +1737,19 @@ const carsData = {
                     settings: {
                         front: {
                             label: "Ángulo de caida delantero",
-                            value: 0.05,
-                            min: -0.25,
+                            value: 5,
+                            min: -25,
                             
-                            max: 0.25,
+                            max: 25,
                             leftLabel: "",
                             rightLabel: ""
                         },
                         rear: {
                             label: "Ángulo de caida trasero",
-                            value: -0.05,
-                            min: -0.25,
+                            value: -5,
+                            min: -25,
                             
-                            max: 0.25,
+                            max: 25,
                             leftLabel: "",
                             rightLabel: ""
                         }
