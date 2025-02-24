@@ -372,6 +372,191 @@ const carsData = {
                 }
             }
         },
+        {
+            id: "Porsche 991 Carrera",
+            name: "Porsche 911 Carrera RS 2.7",
+            brand: {
+                name: "Porsche",
+                logo: "assets/icons/Porsche.ico"
+            },
+            year: 1972,
+            category: "Street Tire 1",
+            description: "FRD • 492CV • 290km/h • 4.33s", 
+            image: "assets/cars/porshce-carrera-rs2.7.png",
+            tuning: {
+                transmission: {
+                    title: "Transmisión",
+                    settings: {
+                        finalRatio: {
+                            label: "Relación final",
+                            value: 0,
+                            min: -20,
+                            max: 0,
+                            leftLabel: "Corto",
+                            rightLabel: "Largo"
+                        }
+                    }
+                },
+                tires: {
+                    title: "Neumáticos",
+                    settings: {
+                        frontGrip: {
+                            label: "Agarre delantero",
+                            value: -5,
+                            min: -20,
+                            max: 0,
+                            leftLabel: "",
+                            rightLabel: ""
+                        },
+                        rearGrip: {
+                            label: "Agarre trasero",
+                            value: 0,
+                            min: -20,
+                            max: 0,
+                            leftLabel: "",
+                            rightLabel: ""
+                        }
+                    }
+                },
+                brakes: {
+                    title: "Frenos",
+                    settings: {
+                        equilibrio: {
+                            label: "Equilibrio de frenos",
+                            value: 50,
+                            min: -20,
+                            max: 0,
+                            leftLabel: "Delantero",
+                            rightLabel: "Trasero"
+                        },
+                        potencia: {
+                            label: "Potencia de frenos",
+                            value: 0,
+                            min: -20,
+                            max: 0,
+                            leftLabel: "",
+                            rightLabel: ""
+                        }
+                    }
+                },
+                Aerodinamica: {
+                    title: "Aerodinámica",
+                    settings: {
+                        front: {
+                            label: "Carga delantera",
+                            value: 0,
+                            min: -30,
+                            max: 0,
+                            leftLabel: "",
+                            rightLabel: ""
+                        },
+                        rear: {
+                            label: "Carga trasera",
+                            value: 0,
+                            min: -30,
+                            max: 0,
+                            leftLabel: "",
+                            rightLabel: ""
+                        }
+                    }
+                },
+                suspension: {
+                    title: "Suspensión",
+                    settings: {
+                        frontSuspension: {
+                            label: "Suspensión delantera",
+                            value: +5,
+                            min: -20,
+                            max: +10,
+                            leftLabel: "Suave",
+                            rightLabel: "Rígido"
+                        },
+                        rearSuspension: {
+                            label: "Suspensión trasera",
+                            value: +2,
+                            min: -20,
+                            max: +10,
+                            leftLabel: "Suave",
+                            rightLabel: "Rígido"
+                        },
+                        frontCompression: {
+                            label: "Compresión de amortiguador delantero",
+                            value: -7,
+                            min: -20,
+                            max: +20,
+                            leftLabel: "Suave",
+                            rightLabel: "Rígido",
+                        },
+                        rearCompression: {
+                            label: "Compresión de amortiguador trasero",
+                            value: -5,
+                            min: -20,
+                            max: +20,
+                            leftLabel: "Suave",
+                            rightLabel: "Rígido"
+                        },
+                        frontbump: {
+                            label: "Rebote delantero",
+                            value: +8,
+                            min: -20,
+                            max: +20,
+                            leftLabel: "Suave",
+                            rightLabel: "Rigido"
+                        },
+                        rearbump: {
+                            label: "Rebote trasero",
+                            value: +11,
+                            min: -20,
+                            max: +20,
+                            leftLabel: "Suave",
+                            rightLabel: "Rigido"
+                        }
+                    }
+                },
+                Barras: {
+                    title: "Barras Estabilizadoras",
+                    settings: {
+                        front: {
+                            label: "Barra estabiizadora delantera",
+                            value: +5,
+                            min: -20,
+                            max: +10,
+                            leftLabel: "Suave",
+                            rightLabel: "Rigido"
+                        },
+                        Rear: {
+                            label: "Barra estabiizadora Trasera",
+                            value: -2,
+                            min: -20,
+                            max: +10,
+                            leftLabel: "Suave",
+                            rightLabel: "Rigido"
+                        }
+                    }
+                },
+                Alineamiento: {
+                    title: "Alineamiento",
+                    settings: {
+                        front: {
+                            label: "Ángulo de caida delantero",
+                            value: -0.20,
+                            min: -0.25,
+                            max: +0.25,
+                            leftLabel: "",
+                            rightLabel: ""
+                        },
+                        rear: {
+                            label: "Ángulo de caida trasero",
+                            value: -0.15,
+                            min: -0.25,
+                            max: +0.25,
+                            leftLabel: "",
+                            rightLabel: ""
+                        }
+                    }
+                }
+            }
+        },
         //Bugatti Centodieci
         {
             id: "Bugatti Centodieci",
@@ -399,7 +584,7 @@ const carsData = {
                         potencia: {
                             label: "Distribución de potencia",
                             value: 45,
-                            min: 60,
+                            min: 20,
                             max: 80,
                             leftLabel: "Delantero",
                             rightLabel: "Trasero"
@@ -556,7 +741,7 @@ const carsData = {
                         },
                         rear: {
                             label: "Ángulo de caida trasero",
-                            value: -0.20,
+                            value: -0.25,
                             min: -0.25,
                             max: +0.25,
                             leftLabel: "",
