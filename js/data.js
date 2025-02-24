@@ -53,8 +53,9 @@ const carsData = {
                         equilibrio: {
                             label: "Equilibrio de frenos",
                             value: 60,
-                            min: 20,
-                            max: 80,
+                            min: 0,
+                            midPoint: 30,
+                            max: 60,
                             leftLabel: "Delantero",
                             rightLabel: "Trasero"
                         },
@@ -96,6 +97,7 @@ const carsData = {
                             label: "Suspensión delantera",
                             value: -3,
                             min: -20,
+                            midPoint: 0,
                             max: +10,
                             leftLabel: "Suave",
                             rightLabel: "Rígido"
@@ -104,6 +106,7 @@ const carsData = {
                             label: "Suspensión trasera",
                             value: -3,
                             min: -20,
+                            midPoint: 0,
                             max: +10,
                             leftLabel: "Suave",
                             rightLabel: "Rígido"
@@ -112,6 +115,7 @@ const carsData = {
                             label: "Compresión de amortiguador delantero",
                             value: -10,
                             min: -20,
+                            midPoint: 0,
                             max: +20,
                             leftLabel: "Suave",
                             rightLabel: "Rígido",
@@ -120,6 +124,7 @@ const carsData = {
                             label: "Compresión de amortiguador trasero",
                             value: -15,
                             min: -20,
+                            midPoint: 0,
                             max: +20,
                             leftLabel: "Suave",
                             rightLabel: "Rígido"
@@ -128,6 +133,7 @@ const carsData = {
                             label: "Rebote delantero",
                             value: +6,
                             min: -20,
+                            midPoint: 0,
                             max: +20,
                             leftLabel: "Suave",
                             rightLabel: "Rigido"
@@ -136,6 +142,7 @@ const carsData = {
                             label: "Rebote trasero",
                             value: +1,
                             min: -20,
+                            midPoint: 0,
                             max: +20,
                             leftLabel: "Suave",
                             rightLabel: "Rigido"
@@ -149,6 +156,7 @@ const carsData = {
                             label: "Barra estabiizadora delantera",
                             value: +3,
                             min: -20,
+                            midPoint: 0,
                             max: +10,
                             leftLabel: "Suave",
                             rightLabel: "Rigido"
@@ -157,6 +165,7 @@ const carsData = {
                             label: "Barra estabiizadora Trasera",
                             value: -3,
                             min: -20,
+                            midPoint: 0,
                             max: +10,
                             leftLabel: "Suave",
                             rightLabel: "Rigido"
@@ -170,6 +179,7 @@ const carsData = {
                             label: "Ángulo de caida delantero",
                             value: -0.25,
                             min: -0.25,
+                            midPoint: 0,
                             max: +0.25,
                             leftLabel: "",
                             rightLabel: ""
@@ -178,6 +188,7 @@ const carsData = {
                             label: "Ángulo de caida trasero",
                             value: -0.25,
                             min: -0.25,
+                            midPoint: 0,
                             max: +0.25,
                             leftLabel: "",
                             rightLabel: ""
@@ -239,8 +250,9 @@ const carsData = {
                         equilibrio: {
                             label: "Equilibrio de frenos",
                             value: 60,
-                            min: 20,
-                            max: 80,
+                            min: 0,
+                            midPoint: 30,
+                            max: 60,
                             leftLabel: "Delantero",
                             rightLabel: "Trasero"
                         },
@@ -282,6 +294,7 @@ const carsData = {
                             label: "Suspensión delantera",
                             value: -3,
                             min: -20,
+                            midPoint: 0,
                             max: +10,
                             leftLabel: "Suave",
                             rightLabel: "Rígido"
@@ -290,6 +303,7 @@ const carsData = {
                             label: "Suspensión trasera",
                             value: -3,
                             min: -20,
+                            midPoint: 0,
                             max: +10,
                             leftLabel: "Suave",
                             rightLabel: "Rígido"
@@ -298,6 +312,7 @@ const carsData = {
                             label: "Compresión de amortiguador delantero",
                             value: -10,
                             min: -20,
+                            midPoint: 0,
                             max: +20,
                             leftLabel: "Suave",
                             rightLabel: "Rígido",
@@ -306,6 +321,7 @@ const carsData = {
                             label: "Compresión de amortiguador trasero",
                             value: -15,
                             min: -20,
+                            midPoint: 0,
                             max: +20,
                             leftLabel: "Suave",
                             rightLabel: "Rígido"
@@ -314,6 +330,7 @@ const carsData = {
                             label: "Rebote delantero",
                             value: +6,
                             min: -20,
+                            midPoint: 0,
                             max: +20,
                             leftLabel: "Suave",
                             rightLabel: "Rigido"
@@ -322,6 +339,7 @@ const carsData = {
                             label: "Rebote trasero",
                             value: +1,
                             min: -20,
+                            midPoint: 0,
                             max: +20,
                             leftLabel: "Suave",
                             rightLabel: "Rigido"
@@ -335,6 +353,7 @@ const carsData = {
                             label: "Barra estabiizadora delantera",
                             value: +3,
                             min: -20,
+                            midPoint: 0,
                             max: +10,
                             leftLabel: "Suave",
                             rightLabel: "Rigido"
@@ -343,6 +362,7 @@ const carsData = {
                             label: "Barra estabiizadora Trasera",
                             value: -3,
                             min: -20,
+                            midPoint: 0,
                             max: +10,
                             leftLabel: "Suave",
                             rightLabel: "Rigido"
@@ -356,6 +376,7 @@ const carsData = {
                             label: "Ángulo de caida delantero",
                             value: -0.25,
                             min: -0.25,
+                            midPoint: 0,
                             max: +0.25,
                             leftLabel: "",
                             rightLabel: ""
@@ -364,6 +385,7 @@ const carsData = {
                             label: "Ángulo de caida trasero",
                             value: -0.25,
                             min: -0.25,
+                            midPoint: 0,
                             max: +0.25,
                             leftLabel: "",
                             rightLabel: ""
@@ -425,7 +447,8 @@ const carsData = {
                             label: "Equilibrio de frenos",
                             value: 50,
                             min: 20,
-                            max: 80,
+                            midPoint: 35,
+                            max: 60,
                             leftLabel: "Delantero",
                             rightLabel: "Trasero"
                         },
@@ -467,6 +490,7 @@ const carsData = {
                             label: "Suspensión delantera",
                             value: +5,
                             min: -20,
+                            midPoint: 0,
                             max: +10,
                             leftLabel: "Suave",
                             rightLabel: "Rígido"
@@ -475,6 +499,7 @@ const carsData = {
                             label: "Suspensión trasera",
                             value: +2,
                             min: -20,
+                            midPoint: 0,
                             max: +10,
                             leftLabel: "Suave",
                             rightLabel: "Rígido"
@@ -483,6 +508,7 @@ const carsData = {
                             label: "Compresión de amortiguador delantero",
                             value: -7,
                             min: -20,
+                            midPoint: 0,
                             max: +20,
                             leftLabel: "Suave",
                             rightLabel: "Rígido",
@@ -491,6 +517,7 @@ const carsData = {
                             label: "Compresión de amortiguador trasero",
                             value: -5,
                             min: -20,
+                            midPoint: 0,
                             max: +20,
                             leftLabel: "Suave",
                             rightLabel: "Rígido"
@@ -499,6 +526,7 @@ const carsData = {
                             label: "Rebote delantero",
                             value: +8,
                             min: -20,
+                            midPoint: 0,
                             max: +20,
                             leftLabel: "Suave",
                             rightLabel: "Rigido"
@@ -507,6 +535,7 @@ const carsData = {
                             label: "Rebote trasero",
                             value: +11,
                             min: -20,
+                            midPoint: 0,
                             max: +20,
                             leftLabel: "Suave",
                             rightLabel: "Rigido"
@@ -520,6 +549,7 @@ const carsData = {
                             label: "Barra estabiizadora delantera",
                             value: +5,
                             min: -20,
+                            midPoint: 0,
                             max: +10,
                             leftLabel: "Suave",
                             rightLabel: "Rigido"
@@ -528,6 +558,7 @@ const carsData = {
                             label: "Barra estabiizadora Trasera",
                             value: -2,
                             min: -20,
+                            midPoint: 0,
                             max: +10,
                             leftLabel: "Suave",
                             rightLabel: "Rigido"
@@ -541,6 +572,7 @@ const carsData = {
                             label: "Ángulo de caida delantero",
                             value: -0.22,
                             min: -0.25,
+                            midPoint: 0,
                             max: +0.25,
                             leftLabel: "",
                             rightLabel: ""
@@ -549,6 +581,7 @@ const carsData = {
                             label: "Ángulo de caida trasero",
                             value: -0.15,
                             min: -0.25,
+                            midPoint: 0,
                             max: +0.25,
                             leftLabel: "",
                             rightLabel: ""
@@ -584,6 +617,7 @@ const carsData = {
                             label: "Distribución de potencia",
                             value: 48,
                             min: 20,
+                            midPoint: 60,
                             max: 80,
                             leftLabel: "Delantero",
                             rightLabel: "Trasero"
@@ -618,6 +652,7 @@ const carsData = {
                             label: "Equilibrio de frenos",
                             value: 65,
                             min: 20,
+                            midPoint: 30,
                             max: 80,
                             leftLabel: "Delantero",
                             rightLabel: "Trasero"
@@ -660,6 +695,7 @@ const carsData = {
                             label: "Suspensión delantera",
                             value: +3,
                             min: -20,
+                            midPoint: 0,
                             max: +10,
                             leftLabel: "Suave",
                             rightLabel: "Rígido"
@@ -668,6 +704,7 @@ const carsData = {
                             label: "Suspensión trasera",
                             value: +6,
                             min: -20,
+                            midPoint: 0,
                             max: +10,
                             leftLabel: "Suave",
                             rightLabel: "Rígido"
@@ -676,6 +713,7 @@ const carsData = {
                             label: "Compresión de amortiguador delantero",
                             value: -5,
                             min: -20,
+                            midPoint: 0,
                             max: +20,
                             leftLabel: "Suave",
                             rightLabel: "Rígido",
@@ -684,6 +722,7 @@ const carsData = {
                             label: "Compresión de amortiguador trasero",
                             value: -8,
                             min: -20,
+                            midPoint: 0,
                             max: +20,
                             leftLabel: "Suave",
                             rightLabel: "Rígido"
@@ -692,6 +731,7 @@ const carsData = {
                             label: "Rebote delantero",
                             value: +10,
                             min: -20,
+                            midPoint: 0,
                             max: +20,
                             leftLabel: "Suave",
                             rightLabel: "Rigido"
@@ -700,6 +740,7 @@ const carsData = {
                             label: "Rebote trasero",
                             value: +8,
                             min: -20,
+                            midPoint: 0,
                             max: +20,
                             leftLabel: "Suave",
                             rightLabel: "Rigido"
@@ -713,6 +754,7 @@ const carsData = {
                             label: "Barra estabiizadora delantera",
                             value: -3,
                             min: -20,
+                            midPoint: 0,
                             max: +10,
                             leftLabel: "Suave",
                             rightLabel: "Rigido"
@@ -721,6 +763,7 @@ const carsData = {
                             label: "Barra estabiizadora Trasera",
                             value: -3,
                             min: -20,
+                            midPoint: 0,
                             max: +10,
                             leftLabel: "Suave",
                             rightLabel: "Rigido"
@@ -734,6 +777,7 @@ const carsData = {
                             label: "Ángulo de caida delantero",
                             value: -0.25,
                             min: -0.25,
+                            midPoint: 0,
                             max: +0.25,
                             leftLabel: "",
                             rightLabel: ""
@@ -742,6 +786,7 @@ const carsData = {
                             label: "Ángulo de caida trasero",
                             value: -0.25,
                             min: -0.25,
+                            midPoint: 0,
                             max: +0.25,
                             leftLabel: "",
                             rightLabel: ""
