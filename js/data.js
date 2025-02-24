@@ -382,7 +382,7 @@ const carsData = {
             year: 1972,
             category: "Street Tire 1",
             description: "FRD • 492CV • 290km/h • 4.33s", 
-            image: "assets/cars/porshce-carrera-rs2.7.png",
+            image: "assets/cars/Porsche RS 2.7.WEBP",
             tuning: {
                 transmission: {
                     title: "Transmisión",
