@@ -373,7 +373,7 @@ const carsData = {
             }
         },
         {
-            id: "Porsche 991 Carrera",
+            id: "Porsche 991 Carrera RS",
             name: "Porsche 911 Carrera RS 2.7",
             brand: {
                 name: "Porsche",
@@ -558,7 +558,7 @@ const carsData = {
             }
         },
         {
-            id: "Porsche 991 Carrera",
+            id: "Porsche 991 Carrera 4S",
             name: "Porsche 911 Carrera 4S Timeless Edition",
             brand: {
                 name: "Porsche",
