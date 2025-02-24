@@ -60,12 +60,6 @@ main {
     color: var(--background-color);
 }
 
-.car-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 2rem;
-}
-
 .car-card {
     background: var(--card-background);
     border-radius: var(--border-radius);
@@ -260,62 +254,15 @@ main {
         flex: 1;
         max-width: 60%;
     }
+    .car-grid {
+        flex-direction: column;
+    }
+
+    .brand-slider {
+        width: 100%;
+    }
 }
 
-/* Estilos para los sliders de marcas */
-.brand-slider {
-    margin-bottom: 2rem;
-}
-
-.brand-name {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-.slider-container {
-    position: relative;
-    overflow: hidden;
-}
-
-.slider-content {
-    display: flex;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; /* Para Firefox */
-    -ms-overflow-style: none; /* Para Internet Explorer y Edge */
-}
-
-.slider-content::-webkit-scrollbar {
-    display: none; /* Para Chrome, Safari y Opera */
-}
-
-.slider-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 10;
-}
-
-.slider-button.prev {
-    left: 0;
-}
-
-.slider-button.next {
-    right: 0;
-}
-
-/* Ajustes para las tarjetas de coches dentro del slider */
-.car-card {
-    flex: 0 0 auto;
-    width: 250px;
-    margin-right: 1rem;
-}
 
 @media (max-width: 767px) {
     .slider-container {
@@ -349,3 +296,72 @@ main {
         text-align: right;
     }
 }
+
+.car-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Estilos para los sliders de marcas */
+.brand-slider {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.brand-name {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.slider-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.slider-content {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Para Firefox */
+    -ms-overflow-style: none; /* Para Internet Explorer y Edge */
+    gap: 1rem;
+    padding: 0.5rem 0;
+}
+
+.slider-content::-webkit-scrollbar {
+    display: none; /* Para Chrome, Safari y Opera */
+}
+
+.slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.slider-button.prev {
+    left: 0;
+}
+
+.slider-button.next {
+    right: 0;
+}
+
+/* Ajustes para las tarjetas de coches dentro del slider */
+.car-card {
+    flex: 0 0 auto;
+    width: 250px;
+    margin-right: 1rem;
+}
+
+
+    
+
