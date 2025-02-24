@@ -11,7 +11,7 @@ const carsData = {
             year: 2012,
             category: "Hypercar",
             description: "Un hipercoche sueco con prestaciones extraordinarias.",
-            image: "assets/cars/koenigsegg.png",
+            image: "assets/cars/koenigsegg.PNG",
             tuning: {
                 transmission: {
                     title: "Transmisión",
