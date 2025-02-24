@@ -116,7 +116,7 @@ const carsData = {
                             value: -10,
                             min: -20,
                             midPoint: 0,
-                            max: +20,
+                            max: 20,
                             leftLabel: "Suave",
                             rightLabel: "Rígido",
                         },
@@ -125,7 +125,7 @@ const carsData = {
                             value: -15,
                             min: -20,
                             midPoint: 0,
-                            max: +20,
+                            max: 20,
                             leftLabel: "Suave",
                             rightLabel: "Rígido"
                         },
@@ -134,7 +134,7 @@ const carsData = {
                             value: +6,
                             min: -20,
                             midPoint: 0,
-                            max: +20,
+                            max: 20,
                             leftLabel: "Suave",
                             rightLabel: "Rigido"
                         },
@@ -143,7 +143,7 @@ const carsData = {
                             value: +1,
                             min: -20,
                             midPoint: 0,
-                            max: +20,
+                            max: 20,
                             leftLabel: "Suave",
                             rightLabel: "Rigido"
                         }
@@ -157,7 +157,7 @@ const carsData = {
                             value: +3,
                             min: -20,
                             midPoint: 0,
-                            max: +10,
+                            max: 10,
                             leftLabel: "Suave",
                             rightLabel: "Rigido"
                         },
@@ -166,7 +166,7 @@ const carsData = {
                             value: -3,
                             min: -20,
                             midPoint: 0,
-                            max: +10,
+                            max: 10,
                             leftLabel: "Suave",
                             rightLabel: "Rigido"
                         }
@@ -180,7 +180,7 @@ const carsData = {
                             value: -0.25,
                             min: -0.25,
                             midPoint: 0,
-                            max: +0.25,
+                            max: 0.25,
                             leftLabel: "",
                             rightLabel: ""
                         },
@@ -189,7 +189,7 @@ const carsData = {
                             value: -0.25,
                             min: -0.25,
                             midPoint: 0,
-                            max: +0.25,
+                            max: 0.25,
                             leftLabel: "",
                             rightLabel: ""
                         }
