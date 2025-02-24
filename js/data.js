@@ -1,5 +1,6 @@
 const carsData = {
     cars: [
+        //Agera R
         {
             id: "koenigsegg-agera-r",
             name: "Agera R",
@@ -185,7 +186,7 @@ const carsData = {
                 }
             }
         },
-
+        //Porsche 911 GT#
         {
             id: "Porsche GT3 RS 991.1",
             name: "Porsche 911.2",
@@ -371,7 +372,7 @@ const carsData = {
                 }
             }
         },
-
+        //Bugatti Centodieci
         {
             id: "Bugatti Centodieci",
             name: "Bugatti Centodieci",
