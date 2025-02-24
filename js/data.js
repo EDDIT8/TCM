@@ -166,16 +166,16 @@ const carsData = {
                     title: "Alineamiento",
                     settings: {
                         front: {
-                            label: "Ángulo de caida delantera",
-                            value: 0.25,
+                            label: "Ángulo de caida delantero",
+                            value: -0.25,
                             min: -0.25,
                             max: +0.25,
                             leftLabel: "",
                             rightLabel: ""
                         },
                         rear: {
-                            label: "Ángulo de caida delantera",
-                            value: 0.25,
+                            label: "Ángulo de caida trasero",
+                            value: -0.25,
                             min: -0.25,
                             max: +0.25,
                             leftLabel: "",
@@ -352,16 +352,16 @@ const carsData = {
                     title: "Alineamiento",
                     settings: {
                         front: {
-                            label: "Ángulo de caida delantera",
-                            value: 0.25,
+                            label: "Ángulo de caida delantero",
+                            value: -0.25,
                             min: -0.25,
                             max: +0.25,
                             leftLabel: "",
                             rightLabel: ""
                         },
                         rear: {
-                            label: "Ángulo de caida delantera",
-                            value: 0.25,
+                            label: "Ángulo de caida trasero",
+                            value: -0.25,
                             min: -0.25,
                             max: +0.25,
                             leftLabel: "",
