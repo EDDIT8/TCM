@@ -53,14 +53,24 @@ document.addEventListener('DOMContentLoaded', () => {
             clone.querySelector('.left-label').textContent = setting.leftLabel;
             clone.querySelector('.right-label').textContent = setting.rightLabel;
 
-            // Añadir el valor actual como texto
-            const valueDisplay = document.createElement('span');
-            valueDisplay.className = 'slider-value';
-            valueDisplay.textContent = setting.value;
-            container.appendChild(valueDisplay);
-
-            // Actualizar la posición visual del slider
-            updateSliderPosition(slider, setting.min, setting.max, setting.value);
+            // Manejar valores duales para transmisión y equilibrio de frenos
+            if (setting.dualValues) {
+                const [frontValue, rearValue] = setting.value;
+                clone.querySelector('.slider-value-front').textContent = `${frontValue}%`;
+                clone.querySelector('.slider-value-rear').textContent = `${rearValue}%`;
+                updateDualSliderPosition(slider, setting.min, setting.max, frontValue, rearValue);
+            } else {
+                let displayValue;
+                if (setting.isAlignment) {
+                    // Formatear valores de alineación con dos decimales y signo de grado
+                    displayValue = `${setting.value.toFixed(2)}°`;
+                } else {
+                    // Agregar signo de porcentaje para otros valores
+                    displayValue = `${setting.value}%`;
+                }
+                clone.querySelector('.slider-value').textContent = displayValue;
+                updateSliderPosition(slider, setting.min, setting.max, setting.value);
+            }
 
             groupElement.appendChild(clone);
         });
@@ -69,16 +79,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Obtener la categoría guardada
+const savedCategory = localStorage.getItem('currentCategory') || '';
 
-    // Obtener la categoría guardada
-    const savedCategory = localStorage.getItem('currentCategory') || '';
-
-    // Modificar el enlace "Volver"
-    const backButton = document.querySelector('.back-button');
-    backButton.href = `index.html?category=${encodeURIComponent(savedCategory)}`;
+// Modificar el enlace "Volver"
+const backButton = document.querySelector('.back-button');
+backButton.href = `index.html?category=${encodeURIComponent(savedCategory)}`;
 
 function updateSliderPosition(slider, min, max, value) {
     const range = max - min;
     const percentage = ((value - min) / range) * 100;
     slider.style.backgroundSize = `${percentage}% 100%`;
+}
+
+function updateDualSliderPosition(slider, min, max, frontValue, rearValue) {
+    const range = max - min;
+    const frontPercentage = ((frontValue - min) / range) * 100;
+    const rearPercentage = ((rearValue - min) / range) * 100;
+    slider.style.backgroundImage = `linear-gradient(to right, 
+        var(--primary-color) 0%, 
+        var(--primary-color) ${frontPercentage}%, 
+        #4a4a4a ${frontPercentage}%, 
+        #4a4a4a ${rearPercentage}%, 
+        var(--primary-color) ${rearPercentage}%, 
+        var(--primary-color) 100%)`;
 }
