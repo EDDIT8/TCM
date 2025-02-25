@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Nuevo Vehículo - The Crew Motorfest</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #jsonOutput {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 4px;
+            white-space: pre-wrap;
+        }
+        .tuning-group {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        .tuning-setting {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Agregar Nuevo Vehículo</h1>
+        <form id="carForm">
+            <div class="form-group">
+                <label for="id">ID:</label>
+                <input type="text" id="id" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="brandName">Marca:</label>
+                <input type="text" id="brandName" required>
+            </div>
+            <div class="form-group">
+                <label for="brandLogo">Logo de la marca (URL):</label>
+                <input type="url" id="brandLogo" required>
+            </div>
+            <div class="form-group">
+                <label for="year">Año:</label>
+                <input type="number" id="year" required>
+            </div>
+            <div class="form-group">
+                <label for="category">Categoría:</label>
+                <input type="text" id="category" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Descripción:</label>
+                <textarea id="description" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="image">Imagen del vehículo (URL):</label>
+                <input type="url" id="image" required>
+            </div>
+            
+            <h2>Ajustes</h2>
+            <div id="tuningSettings">
+                <!-- Los grupos de ajustes se agregarán aquí dinámicamente -->
+            </div>
+            
+            <button type="button" id="addCustomSetting">Agregar Ajuste Personalizado</button>
+            <button type="submit">Generar JSON</button>
+        </form>
+        <h2>JSON Generado:</h2>
+        <pre id="jsonOutput"></pre>
+    </div>
+    <script src="js/add-car.js"></script>
+</body>
+</html>
