@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Manejar valores duales para transmisión y equilibrio de frenos
             if (setting.dualValues) {
                 const [frontValue, rearValue] = setting.value;
-                clone.querySelector('.slider-value-front').textContent = `${frontValue}%`;
+                clone.querySelector('.slider-value-front').textContent = `${frontValue}% - `;
                 clone.querySelector('.slider-value-rear').textContent = `${rearValue}%`;
                 updateDualSliderPosition(slider, setting.min, setting.max, frontValue, rearValue);
             } else {
