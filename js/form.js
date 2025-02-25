@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
         "Alineamiento": ["Ángulo de caída delantero", "Ángulo de caída trasero"]
     };
 
-    // Función para crear un campo de ajuste
     function createSettingField(groupName, settingName, isOptional = false) {
         const settingDiv = document.createElement('div');
         settingDiv.className = 'tuning-setting';
@@ -52,8 +51,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (groupName) {
             const settingName = prompt("Ingrese el nombre del ajuste:");
             if (settingName) {
-                const groupDiv = document.querySelector(`.tuning-group h3:contains('${groupName}')`).parentNode || document.createElement('div');
-                if (!groupDiv.querySelector('h3')) {
+                let groupDiv = document.querySelector(`.tuning-group h3:contains('${groupName}')`);
+                if (groupDiv) {
+                    groupDiv = groupDiv.closest('.tuning-group');
+                } else {
+                    groupDiv = document.createElement('div');
                     groupDiv.className = 'tuning-group';
                     groupDiv.innerHTML = `<h3>${groupName}</h3>`;
                     tuningSettings.appendChild(groupDiv);
