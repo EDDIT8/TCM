@@ -16,6 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
         categoryTabs.appendChild(button);
     });
 
+    // Implementar slider para las categorías
+    implementCategorySlider();
+
     function filterCars(category) {
         // Actualizar botones activos
         document.querySelectorAll('.tab-button').forEach(button => {
@@ -101,6 +104,38 @@ document.addEventListener('DOMContentLoaded', () => {
                 scrollAmount = 0;
             }
             content.scrollTo({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+        });
+    }
+
+    function implementCategorySlider() {
+        const categorySlider = document.querySelector('.category-slider');
+        const tabs = categorySlider.querySelector('.tabs');
+        const prevBtn = categorySlider.querySelector('.prev');
+        const nextBtn = categorySlider.querySelector('.next');
+
+        let scrollAmount = 0;
+        const step = 100; // Ajusta este valor según sea necesario
+
+        nextBtn.addEventListener('click', () => {
+            scrollAmount += step;
+            if (scrollAmount > tabs.scrollWidth - tabs.clientWidth) {
+                scrollAmount = tabs.scrollWidth - tabs.clientWidth;
+            }
+            tabs.scrollTo({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+        });
+
+        prevBtn.addEventListener('click', () => {
+            scrollAmount -= step;
+            if (scrollAmount < 0) {
+                scrollAmount = 0;
+            }
+            tabs.scrollTo({
                 left: scrollAmount,
                 behavior: 'smooth'
             });
