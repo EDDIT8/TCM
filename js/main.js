@@ -1,13 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // DOM Elements
     const carGrid = document.getElementById('carGrid');
     const categoryTabs = document.getElementById('categoryTabs');
     const carCardTemplate = document.getElementById('carCardTemplate');
     const brandSliderTemplate = document.getElementById('brandSliderTemplate');
 
-    // Obtener categorías únicas
-    const categories = [...new Set(carsData.cars.map(car => car.category))];
+    // Category order (add or modify as needed)
+    const categoryOrder = [
+        "Street Tire 1",
+        "Street Tire 2",
+        "Drift",
+        "Racing",
+        "Hypercar",
+        "Motocross",
+        "Rally Raid",
+        "Rally",
+        "Monster"
+    ];
 
-    // Crear tabs de categorías
+    // Get unique categories and sort them according to categoryOrder
+    const categories = [...new Set(carsData.cars.map(car => car.category))]
+        .sort((a, b) => categoryOrder.indexOf(a) - categoryOrder.indexOf(b));
+
+    // Create category tabs
     categories.forEach((category, index) => {
         const button = document.createElement('button');
         button.className = `tab-button ${index === 0 ? 'active' : ''}`;
@@ -16,19 +31,20 @@ document.addEventListener('DOMContentLoaded', () => {
         categoryTabs.appendChild(button);
     });
 
-    // Implementar slider para las categorías
+    // Implement slider for categories
     implementCategorySlider();
 
+    // Filter cars by category
     function filterCars(category) {
-        // Actualizar botones activos
+        // Update active buttons
         document.querySelectorAll('.tab-button').forEach(button => {
             button.classList.toggle('active', button.textContent === category);
         });
 
-        // Filtrar autos por categoría
+        // Filter cars by category
         const filteredCars = carsData.cars.filter(car => car.category === category);
 
-        // Agrupar autos por marca
+        // Group cars by brand
         const carsByBrand = filteredCars.reduce((acc, car) => {
             if (!acc[car.brand.name]) {
                 acc[car.brand.name] = [];
@@ -37,9 +53,13 @@ document.addEventListener('DOMContentLoaded', () => {
             return acc;
         }, {});
 
-        // Limpiar grid y mostrar autos por marca
+        // Sort brands alphabetically
+        const sortedBrands = Object.keys(carsByBrand).sort((a, b) => a.localeCompare(b));
+
+        // Clear grid and display cars by brand
         carGrid.innerHTML = '';
-        Object.entries(carsByBrand).forEach(([brandName, cars]) => {
+        sortedBrands.forEach(brandName => {
+            const cars = carsByBrand[brandName];
             const brandSlider = brandSliderTemplate.content.cloneNode(true);
             brandSlider.querySelector('.brand-name').textContent = brandName;
 
@@ -51,15 +71,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
             carGrid.appendChild(brandSlider);
 
-            // Implementar funcionalidad de slider
+            // Implement slider functionality
             const slider = carGrid.lastElementChild;
             implementSlider(slider);
         });
 
-        // Guardar la categoría actual en el almacenamiento local
+        // Save current category in local storage
         localStorage.setItem('currentCategory', category);
     }
 
+    // Create car card
     function createCarCard(car) {
         const clone = carCardTemplate.content.cloneNode(true);
         
@@ -79,98 +100,14 @@ document.addEventListener('DOMContentLoaded', () => {
         return card;
     }
 
+    // Implement slider functionality
     function implementSlider(sliderElement) {
         const content = sliderElement.querySelector('.slider-content');
         const prevBtn = sliderElement.querySelector('.prev');
         const nextBtn = sliderElement.querySelector('.next');
 
         let scrollAmount = 0;
-        const step = 200; // Ajusta este valor según sea necesario
-
-        nextBtn.addEventListener('click', () => {
-            scrollAmount += step;
-            if (scrollAmount > content.scrollWidth - content.clientWidth) {
-                scrollAmount = content.scrollWidth - content.clientWidth;
-            }
-            content.scrollTo({
-                left: scrollAmount,
-                behavior: 'smooth'
-            });
-        });
-
-        prevBtn.addEventListener('click', () => {
-            scrollAmount -= step;
-            if (scrollAmount < 0) {
-                scrollAmount = 0;
-            }
-            content.scrollTo({
-                left: scrollAmount,
-                behavior: 'smooth'
-            });
-        });
-    }
-
-    function implementCategorySlider() {
-        const categorySlider = document.querySelector('.category-slider');
-        const tabs = categorySlider.querySelector('.tabs');
-        const prevBtn = categorySlider.querySelector('.prev');
-        const nextBtn = categorySlider.querySelector('.next');
-
-        let scrollAmount = 0;
-        const step = 100; // Ajusta este valor según sea necesario
-
-        nextBtn.addEventListener('click', () => {
-            scrollAmount += step;
-            if (scrollAmount > tabs.scrollWidth - tabs.clientWidth) {
-                scrollAmount = tabs.scrollWidth - tabs.clientWidth;
-            }
-            tabs.scrollTo({
-                left: scrollAmount,
-                behavior: 'smooth'
-            });
-        });
-
-        prevBtn.addEventListener('click', () => {
-            scrollAmount -= step;
-            if (scrollAmount < 0) {
-                scrollAmount = 0;
-            }
-            tabs.scrollTo({
-                left: scrollAmount,
-                behavior: 'smooth'
-            });
-        });
-    }
-
-    // Verificar si hay una categoría en la URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const categoryFromUrl = urlParams.get('category');
-
-    if (categoryFromUrl && categories.includes(categoryFromUrl)) {
-        filterCars(categoryFromUrl);
-    } else {
-        const savedCategory = localStorage.getItem('currentCategory');
-        if (savedCategory && categories.includes(savedCategory)) {
-            filterCars(savedCategory);
-        } else {
-            filterCars(categories[0]); // Categoría por defecto
-        }
-    }
-
-    // Manejar errores de carga de imágenes
-    document.querySelectorAll('.car-image, .brand-logo').forEach(img => {
-        img.onerror = function() {
-            this.src = '/placeholder.svg';
-        }
-    });
-
-    function implementSlider(sliderElement) {
-        const content = sliderElement.querySelector('.slider-content');
-        const prevBtn = sliderElement.querySelector('.prev');
-        const nextBtn = sliderElement.querySelector('.next');
-
-        let scrollAmount = 0;
-        const step = 200; // Ajusta este valor según sea necesario
+        const step = 200; // Adjust this value as needed
 
         function updateArrows() {
             prevBtn.style.display = content.scrollLeft > 0 ? 'block' : 'none';
@@ -204,10 +141,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         content.addEventListener('scroll', updateArrows);
 
-        // Inicializar visibilidad de flechas
+        // Initialize arrow visibility
         updateArrows();
     }
 
+    // Implement category slider
     function implementCategorySlider() {
         const categorySlider = document.querySelector('.category-slider');
         const tabs = categorySlider.querySelector('.tabs');
@@ -215,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const nextBtn = categorySlider.querySelector('.next');
 
         let scrollAmount = 0;
-        const step = 100; // Ajusta este valor según sea necesario
+        const step = 100; // Adjust this value as needed
 
         function updateArrows() {
             prevBtn.style.display = tabs.scrollLeft > 0 ? 'block' : 'none';
@@ -249,7 +187,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
         tabs.addEventListener('scroll', updateArrows);
 
-        // Inicializar visibilidad de flechas
+        // Initialize arrow visibility
         updateArrows();
     }
+
+    // Check for category in URL or local storage
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoryFromUrl = urlParams.get('category');
+
+    if (categoryFromUrl && categories.includes(categoryFromUrl)) {
+        filterCars(categoryFromUrl);
+    } else {
+        const savedCategory = localStorage.getItem('currentCategory');
+        if (savedCategory && categories.includes(savedCategory)) {
+            filterCars(savedCategory);
+        } else {
+            filterCars(categories[0]); // Default category
+        }
+    }
+
+    // Handle image loading errors
+    document.querySelectorAll('.car-image, .brand-logo').forEach(img => {
+        img.onerror = function() {
+            this.src = '/placeholder.svg';
+        }
+    });
 });
