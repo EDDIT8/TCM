@@ -1957,7 +1957,7 @@ const carsData = {
             },
             rear: {
               label: "Ángulo de caida trasero",
-              value: -0.10,
+              value: -0.1,
               min: -0.25,
               isAlignment: true,
               max: 0.25,
@@ -1969,13 +1969,13 @@ const carsData = {
       },
     },
     //MONSTER
-    //Chevreolet Silverado 
+    //Chevreolet Silverado
     {
       id: "Chevrolet Silverado 1500",
       name: "Chevrolet Silverado 1500",
       brand: {
         name: "Chevrolet",
-        logo: "assets/icons/wp2657665.webp"
+        logo: "assets/icons/wp2657665.webp",
       },
       year: 2010,
       category: "Monster",
@@ -1991,7 +1991,7 @@ const carsData = {
               min: -20,
               max: 0,
               leftLabel: "Corto",
-              rightLabel: "largo"
+              rightLabel: "largo",
             },
             potencia: {
               label: "Distribución de potencia",
@@ -2000,9 +2000,9 @@ const carsData = {
               min: 40,
               max: 100,
               leftLabel: "Delantero",
-              rightLabel: "Trasero"
-            }
-          }
+              rightLabel: "Trasero",
+            },
+          },
         },
         Neumáticos: {
           title: "Neumáticos",
@@ -2013,7 +2013,7 @@ const carsData = {
               min: -30,
               max: 0,
               leftLabel: "",
-              rightLabel: ""
+              rightLabel: "",
             },
             AgarreTrasero: {
               label: "Agarre Trasero",
@@ -2021,9 +2021,9 @@ const carsData = {
               min: -30,
               max: 0,
               leftLabel: "",
-              rightLabel: ""
-            }
-          }
+              rightLabel: "",
+            },
+          },
         },
         Frenos: {
           title: "Frenos",
@@ -2035,7 +2035,7 @@ const carsData = {
               min: 20,
               max: 100,
               leftLabel: "Delantero",
-              rightLabel: "Trasero"
+              rightLabel: "Trasero",
             },
             Potencia: {
               label: "Potencia de los frenos",
@@ -2043,9 +2043,9 @@ const carsData = {
               min: -30,
               max: 0,
               leftLabel: "",
-              rightLabel: ""
-            }
-          }
+              rightLabel: "",
+            },
+          },
         },
         Aerodinamica: {
           title: "Aerodinamica",
@@ -2056,7 +2056,7 @@ const carsData = {
               min: -30,
               max: 0,
               leftLabel: "",
-              rightLabel: ""
+              rightLabel: "",
             },
             trasera: {
               label: "Carga trasera",
@@ -2064,28 +2064,28 @@ const carsData = {
               min: -30,
               max: 0,
               leftLabel: "",
-              rightLabel: ""
-            }
-          }
+              rightLabel: "",
+            },
+          },
         },
         Suspensión: {
           title: "Suspensión",
           settings: {
-             delantera: {
+            delantera: {
               label: "Suspensión delantera",
               value: -15,
               min: -20,
               max: 10,
               leftLabel: "Suave ",
-              rightLabel: "Rígido"
+              rightLabel: "Rígido",
             },
-             trasera: {
+            trasera: {
               label: "Suspensión trasera",
               value: -10,
               min: -20,
               max: 10,
               leftLabel: "Suave",
-              rightLabel: "Redigo"
+              rightLabel: "Redigo",
             },
             frontCompression: {
               label: "Compresión de amortiguador delantero",
@@ -2123,7 +2123,7 @@ const carsData = {
               leftLabel: "Suave",
               rightLabel: "Rigido",
             },
-          }
+          },
         },
         Barras: {
           title: "Barras estabilizadoras",
@@ -2134,7 +2134,7 @@ const carsData = {
               min: -20,
               max: 10,
               leftLabel: "Suave",
-              rightLabel: "Rígido"
+              rightLabel: "Rígido",
             },
             Barratrasera: {
               label: "Barra estabilizadora trasera",
@@ -2142,21 +2142,21 @@ const carsData = {
               min: -20,
               max: 10,
               leftLabel: "Suave",
-              rightLabel: "Rígido"
-            }
-          }
+              rightLabel: "Rígido",
+            },
+          },
         },
         Alineamiento: {
           title: "Alineamiento",
           settings: {
-           delantera: {
+            delantera: {
               label: "Angulo de caída delantera",
-              value: 0.00,
+              value: 0.0,
               isAlignment: true,
               min: -0.25,
               max: 0.25,
               leftLabel: "",
-              rightLabel: ""
+              rightLabel: "",
             },
             trasera: {
               label: "Angulo de caída trasera",
@@ -2165,13 +2165,825 @@ const carsData = {
               min: -0.25,
               max: 0.25,
               leftLabel: "",
-              rightLabel: ""
+              rightLabel: "",
+            },
+          },
+        },
+      },
+    },
+    //Racing
+    //Gordon t.50s
+    {
+      id: "T.50s",
+      name: "T.50s",
+      brand: {
+        name: "Gordon Murray Automative",
+        logo: "assets/icons/GMA.png",
+      },
+      year: 2024,
+      category: "Racing",
+      description: "MCTT • 739CV • 400km/h • 2.40s",
+      image: "assets/cars/GMT50.png",
+      tuning: {
+        transmission: {
+          title: "Transmisión",
+          settings: {
+            finalRatio: {
+              label: "Relación final",
+              value: 0,
+              min: -20,
+              max: 0,
+              leftLabel: "Corto",
+              rightLabel: "Largo",
             }
-          }
-        }
-      }
-    }
+          },
+        },
+        tires: {
+          title: "Neumáticos",
+          settings: {
+            frontGrip: {
+              label: "Agarre delantero",
+              value: 0,
+              min: -20,
+              max: 0,
+              leftLabel: "",
+              rightLabel: "",
+            },
+            rearGrip: {
+              label: "Agarre trasero",
+              value: 0,
+              min: -20,
+              max: 0,
+              leftLabel: "",
+              rightLabel: "",
+            },
+          },
+        },
+        brakes: {
+          title: "Frenos",
+          settings: {
+            equilibrio: {
+              label: "Equilibrio de frenos",
+              value: [40, 60],
+              dualValues: true,
+              min: 50,
 
+              max: 60,
+              leftLabel: "Delantero",
+              rightLabel: "Trasero",
+            },
+            potencia: {
+              label: "Potencia de frenos",
+              value: 0,
+              min: -20,
+              max: 0,
+              leftLabel: "",
+              rightLabel: "",
+            },
+          },
+        },
+        Aerodinamica: {
+          title: "Aerodinámica",
+          settings: {
+            front: {
+              label: "Carga delantera",
+              value: 0,
+              min: -30,
+              max: 0,
+              leftLabel: "",
+              rightLabel: "",
+            },
+            rear: {
+              label: "Carga trasera",
+              value: 0,
+              min: -30,
+              max: 0,
+              leftLabel: "",
+              rightLabel: "",
+            },
+          },
+        },
+        suspension: {
+          title: "Suspensión",
+          settings: {
+            frontSuspension: {
+              label: "Suspensión delantera",
+              value: 6,
+              min: -20,
+
+              max: 10,
+              leftLabel: "Suave",
+              rightLabel: "Rígido",
+            },
+            rearSuspension: {
+              label: "Suspensión trasera",
+              value: 4,
+              min: -20,
+
+              max: 10,
+              leftLabel: "Suave",
+              rightLabel: "Rígido",
+            },
+            frontCompression: {
+              label: "Compresión de amortiguador delantero",
+              value: -8,
+              min: -20,
+
+              max: 20,
+              leftLabel: "Suave",
+              rightLabel: "Rígido",
+            },
+            rearCompression: {
+              label: "Compresión de amortiguador trasero",
+              value: -5,
+              min: -20,
+
+              max: 20,
+              leftLabel: "Suave",
+              rightLabel: "Rígido",
+            },
+            frontbump: {
+              label: "Rebote delantero",
+              value: 7,
+              min: -20,
+
+              max: 20,
+              leftLabel: "Suave",
+              rightLabel: "Rigido",
+            },
+            rearbump: {
+              label: "Rebote trasero",
+              value: 10,
+              min: -20,
+
+              max: 20,
+              leftLabel: "Suave",
+              rightLabel: "Rigido",
+            },
+          },
+        },
+        Barras: {
+          title: "Barras Estabilizadoras",
+          settings: {
+            front: {
+              label: "Barra estabiizadora delantera",
+              value: 5,
+              min: -20,
+
+              max: 10,
+              leftLabel: "Suave",
+              rightLabel: "Rigido",
+            },
+            Rear: {
+              label: "Barra estabiizadora Trasera",
+              value: 2,
+              min: -20,
+
+              max: 10,
+              leftLabel: "Suave",
+              rightLabel: "Rigido",
+            },
+          },
+        },
+        Alineamiento: {
+          title: "Alineamiento",
+          settings: {
+            front: {
+              label: "Ángulo de caida delantero",
+              value: -0.25,
+              min: -0.25,
+              isAlignment: true,
+              max: 0.25,
+              leftLabel: "",
+              rightLabel: "",
+            },
+            rear: {
+              label: "Ángulo de caida trasero",
+              value: -0.25,
+              min: -0.25,
+              isAlignment: true,
+              max: 0.25,
+              leftLabel: "",
+              rightLabel: "",
+            },
+          },
+        },
+      },
+    },
+    //Ferrari F40LM
+    {
+      id: "Ferrari F40LM",
+      name: "Ferrari F40LM",
+      brand: {
+        name: "Ferarri",
+        logo: "assets/icons/ferrari.png",
+      },
+      year: 1989,
+      category: "Racing",
+      description: "MCTT • 811CV • 401km/h • 3.10s",
+      image: "assets/cars/FF40LM.png",
+      tuning: {
+        transmission: {
+          title: "Transmisión",
+          settings: {
+            finalRatio: {
+              label: "Relación final",
+              value: 0,
+              min: -20,
+              max: 0,
+              leftLabel: "Corto",
+              rightLabel: "Largo",
+            }
+          },
+        },
+        tires: {
+          title: "Neumáticos",
+          settings: {
+            frontGrip: {
+              label: "Agarre delantero",
+              value: 0,
+              min: -20,
+              max: 0,
+              leftLabel: "",
+              rightLabel: "",
+            },
+            rearGrip: {
+              label: "Agarre trasero",
+              value: 0,
+              min: -20,
+              max: 0,
+              leftLabel: "",
+              rightLabel: "",
+            },
+          },
+        },
+        brakes: {
+          title: "Frenos",
+          settings: {
+            equilibrio: {
+              label: "Equilibrio de frenos",
+              value: [40, 60],
+              dualValues: true,
+              min: 50,
+
+              max: 60,
+              leftLabel: "Delantero",
+              rightLabel: "Trasero",
+            },
+            potencia: {
+              label: "Potencia de frenos",
+              value: 0,
+              min: -20,
+              max: 0,
+              leftLabel: "",
+              rightLabel: "",
+            },
+          },
+        },
+        Aerodinamica: {
+          title: "Aerodinámica",
+          settings: {
+            front: {
+              label: "Carga delantera",
+              value: 0,
+              min: -30,
+              max: 0,
+              leftLabel: "",
+              rightLabel: "",
+            },
+            rear: {
+              label: "Carga trasera",
+              value: 0,
+              min: -30,
+              max: 0,
+              leftLabel: "",
+              rightLabel: "",
+            },
+          },
+        },
+        suspension: {
+          title: "Suspensión",
+          settings: {
+            frontSuspension: {
+              label: "Suspensión delantera",
+              value: 0,
+              min: -20,
+
+              max: 10,
+              leftLabel: "Suave",
+              rightLabel: "Rígido",
+            },
+            rearSuspension: {
+              label: "Suspensión trasera",
+              value: 0,
+              min: -20,
+
+              max: 10,
+              leftLabel: "Suave",
+              rightLabel: "Rígido",
+            },
+            frontCompression: {
+              label: "Compresión de amortiguador delantero",
+              value: 0,
+              min: -20,
+
+              max: 20,
+              leftLabel: "Suave",
+              rightLabel: "Rígido",
+            },
+            rearCompression: {
+              label: "Compresión de amortiguador trasero",
+              value: 0,
+              min: -20,
+
+              max: 20,
+              leftLabel: "Suave",
+              rightLabel: "Rígido",
+            },
+            frontbump: {
+              label: "Rebote delantero",
+              value: 0,
+              min: -20,
+
+              max: 20,
+              leftLabel: "Suave",
+              rightLabel: "Rigido",
+            },
+            rearbump: {
+              label: "Rebote trasero",
+              value: 0,
+              min: -20,
+
+              max: 20,
+              leftLabel: "Suave",
+              rightLabel: "Rigido",
+            },
+          },
+        },
+        Barras: {
+          title: "Barras Estabilizadoras",
+          settings: {
+            front: {
+              label: "Barra estabiizadora delantera",
+              value: 0,
+              min: -20,
+
+              max: 10,
+              leftLabel: "Suave",
+              rightLabel: "Rigido",
+            },
+            Rear: {
+              label: "Barra estabiizadora Trasera",
+              value: 0,
+              min: -20,
+
+              max: 10,
+              leftLabel: "Suave",
+              rightLabel: "Rigido",
+            },
+          },
+        },
+        Alineamiento: {
+          title: "Alineamiento",
+          settings: {
+            front: {
+              label: "Ángulo de caida delantero",
+              value: -0.25,
+              min: -0.25,
+              isAlignment: true,
+              max: 0.25,
+              leftLabel: "",
+              rightLabel: "",
+            },
+            rear: {
+              label: "Ángulo de caida trasero",
+              value: -0.25,
+              min: -0.25,
+              isAlignment: true,
+              max: 0.25,
+              leftLabel: "",
+              rightLabel: "",
+            },
+          },
+        },
+      },
+    },
+    //Lambo Gallardo
+    {
+      id: "Gallardo LP 570-4 Super Trofeo",
+      name: "Gallardo LP 570-4 Super Trofeo",
+      brand: {
+        name: "Lamborghini",
+        logo: "assets/icons/lamborghini.png",
+      },
+      year: 2013,
+      category: "Racing",
+      description: "4x4 • 963CV • 402km/h • 2.13s",
+      image: "assets/cars/LP570.png",
+      tuning: {
+        transmission: {
+          title: "Transmisión",
+          settings: {
+            finalRatio: {
+              label: "Relación final",
+              value: 0,
+              min: -20,
+              max: 0,
+              leftLabel: "Corto",
+              rightLabel: "Largo",
+            },
+            potencia: {
+              label: "Distribución de potencia",
+              value: [45, 55],
+              min: 30,
+              dualValues: true,
+              max: 80,
+              leftLabel: "Delantero",
+              rightLabel: "Trasero",
+            },
+          },
+        },
+        tires: {
+          title: "Neumáticos",
+          settings: {
+            frontGrip: {
+              label: "Agarre delantero",
+              value: 0,
+              min: -20,
+              max: 0,
+              leftLabel: "",
+              rightLabel: "",
+            },
+            rearGrip: {
+              label: "Agarre trasero",
+              value: 0,
+              min: -20,
+              max: 0,
+              leftLabel: "",
+              rightLabel: "",
+            },
+          },
+        },
+        brakes: {
+          title: "Frenos",
+          settings: {
+            equilibrio: {
+              label: "Equilibrio de frenos",
+              value: [50, 50],
+              dualValues: true,
+              min: 50,
+
+              max: 60,
+              leftLabel: "Delantero",
+              rightLabel: "Trasero",
+            },
+            potencia: {
+              label: "Potencia de frenos",
+              value: 0,
+              min: -20,
+              max: 0,
+              leftLabel: "",
+              rightLabel: "",
+            },
+          },
+        },
+        Aerodinamica: {
+          title: "Aerodinámica",
+          settings: {
+            front: {
+              label: "Carga delantera",
+              value: 0,
+              min: -30,
+              max: 0,
+              leftLabel: "",
+              rightLabel: "",
+            },
+            rear: {
+              label: "Carga trasera",
+              value: 0,
+              min: -30,
+              max: 0,
+              leftLabel: "",
+              rightLabel: "",
+            },
+          },
+        },
+        suspension: {
+          title: "Suspensión",
+          settings: {
+            frontSuspension: {
+              label: "Suspensión delantera",
+              value: -3,
+              min: -20,
+
+              max: 10,
+              leftLabel: "Suave",
+              rightLabel: "Rígido",
+            },
+            rearSuspension: {
+              label: "Suspensión trasera",
+              value: -1,
+              min: -20,
+
+              max: 10,
+              leftLabel: "Suave",
+              rightLabel: "Rígido",
+            },
+            frontCompression: {
+              label: "Compresión de amortiguador delantero",
+              value: -8,
+              min: -20,
+
+              max: 20,
+              leftLabel: "Suave",
+              rightLabel: "Rígido",
+            },
+            rearCompression: {
+              label: "Compresión de amortiguador trasero",
+              value: -5,
+              min: -20,
+
+              max: 20,
+              leftLabel: "Suave",
+              rightLabel: "Rígido",
+            },
+            frontbump: {
+              label: "Rebote delantero",
+              value: 7,
+              min: -20,
+
+              max: 20,
+              leftLabel: "Suave",
+              rightLabel: "Rigido",
+            },
+            rearbump: {
+              label: "Rebote trasero",
+              value: 10,
+              min: -20,
+
+              max: 20,
+              leftLabel: "Suave",
+              rightLabel: "Rigido",
+            },
+          },
+        },
+        Barras: {
+          title: "Barras Estabilizadoras",
+          settings: {
+            front: {
+              label: "Barra estabiizadora delantera",
+              value: 2,
+              min: -20,
+
+              max: 10,
+              leftLabel: "Suave",
+              rightLabel: "Rigido",
+            },
+            Rear: {
+              label: "Barra estabiizadora Trasera",
+              value: -2,
+              min: -20,
+
+              max: 10,
+              leftLabel: "Suave",
+              rightLabel: "Rigido",
+            },
+          },
+        },
+        Alineamiento: {
+          title: "Alineamiento",
+          settings: {
+            front: {
+              label: "Ángulo de caida delantero",
+              value: -0.20,
+              min: -0.25,
+              isAlignment: true,
+              max: 0.25,
+              leftLabel: "",
+              rightLabel: "",
+            },
+            rear: {
+              label: "Ángulo de caida trasero",
+              value: -0.25,
+              min: -0.25,
+              isAlignment: true,
+              max: 0.25,
+              leftLabel: "",
+              rightLabel: "",
+            },
+          },
+        },
+      },
+    },
+    //DRIFT
+    //Fors Hoonigan
+    {
+      id: "Ford Hoonicorn Mustang",
+      name: "Ford Hoonicorn Mustang",
+      brand: {
+        name: "Hoonigan",
+        logo: "assets/icons/hoonigan.ico",
+      },
+      year: 1965,
+      category: "Drift",
+      description: "4x4 • 1500CV • 329km/h • 2.50s",
+      image: "assets/cars/Ford-Hoonigan.png",
+      tuning: {
+        transmission: {
+          title: "Transmisión",
+          settings: {
+            finalRatio: {
+              label: "Relación final",
+              value: 0,
+              min: -20,
+              max: 0,
+              leftLabel: "Corto",
+              rightLabel: "Largo",
+            },
+            potencia: {
+              label: "Distribución de potencia",
+              value: [50, 50],
+              dualValues: true,
+              min: 30,
+
+              max: 80,
+              leftLabel: "Delantero",
+              rightLabel: "Trasero",
+            },
+          },
+        },
+        tires: {
+          title: "Neumáticos",
+          settings: {
+            frontGrip: {
+              label: "Agarre delantero",
+              value: -5,
+              min: -20,
+              max: 0,
+              leftLabel: "",
+              rightLabel: "",
+            },
+            rearGrip: {
+              label: "Agarre trasero",
+              value: 0,
+              min: -20,
+              max: 0,
+              leftLabel: "",
+              rightLabel: "",
+            },
+          },
+        },
+        brakes: {
+          title: "Frenos",
+          settings: {
+            equilibrio: {
+              label: "Equilibrio de frenos",
+              value: [45, 55],
+              dualValues: true,
+              min: 50,
+
+              max: 80,
+              leftLabel: "Delantero",
+              rightLabel: "Trasero",
+            },
+            potencia: {
+              label: "Potencia de frenos",
+              value: 0,
+              min: -20,
+              max: 0,
+              leftLabel: "",
+              rightLabel: "",
+            },
+          },
+        },
+        Aerodinamica: {
+          title: "Aerodinámica",
+          settings: {
+            front: {
+              label: "Carga delantera",
+              value: 0,
+              min: -30,
+              max: 0,
+              leftLabel: "",
+              rightLabel: "",
+            },
+            rear: {
+              label: "Carga trasera",
+              value: 0,
+              min: -30,
+              max: 0,
+              leftLabel: "",
+              rightLabel: "",
+            },
+          },
+        },
+        suspension: {
+          title: "Suspensión",
+          settings: {
+            frontSuspension: {
+              label: "Suspensión delantera",
+              value: -1,
+              min: -20,
+
+              max: 10,
+              leftLabel: "Suave",
+              rightLabel: "Rígido",
+            },
+            rearSuspension: {
+              label: "Suspensión trasera",
+              value: 3,
+              min: -20,
+
+              max: 10,
+              leftLabel: "Suave",
+              rightLabel: "Rígido",
+            },
+            frontCompression: {
+              label: "Compresión de amortiguador delantero",
+              value: -10,
+              min: -20,
+
+              max: 20,
+              leftLabel: "Suave",
+              rightLabel: "Rígido",
+            },
+            rearCompression: {
+              label: "Compresión de amortiguador trasero",
+              value: -7,
+              min: -20,
+
+              max: 20,
+              leftLabel: "Suave",
+              rightLabel: "Rígido",
+            },
+            frontbump: {
+              label: "Rebote delantero",
+              value: 5,
+              min: -20,
+
+              max: 20,
+              leftLabel: "Suave",
+              rightLabel: "Rigido",
+            },
+            rearbump: {
+              label: "Rebote trasero",
+              value: 8,
+              min: -20,
+
+              max: 20,
+              leftLabel: "Suave",
+              rightLabel: "Rigido",
+            },
+          },
+        },
+        Barras: {
+          title: "Barras Estabilizadoras",
+          settings: {
+            front: {
+              label: "Barra estabiizadora delantera",
+              value: -2,
+              min: -20,
+
+              max: 10,
+              leftLabel: "Suave",
+              rightLabel: "Rigido",
+            },
+            Rear: {
+              label: "Barra estabiizadora Trasera",
+              value: -5,
+              min: -20,
+
+              max: 10,
+              leftLabel: "Suave",
+              rightLabel: "Rigido",
+            },
+          },
+        },
+        Alineamiento: {
+          title: "Alineamiento",
+          settings: {
+            front: {
+              label: "Ángulo de caida delantero",
+              value: -0.20,
+              min: -0.25,
+              isAlignment: true,
+              max: 0.25,
+              leftLabel: "",
+              rightLabel: "",
+            },
+            rear: {
+              label: "Ángulo de caida trasero",
+              value: -0.25,
+              min: -0.25,
+              isAlignment: true,
+              max: 0.25,
+              leftLabel: "",
+              rightLabel: "",
+            },
+          },
+        },
+      },
+    },
     // Añade más autos aquí siguiendo la misma estructura (archivo json)
   ],
 };
