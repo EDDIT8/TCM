@@ -4,6 +4,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const categoryTabs = document.getElementById('categoryTabs');
     const carCardTemplate = document.getElementById('carCardTemplate');
     const brandSliderTemplate = document.getElementById('brandSliderTemplate');
+    const savedCategory = localStorage.getItem('currentCategory');
+    const savedScrollPosition = localStorage.getItem('scrollPosition');
+    const savedCategoryScroll = localStorage.getItem('categoryScrollPosition');
+
+    if (savedCategory) {
+        filterCars(savedCategory); // Restaurar la categoría activa
+    }
+
+    setTimeout(() => {
+        if (savedScrollPosition) {
+            window.scrollTo(0, parseInt(savedScrollPosition)); // Restaurar la posición del scroll vertical
+        }
+        if (savedCategoryScroll) {
+            document.querySelector('.category-slider .tabs').scrollLeft = parseInt(savedCategoryScroll); // Restaurar la posición del scroll horizontal
+        }
+    }, 200); 
+    
 
     // Category order (add or modify as needed)
     const categoryOrder = [
@@ -106,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const carImage = clone.querySelector('.car-image');
         carImage.src = car.image;
         carImage.alt = car.name;
-        carImage.style.viewTransitionName = `car-${car.id}`; // 🔥 Agregamos un nombre único
+        carImage.style.viewTransitionName = `car-${car.id}`;
     
         clone.querySelector('.brand-logo').src = car.brand.logo;
         clone.querySelector('.brand-logo').alt = car.brand.name;
@@ -116,7 +133,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
         const card = clone.querySelector('.car-card');
         card.addEventListener('click', () => {
-            localStorage.setItem('viewingCarId', car.id); // Guardamos el ID en localStorage
+            localStorage.setItem('viewingCarId', car.id); // Guardar el ID del auto seleccionado
+            localStorage.setItem('scrollPosition', window.scrollY); // 🔥 Guardar la posición del scroll
+            localStorage.setItem('categoryScrollPosition', document.querySelector('.category-slider .tabs').scrollLeft);
+            localStorage.setItem('currentCategory', document.querySelector('.tab-button.active').textContent); // Guardar la categoría activa
             window.location.href = `car-details.html?id=${encodeURIComponent(car.id)}`;
         });
     
