@@ -81,24 +81,48 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Create car card
+    // function createCarCard(car) {
+    //     const clone = carCardTemplate.content.cloneNode(true);
+        
+    //     clone.querySelector('.car-image').src = car.image;
+    //     clone.querySelector('.car-image').alt = car.name;
+    //     clone.querySelector('.brand-logo').src = car.brand.logo;
+    //     clone.querySelector('.brand-logo').alt = car.brand.name;
+    //     clone.querySelector('.car-name').textContent = car.name;
+    //     clone.querySelector('.car-details').textContent = `${car.brand.name} • ${car.year}`;
+    //     clone.querySelector('.car-description').textContent = car.description;
+
+    //     const card = clone.querySelector('.car-card');
+    //     card.addEventListener('click', () => {
+    //         window.location.href = `car-details.html?id=${encodeURIComponent(car.id)}`;
+    //     });
+
+    //     return card;
+    // }
+
     function createCarCard(car) {
         const clone = carCardTemplate.content.cloneNode(true);
         
-        clone.querySelector('.car-image').src = car.image;
-        clone.querySelector('.car-image').alt = car.name;
+        const carImage = clone.querySelector('.car-image');
+        carImage.src = car.image;
+        carImage.alt = car.name;
+        carImage.style.viewTransitionName = `car-${car.id}`; // 🔥 Agregamos un nombre único
+    
         clone.querySelector('.brand-logo').src = car.brand.logo;
         clone.querySelector('.brand-logo').alt = car.brand.name;
         clone.querySelector('.car-name').textContent = car.name;
         clone.querySelector('.car-details').textContent = `${car.brand.name} • ${car.year}`;
         clone.querySelector('.car-description').textContent = car.description;
-
+    
         const card = clone.querySelector('.car-card');
         card.addEventListener('click', () => {
+            localStorage.setItem('viewingCarId', car.id); // Guardamos el ID en localStorage
             window.location.href = `car-details.html?id=${encodeURIComponent(car.id)}`;
         });
-
+    
         return card;
     }
+    
 
     // Implement slider functionality
     function implementSlider(sliderElement) {

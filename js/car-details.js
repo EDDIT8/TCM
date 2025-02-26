@@ -8,18 +8,31 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = 'index.html';
         return;
     }
+    
+        document.getElementById('pageTitle').textContent = `${car.name} - The Crew Motorfest`;
+        document.getElementById('brandLogo').src = car.brand.logo;
+        document.getElementById('brandLogo').alt = car.brand.name;
+        document.getElementById('carName').textContent = car.name;
+        document.getElementById('carInfo').textContent = `${car.brand.name} • ${car.year} • ${car.category}`;
+        document.getElementById('carImage').src = car.image;
+        document.getElementById('carImage').alt = car.name;
+    
+        // 🔥 Aplicar el mismo `view-transition-name` que tenía la imagen en index.html
+        document.getElementById('carImage').style.viewTransitionName = `car-${car.id}`;
 
-    // Actualizar el título de la página
-    document.getElementById('pageTitle').textContent = `${car.name} - The Crew Motorfest`;
+    
 
-    // Actualizar información básica del auto
-    document.getElementById('brandLogo').src = car.brand.logo;
-    document.getElementById('brandLogo').alt = car.brand.name;
-    document.getElementById('carName').textContent = car.name;
-    document.getElementById('carInfo').textContent = 
-        `${car.brand.name} • ${car.year} • ${car.category}`;
-    document.getElementById('carImage').src = car.image;
-    document.getElementById('carImage').alt = car.name;
+    // // Actualizar el título de la página
+    // document.getElementById('pageTitle').textContent = `${car.name} - The Crew Motorfest`;
+
+    // // Actualizar información básica del auto
+    // document.getElementById('brandLogo').src = car.brand.logo;
+    // document.getElementById('brandLogo').alt = car.brand.name;
+    // document.getElementById('carName').textContent = car.name;
+    // document.getElementById('carInfo').textContent = 
+    //     `${car.brand.name} • ${car.year} • ${car.category}`;
+    // document.getElementById('carImage').src = car.image;
+    // document.getElementById('carImage').alt = car.name;
     document.getElementById('carDescription').textContent = car.description;
 
     const tuningControls = document.getElementById('tuningControls');
