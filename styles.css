@@ -211,7 +211,6 @@ main {
 .car-description {
     color: var(--text-secondary);
     margin-top: 1rem;
-    text-align: center;
 }
 
 /* Estilos para la sección de ajustes */
