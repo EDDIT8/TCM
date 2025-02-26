@@ -163,4 +163,93 @@ document.addEventListener('DOMContentLoaded', () => {
             this.src = '/placeholder.svg';
         }
     });
+
+    function implementSlider(sliderElement) {
+        const content = sliderElement.querySelector('.slider-content');
+        const prevBtn = sliderElement.querySelector('.prev');
+        const nextBtn = sliderElement.querySelector('.next');
+
+        let scrollAmount = 0;
+        const step = 200; // Ajusta este valor según sea necesario
+
+        function updateArrows() {
+            prevBtn.style.display = content.scrollLeft > 0 ? 'block' : 'none';
+            nextBtn.style.display = 
+                content.scrollLeft < content.scrollWidth - content.clientWidth ? 'block' : 'none';
+        }
+
+        nextBtn.addEventListener('click', () => {
+            scrollAmount += step;
+            if (scrollAmount > content.scrollWidth - content.clientWidth) {
+                scrollAmount = content.scrollWidth - content.clientWidth;
+            }
+            content.scrollTo({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+            updateArrows();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            scrollAmount -= step;
+            if (scrollAmount < 0) {
+                scrollAmount = 0;
+            }
+            content.scrollTo({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+            updateArrows();
+        });
+
+        content.addEventListener('scroll', updateArrows);
+
+        // Inicializar visibilidad de flechas
+        updateArrows();
+    }
+
+    function implementCategorySlider() {
+        const categorySlider = document.querySelector('.category-slider');
+        const tabs = categorySlider.querySelector('.tabs');
+        const prevBtn = categorySlider.querySelector('.prev');
+        const nextBtn = categorySlider.querySelector('.next');
+
+        let scrollAmount = 0;
+        const step = 100; // Ajusta este valor según sea necesario
+
+        function updateArrows() {
+            prevBtn.style.display = tabs.scrollLeft > 0 ? 'block' : 'none';
+            nextBtn.style.display = 
+                tabs.scrollLeft < tabs.scrollWidth - tabs.clientWidth ? 'block' : 'none';
+        }
+
+        nextBtn.addEventListener('click', () => {
+            scrollAmount += step;
+            if (scrollAmount > tabs.scrollWidth - tabs.clientWidth) {
+                scrollAmount = tabs.scrollWidth - tabs.clientWidth;
+            }
+            tabs.scrollTo({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+            updateArrows();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            scrollAmount -= step;
+            if (scrollAmount < 0) {
+                scrollAmount = 0;
+            }
+            tabs.scrollTo({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+            updateArrows();
+        });
+
+        tabs.addEventListener('scroll', updateArrows);
+
+        // Inicializar visibilidad de flechas
+        updateArrows();
+    }
 });
