@@ -12,7 +12,7 @@ const carsData = {
       year: 2012,
       category: "Hypercar",
       description: "MCTT • 1409CV • 450km/h • 2.77s",
-      image: "assets/cars/koenigsegg.PNG",
+      image: "assets/cars/koenigsegg.webp",
       tuning: {
         transmission: {
           title: "Transmisión",
@@ -209,7 +209,7 @@ const carsData = {
       year: 2019,
       category: "Hypercar",
       description: "4x4 • 1939CV • 453km/h • 1.73s",
-      image: "assets/cars/centodieci.png",
+      image: "assets/cars/centodieci.webp",
       tuning: {
         transmission: {
           title: "Transmisión",
@@ -407,7 +407,7 @@ const carsData = {
       year: 2022,
       category: "Hypercar",
       description: "MCTT • 2112CV • 452km/h • 2.43s",
-      image: "assets/cars/LOTUS-E.png",
+      image: "assets/cars/LOTUS-E.webp",
       tuning: {
         transmission: {
           title: "Transmisión",
@@ -605,7 +605,7 @@ const carsData = {
       year: 2012,
       category: "Hypercar",
       description: "MCTT • 1035CV • 451km/h • 3.33s",
-      image: "assets/cars/Porsche-GT1.png",
+      image: "assets/cars/Porsche-GT1.webp",
       tuning: {
         transmission: {
           title: "Transmisión",
@@ -803,7 +803,7 @@ const carsData = {
       year: 2023,
       category: "Street Tire 2",
       description: "MCTT • 745CV • 361km/h • 2.87s",
-      image: "assets/cars/porsche-911-gt3.png",
+      image: "assets/cars/porsche-911-gt3.webp",
       tuning: {
         transmission: {
           title: "Transmisión",
@@ -1000,7 +1000,7 @@ const carsData = {
       year: 1996,
       category: "Street Tire 2",
       description: "MCTT • 677CV • 361km/h • 3.27s",
-      image: "assets/cars/911.3.png",
+      image: "assets/cars/911.3.webp",
       tuning: {
         transmission: {
           title: "Transmisión",
@@ -1197,7 +1197,7 @@ const carsData = {
       year: 2020,
       category: "Street Tire 2",
       description: "4x4 • 722CV • 361km/h • 2.33s",
-      image: "assets/cars/porsche-4s.png",
+      image: "assets/cars/porsche-4s.webp",
       tuning: {
         transmission: {
           title: "Transmisión",
@@ -1405,7 +1405,7 @@ const carsData = {
       year: 2021,
       category: "Street Tire 2",
       description: "4x4 • 1178CV • 340km/h • 2.43s",
-      image: "assets/cars/TTs.png",
+      image: "assets/cars/TTs.webp",
       tuning: {
         transmission: {
           title: "Transmisión",
@@ -1613,7 +1613,7 @@ const carsData = {
       year: 1990,
       category: "Street Tire 2",
       description: "4x4 • 901CV • 360km/h • 2.83s",
-      image: "assets/cars/audi-scotto.png",
+      image: "assets/cars/audi-scotto.webp",
       tuning: {
         transmission: {
           title: "Transmisión",
@@ -1820,7 +1820,7 @@ const carsData = {
       year: 1972,
       category: "Street Tire 1",
       description: "FRD • 492CV • 290km/h • 4.33s",
-      image: "assets/cars/Porsche RS 2.7.WEBP",
+      image: "assets/cars/Porsche RS 2.7.webp",
       tuning: {
         transmission: {
           title: "Transmisión",
@@ -2017,7 +2017,7 @@ const carsData = {
       year: 1969,
       category: "Street Tire 1",
       description: "FRD • 864CV • 300km/h • 3.87s",
-      image: "assets/cars/BOSS.png",
+      image: "assets/cars/BOSS.webp",
       tuning: {
         transmission: {
           title: "Transmisión",
@@ -2214,7 +2214,7 @@ const carsData = {
       year: 1990,
       category: "Street Tire 1",
       description: "FRD • 655CV • 290km/h • 3.77s",
-      image: "assets/cars/M3sport.png",
+      image: "assets/cars/M3sport.webp",
       tuning: {
         transmission: {
           title: "Transmisión",
@@ -2411,7 +2411,7 @@ const carsData = {
       year: 2016,
       category: "Street Tire 1",
       description: "4x4 • 725CV • 290km/h • 3.20s",
-      image: "assets/cars/focus.png",
+      image: "assets/cars/focus.webp",
       tuning: {
         transmission: {
           title: "Transmisión",
@@ -2619,7 +2619,7 @@ const carsData = {
       year: 2018,
       category: "Motocross",
       description: "-- • 85CV • 230km/h • 4.07s",
-      image: "assets/cars/yz4504.png",
+      image: "assets/cars/yz4504.webp",
       tuning: {
         transmission: {
           title: "Transmisión",
@@ -2771,7 +2771,7 @@ const carsData = {
       year: 2016,
       category: "Rally",
       description: "MCTT • 633CV • 310km/h • 2.90s",
-      image: "assets/cars/911RD.png",
+      image: "assets/cars/911RD.webp",
       tuning: {
         transmission: {
           title: "Transmisión",
@@ -2970,7 +2970,7 @@ const carsData = {
       year: 1985,
       category: "Rally Raid",
       description: "4x4 • 495CV • 240km/h • 4.23s",
-      image: "assets/cars/Porsche-959.png",
+      image: "assets/cars/Porsche-959.webp",
       tuning: {
         transmission: {
           title: "Transmisión",
@@ -3176,7 +3176,7 @@ const carsData = {
       year: 2021,
       category: "Rally Raid",
       description: "4x4 • 806CV • 251km/h • 3.97s",
-      image: "assets/cars/tacoma.png",
+      image: "assets/cars/tacoma.webp",
       tuning: {
         transmission: {
           title: "Transmisión",
@@ -3382,7 +3382,7 @@ const carsData = {
       year: 2011,
       category: "Rally Raid",
       description: "4x4 • 696CV • 240km/h • 3.03s",
-      image: "assets/cars/BMWZ4RD.png",
+      image: "assets/cars/BMWZ4RD.webp",
       tuning: {
         transmission: {
           title: "Transmisión",
@@ -3589,7 +3589,7 @@ const carsData = {
       year: 2010,
       category: "Monster",
       description: "4x4 • 2321CV • 220km/h • 2.97s",
-      image: "assets/cars/M-Silverado.png",
+      image: "assets/cars/M-Silverado.webp",
       tuning: {
         Transmisión: {
           title: "Transmisión",
@@ -3792,7 +3792,7 @@ const carsData = {
       year: 2024,
       category: "Racing",
       description: "MCTT • 739CV • 400km/h • 2.40s",
-      image: "assets/cars/GMT50.png",
+      image: "assets/cars/GMT50.webp",
       tuning: {
         transmission: {
           title: "Transmisión",
@@ -3990,7 +3990,7 @@ const carsData = {
       year: 1989,
       category: "Racing",
       description: "MCTT • 811CV • 401km/h • 3.10s",
-      image: "assets/cars/FF40LM.png",
+      image: "assets/cars/FF40LM.webp",
       tuning: {
         transmission: {
           title: "Transmisión",
@@ -4188,7 +4188,7 @@ const carsData = {
       year: 2013,
       category: "Racing",
       description: "4x4 • 963CV • 402km/h • 2.13s",
-      image: "assets/cars/LP570.png",
+      image: "assets/cars/LP570.webp",
       tuning: {
         transmission: {
           title: "Transmisión",
@@ -4396,7 +4396,7 @@ const carsData = {
       year: 1965,
       category: "Drift",
       description: "4x4 • 1500CV • 329km/h • 2.50s",
-      image: "assets/cars/Ford-Hoonigan.png",
+      image: "assets/cars/Ford-Hoonigan.webp",
       tuning: {
         transmission: {
           title: "Transmisión",
