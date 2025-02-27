@@ -7,44 +7,98 @@ document.addEventListener("DOMContentLoaded", () => {
   const savedCategory = localStorage.getItem("currentCategory");
   const savedScrollPosition = localStorage.getItem("scrollPosition");
   const savedCategoryScroll = localStorage.getItem("categoryScrollPosition");
-  const searchInput = document.getElementById('searchInput');
+  const searchInput = document.getElementById("searchInput");
 
-    searchInput.addEventListener('input', () => {
-        const query = searchInput.value.toLowerCase().trim();
-        filterCarsBySearch(query);
+  searchInput.addEventListener("input", () => {
+    const query = searchInput.value.toLowerCase().trim();
+    filterCarsBySearch(query);
+  });
+
+  function filterCarsBySearch(query) {
+    if (!query) {
+      // Si no hay búsqueda, mostrar la categoría actual
+      const currentCategory =
+        document.querySelector(".tab-button.active").textContent;
+      filterCars(currentCategory);
+      return;
+    }
+
+    const searchTerms = query.split(/\s+/);
+
+    // Filtrar todos los autos en todas las categorías
+    const matchingCars = carsData.cars.filter((car) => {
+      const searchableText = [
+        car.name.toLowerCase(),
+        car.brand.name.toLowerCase(),
+        car.category.toLowerCase(),
+        car.description.toLowerCase(),
+        car.year.toString(),
+      ].join(" ");
+
+      return searchTerms.every((term) => searchableText.includes(term));
     });
 
-    function filterCarsBySearch(query) {
-        const searchTerms = query.split(/\s+/); // Divide la búsqueda en palabras clave
+    // Si hay coincidencias, agrupar por marca
+    if (matchingCars.length > 0) {
+      // Agrupar por marca
+      const carsByBrand = matchingCars.reduce((acc, car) => {
+        if (!acc[car.brand.name]) {
+          acc[car.brand.name] = [];
+        }
+        acc[car.brand.name].push(car);
+        return acc;
+      }, {});
 
-        document.querySelectorAll('.car-card').forEach(card => {
-            const carName = card.querySelector('.car-name').textContent.toLowerCase();
-            const carDetails = card.querySelector('.car-details').textContent.toLowerCase();
-            const carDescription = card.querySelector('.car-description').textContent.toLowerCase();
+      // Limpiar el grid
+      carGrid.innerHTML = "";
 
-            // Obtener el nombre de la marca y la categoría desde el dataset (si lo tienes en el HTML)
-            const carBrand = card.dataset.brand ? card.dataset.brand.toLowerCase() : "";
-            const carCategory = card.dataset.category ? card.dataset.category.toLowerCase() : "";
+      // Ordenar marcas alfabéticamente
+      const sortedBrands = Object.keys(carsByBrand).sort((a, b) =>
+        a.localeCompare(b)
+      );
 
-            // Dividir la descripción en partes
-            const descriptionParts = carDescription.split('•').map(part => part.trim());
+      // Mostrar solo las marcas que tienen autos coincidentes
+      sortedBrands.forEach((brandName) => {
+        const cars = carsByBrand[brandName];
+        if (cars.length > 0) {
+          // Solo crear el slider si hay autos para mostrar
+          const brandSlider = brandSliderTemplate.content.cloneNode(true);
+          brandSlider.querySelector(".brand-name").textContent = brandName;
 
-            // Verificar si **todas** las palabras clave coinciden con alguna parte del auto
-            const matches = searchTerms.every(term =>
-                carName.includes(term) ||
-                carDetails.includes(term) ||
-                carBrand.includes(term) ||
-                carCategory.includes(term) ||
-                descriptionParts.some(part => part.includes(term))
-            );
+          const sliderContent = brandSlider.querySelector(".slider-content");
+          cars.forEach((car) => {
+            const carCard = createCarCard(car);
+            sliderContent.appendChild(carCard);
+          });
 
-            // Mostrar u ocultar la tarjeta del auto según la coincidencia
-            card.style.display = matches ? 'block' : 'none';
+          carGrid.appendChild(brandSlider);
+
+          // Implementar funcionalidad del slider
+          const slider = carGrid.lastElementChild;
+          implementSlider(slider);
+        }
+      });
+
+      // Si encontramos coincidencias en una categoría diferente,
+      // actualizar la pestaña activa
+      if (matchingCars.length > 0) {
+        const firstMatchCategory = matchingCars[0].category;
+        document.querySelectorAll(".tab-button").forEach((button) => {
+          button.classList.toggle(
+            "active",
+            button.textContent === firstMatchCategory
+          );
         });
+      }
+    } else {
+      // Si no hay coincidencias, mostrar un mensaje
+      carGrid.innerHTML = `
+            <div class="no-results">
+                <p>No se encontraron autos que coincidan con "${query}"</p>
+            </div>
+        `;
     }
-    
-
-
+  }
 
   if (savedCategory) {
     filterCars(savedCategory); // Restaurar la categoría activa
@@ -60,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }, 200);
 
-  // Category order 
+  // Category order
   const categoryOrder = [
     "Street Tire 1",
     "Street Tire 2",
