@@ -7,7 +7,7 @@ const carsData = {
       name: "Agera R",
       brand: {
         name: "Koenigsegg",
-        logo: "assets/icons/koenigsegg.ico",
+        logo: "assets/icons/koenigsegg.webp",
       },
       year: 2012,
       category: "Hypercar",
@@ -204,7 +204,7 @@ const carsData = {
       name: "Bugatti Centodieci",
       brand: {
         name: "Bugatti",
-        logo: "assets/icons/bugatti.ico",
+        logo: "assets/icons/bugatti.webp",
       },
       year: 2019,
       category: "Hypercar",
@@ -600,7 +600,7 @@ const carsData = {
       name: "911 GT1 Strassenversion [993]",
       brand: {
         name: "Porsche",
-        logo: "assets/icons/Porsche.ico",
+        logo: "assets/icons/Porsche.webp",
       },
       year: 2012,
       category: "Hypercar",
@@ -798,7 +798,7 @@ const carsData = {
       name: "Porsche 911 GT3 RS",
       brand: {
         name: "Porsche",
-        logo: "assets/icons/Porsche.ico",
+        logo: "assets/icons/Porsche.webp",
       },
       year: 2023,
       category: "Street Tire 2",
@@ -995,7 +995,7 @@ const carsData = {
       name: "911 GT [993]",
       brand: {
         name: "Porsche",
-        logo: "assets/icons/Porsche.ico",
+        logo: "assets/icons/Porsche.webp",
       },
       year: 1996,
       category: "Street Tire 2",
@@ -1192,7 +1192,7 @@ const carsData = {
       name: "Porsche 911 Carrera 4S Timeless Edition",
       brand: {
         name: "Porsche",
-        logo: "assets/icons/Porsche.ico",
+        logo: "assets/icons/Porsche.webp",
       },
       year: 2020,
       category: "Street Tire 2",
@@ -1400,7 +1400,7 @@ const carsData = {
       name: "Taycan Turbo S",
       brand: {
         name: "Porsche",
-        logo: "assets/icons/Porsche.ico",
+        logo: "assets/icons/Porsche.webp",
       },
       year: 2021,
       category: "Street Tire 2",
@@ -1608,7 +1608,7 @@ const carsData = {
       name: "AUDI Scotto's coupé quattro",
       brand: {
         name: "Hoonigan",
-        logo: "assets/icons/hoonigan.ico",
+        logo: "assets/icons/hoonigan.webp",
       },
       year: 1990,
       category: "Street Tire 2",
@@ -1815,7 +1815,7 @@ const carsData = {
       name: "Porsche 911 Carrera RS 2.7",
       brand: {
         name: "Porsche",
-        logo: "assets/icons/Porsche.ico",
+        logo: "assets/icons/Porsche.webp",
       },
       year: 1972,
       category: "Street Tire 1",
@@ -2012,7 +2012,7 @@ const carsData = {
       name: "Mustang BOSS 429 Lime Edition",
       brand: {
         name: "Ford",
-        logo: "assets/icons/ford.ico",
+        logo: "assets/icons/ford.webp",
       },
       year: 1969,
       category: "Street Tire 1",
@@ -2209,7 +2209,7 @@ const carsData = {
       name: "M3 Sport Evolution",
       brand: {
         name: "BMW",
-        logo: "assets/icons/bmw.ico",
+        logo: "assets/icons/bmw.webp",
       },
       year: 1990,
       category: "Street Tire 1",
@@ -2406,7 +2406,7 @@ const carsData = {
       name: "Focus RS",
       brand: {
         name: "Ford",
-        logo: "assets/icons/ford.ico",
+        logo: "assets/icons/ford.webp",
       },
       year: 2016,
       category: "Street Tire 1",
@@ -2614,7 +2614,7 @@ const carsData = {
       name: "Yamaha YZ450F",
       brand: {
         name: "Yamaha",
-        logo: "assets/icons/yamaha.png",
+        logo: "assets/icons/yamaha.webp",
       },
       year: 2018,
       category: "Motocross",
@@ -2766,7 +2766,7 @@ const carsData = {
       name: "911 GT3 RS RD Limited Edition",
       brand: {
         name: "Porsche",
-        logo: "assets/icons/Porsche.ico",
+        logo: "assets/icons/Porsche.webp",
       },
       year: 2016,
       category: "Rally",
@@ -2965,7 +2965,7 @@ const carsData = {
       name: "Porsche 959 RAID",
       brand: {
         name: "Porsche",
-        logo: "assets/icons/Porsche.ico",
+        logo: "assets/icons/Porsche.webp",
       },
       year: 1985,
       category: "Rally Raid",
@@ -3171,7 +3171,7 @@ const carsData = {
       name: "Toyota Tacoma",
       brand: {
         name: "Toyota",
-        logo: "assets/icons/toyota.ico",
+        logo: "assets/icons/toyota.webp",
       },
       year: 2021,
       category: "Rally Raid",
@@ -3377,7 +3377,7 @@ const carsData = {
       name: "Z4 sDrive35is",
       brand: {
         name: "BMW",
-        logo: "assets/icons/bmw.ico",
+        logo: "assets/icons/bmw.webp",
       },
       year: 2011,
       category: "Rally Raid",
@@ -3787,7 +3787,7 @@ const carsData = {
       name: "T.50s",
       brand: {
         name: "Gordon Murray Automative",
-        logo: "assets/icons/GMA.png",
+        logo: "assets/icons/GMA.webp",
       },
       year: 2024,
       category: "Racing",
@@ -3985,7 +3985,7 @@ const carsData = {
       name: "Ferrari F40LM",
       brand: {
         name: "Ferarri",
-        logo: "assets/icons/ferrari.png",
+        logo: "assets/icons/ferrari.webp",
       },
       year: 1989,
       category: "Racing",
@@ -4183,7 +4183,7 @@ const carsData = {
       name: "Gallardo LP 570-4 Super Trofeo",
       brand: {
         name: "Lamborghini",
-        logo: "assets/icons/lamborghini.png",
+        logo: "assets/icons/lamborghini.webp",
       },
       year: 2013,
       category: "Racing",
@@ -4391,7 +4391,7 @@ const carsData = {
       name: "Ford Hoonicorn Mustang",
       brand: {
         name: "Hoonigan",
-        logo: "assets/icons/hoonigan.ico",
+        logo: "assets/icons/hoonigan.webp",
       },
       year: 1965,
       category: "Drift",
