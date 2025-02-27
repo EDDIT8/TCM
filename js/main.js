@@ -7,6 +7,44 @@ document.addEventListener("DOMContentLoaded", () => {
   const savedCategory = localStorage.getItem("currentCategory");
   const savedScrollPosition = localStorage.getItem("scrollPosition");
   const savedCategoryScroll = localStorage.getItem("categoryScrollPosition");
+  const searchInput = document.getElementById('searchInput');
+
+    searchInput.addEventListener('input', () => {
+        const query = searchInput.value.toLowerCase().trim();
+        filterCarsBySearch(query);
+    });
+
+    function filterCarsBySearch(query) {
+        const searchTerms = query.split(/\s+/); // Divide la búsqueda en palabras clave
+
+        document.querySelectorAll('.car-card').forEach(card => {
+            const carName = card.querySelector('.car-name').textContent.toLowerCase();
+            const carDetails = card.querySelector('.car-details').textContent.toLowerCase();
+            const carDescription = card.querySelector('.car-description').textContent.toLowerCase();
+
+            // Obtener el nombre de la marca y la categoría desde el dataset (si lo tienes en el HTML)
+            const carBrand = card.dataset.brand ? card.dataset.brand.toLowerCase() : "";
+            const carCategory = card.dataset.category ? card.dataset.category.toLowerCase() : "";
+
+            // Dividir la descripción en partes
+            const descriptionParts = carDescription.split('•').map(part => part.trim());
+
+            // Verificar si **todas** las palabras clave coinciden con alguna parte del auto
+            const matches = searchTerms.every(term =>
+                carName.includes(term) ||
+                carDetails.includes(term) ||
+                carBrand.includes(term) ||
+                carCategory.includes(term) ||
+                descriptionParts.some(part => part.includes(term))
+            );
+
+            // Mostrar u ocultar la tarjeta del auto según la coincidencia
+            card.style.display = matches ? 'block' : 'none';
+        });
+    }
+    
+
+
 
   if (savedCategory) {
     filterCars(savedCategory); // Restaurar la categoría activa
