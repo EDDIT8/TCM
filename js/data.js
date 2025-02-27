@@ -923,7 +923,7 @@ const carsData = {
             },
             frontbump: {
               label: "Rebote delantero",
-              value: 2,
+              value: 8,
               min: -20,
 
               max: 20,
@@ -932,7 +932,7 @@ const carsData = {
             },
             rearbump: {
               label: "Rebote trasero",
-              value: 6,
+              value: 11,
               min: -20,
 
               max: 20,
@@ -969,7 +969,7 @@ const carsData = {
           settings: {
             front: {
               label: "Ángulo de caida delantero",
-              value: -0.25,
+              value: -0.20,
               min: -0.25,
               isAlignment: true,
               max: 0.25,
