@@ -198,6 +198,203 @@ const carsData = {
         },
       },
     },
+    // Noble
+    {
+      id: "M600 Lunar Year Ed.",
+      name: "M600 Lunar Year Ed.",
+      brand: {
+        name: "Noble",
+        logo: "assets/icons/noble.webp",
+      },
+      year: 2010,
+      category: "Hypercar",
+      description: "MCTT • 1225CV • 450km/h • 2.57s",
+      image: "assets/cars/nobleM600.webp",
+      tuning: {
+        transmission: {
+          title: "Transmisión",
+          settings: {
+            finalRatio: {
+              label: "Relación final",
+              value: 0,
+              min: -20,
+              max: 0,
+              leftLabel: "Corto",
+              rightLabel: "Largo",
+            },
+          },
+        },
+        tires: {
+          title: "Neumáticos",
+          settings: {
+            frontGrip: {
+              label: "Agarre delantero",
+              value: 0,
+              min: -20,
+              max: 0,
+              leftLabel: "",
+              rightLabel: "",
+            },
+            rearGrip: {
+              label: "Agarre trasero",
+              value: 0,
+              min: -20,
+              max: 0,
+              leftLabel: "",
+              rightLabel: "",
+            },
+          },
+        },
+        brakes: {
+          title: "Frenos",
+          settings: {
+            equilibrio: {
+              label: "Equilibrio de frenos",
+              value: [40, 60],
+              min: 60,
+              dualValues: true,
+              max: 80,
+              leftLabel: "Delantero",
+              rightLabel: "Trasero",
+            },
+            potencia: {
+              label: "Potencia de frenos",
+              value: 0,
+              min: -20,
+              max: 0,
+              leftLabel: "",
+              rightLabel: "",
+            },
+          },
+        },
+        Aerodinamica: {
+          title: "Aerodinámica",
+          settings: {
+            front: {
+              label: "Carga delantera",
+              value: 0,
+              min: -30,
+              max: 0,
+              leftLabel: "",
+              rightLabel: "",
+            },
+            rear: {
+              label: "Carga trasera",
+              value: 0,
+              min: -30,
+              max: 0,
+              leftLabel: "",
+              rightLabel: "",
+            },
+          },
+        },
+        suspension: {
+          title: "Suspensión",
+          settings: {
+            frontSuspension: {
+              label: "Suspensión delantera",
+              value: -3,
+              min: -20,
+
+              max: 10,
+              leftLabel: "Suave",
+              rightLabel: "Rígido",
+            },
+            rearSuspension: {
+              label: "Suspensión trasera",
+              value: 1,
+              min: -20,
+
+              max: 10,
+              leftLabel: "Suave",
+              rightLabel: "Rígido",
+            },
+            frontCompression: {
+              label: "Compresión de amortiguador delantero",
+              value: -6,
+              min: -20,
+
+              max: 20,
+              leftLabel: "Suave",
+              rightLabel: "Rígido",
+            },
+            rearCompression: {
+              label: "Compresión de amortiguador trasero",
+              value: -6,
+              min: -20,
+
+              max: 20,
+              leftLabel: "Suave",
+              rightLabel: "Rígido",
+            },
+            frontbump: {
+              label: "Rebote delantero",
+              value: 10,
+              min: -20,
+
+              max: 20,
+              leftLabel: "Suave",
+              rightLabel: "Rigido",
+            },
+            rearbump: {
+              label: "Rebote trasero",
+              value: 8,
+              min: -20,
+
+              max: 20,
+              leftLabel: "Suave",
+              rightLabel: "Rigido",
+            },
+          },
+        },
+        Barras: {
+          title: "Barras Estabilizadoras",
+          settings: {
+            front: {
+              label: "Barra estabiizadora delantera",
+              value: 3,
+              min: -20,
+
+              max: 10,
+              leftLabel: "Suave",
+              rightLabel: "Rigido",
+            },
+            Rear: {
+              label: "Barra estabiizadora Trasera",
+              value: -5,
+              min: -20,
+
+              max: 10,
+              leftLabel: "Suave",
+              rightLabel: "Rigido",
+            },
+          },
+        },
+        Alineamiento: {
+          title: "Alineamiento",
+          settings: {
+            front: {
+              label: "Ángulo de caida delantero",
+              value: -0.25,
+              min: -0.25,
+              isAlignment: true,
+              max: 0.25,
+              leftLabel: "",
+              rightLabel: "",
+            },
+            rear: {
+              label: "Ángulo de caida trasero",
+              value: -0.25,
+              min: -0.25,
+              isAlignment: true,
+              max: 0.25,
+              leftLabel: "",
+              rightLabel: "",
+            },
+          },
+        },
+      },
+    },
     // Jesko
     {
       id: "Jesko",
