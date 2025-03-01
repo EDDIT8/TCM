@@ -477,3 +477,24 @@ main {
 .search-bar:focus {
   box-shadow: inset 4px 4px 8px #141414, inset -4px -4px 8px #2e2e2e;
 }
+
+.newIssue {
+  padding: 0.5rem 1rem;
+  background: var(--card-background);
+  border: none;
+  border-radius: var(--border-radius);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: background-color 0.3s;
+  white-space: nowrap;
+  margin-top: 10px;
+}
+
+.newIssue:hover {
+  background: var(--primary-color);
+  color: var(--background-color);
+}
+
+.no-results {
+  padding: 0 25px;
+}
