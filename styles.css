@@ -187,6 +187,10 @@ main {
   gap: 2rem;
 }
 
+p .car-details {
+  display: block !important;
+}
+
 .car-image-section {
   width: 100%;
   max-width: 600px;
@@ -527,4 +531,11 @@ main {
 
 .no-results {
   padding: 0 25px;
+}
+
+.highlight {
+  color: var(--primary-color);
+  font-weight: bold;
+  width: fit-content;
+  display: contents;
 }
