@@ -8,11 +8,24 @@ document.addEventListener("DOMContentLoaded", () => {
   const savedScrollPosition = localStorage.getItem("scrollPosition");
   const savedCategoryScroll = localStorage.getItem("categoryScrollPosition");
   const searchInput = document.getElementById("searchInput");
+  const clearSearchButton = document.getElementById("clearSearch")
 
   searchInput.addEventListener("input", () => {
     const query = searchInput.value.toLowerCase().trim();
     filterCarsBySearch(query);
+    toggleClearButton()
   });
+
+  clearSearchButton.addEventListener("click", () => {
+    searchInput.value = ""
+    filterCarsBySearch("")
+    toggleClearButton()
+    searchInput.focus() // Vuelve a enfocar el input después de borrar
+  })
+
+  function toggleClearButton() {
+    clearSearchButton.style.display = searchInput.value ? "block" : "none"
+  }
 
   function filterCarsBySearch(query) {
     if (!query) {

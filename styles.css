@@ -387,6 +387,10 @@ main {
     flex: 1;
     max-width: 60%;
   }
+
+  .clear-search {
+    right: 1.5rem !important;
+  }
 }
 
 @media (max-width: 767px) {
@@ -458,6 +462,14 @@ main {
   margin-top: -0.125em;
 }
 
+.search-container {
+  position: relative;
+  width: 400px;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
 .search-bar {
   width: 100%;
   max-width: 400px;
@@ -472,6 +484,23 @@ main {
   transition: all 0.3s ease-in-out;
   margin-top: 25px;
   box-sizing: border-box;
+}
+
+.clear-search {
+  position: absolute;
+  right: 3rem; /* Ajusta según sea necesario */
+  top: 2.9rem;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #999;
+  display: none; /*Oculto por defecto*/
+}
+
+.clear-search:hover {
+  color: #ec0b0b;
 }
 
 .search-bar:focus {
