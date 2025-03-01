@@ -1,59 +1,21 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Polyfill para View Transitions API
   if (!document.startViewTransition) {
-    document.startViewTransition = (callback) => callback()
-  }
-  // DOM Elements
-  const carGrid = document.getElementById("carGrid")
-  const categoryTabs = document.getElementById("categoryTabs")
-  const carCardTemplate = document.getElementById("carCardTemplate")
-  const brandSliderTemplate = document.getElementById("brandSliderTemplate")
-  const savedCategory = localStorage.getItem("currentCategory")
-  const savedScrollPosition = localStorage.getItem("scrollPosition")
-  const savedCategoryScroll = localStorage.getItem("categoryScrollPosition")
-  const searchInput = document.getElementById("searchInput")
-  const clearSearchButton = document.getElementById("clearSearch")
-
-  // Función para manejar la carga inicial y la animación
-  function handleInitialLoad() {
-    if (document.startViewTransition) {
-      document.startViewTransition(() => {
-        restoreState()
-      })
-    } else {
-      restoreState()
-    }
+    document.startViewTransition = (callback) => callback();
   }
 
-  // Función para restaurar el estado
-  function restoreState() {
-    const savedCategory = localStorage.getItem("currentCategory")
-    const savedScrollPosition = localStorage.getItem("scrollPosition")
-    const savedCategoryScroll = localStorage.getItem("categoryScrollPosition")
-    const savedSearch = localStorage.getItem("lastSearch")
+  // ======== SELECCIÓN DE ELEMENTOS DEL DOM ========
+  const carGrid = document.getElementById("carGrid");
+  const categoryTabs = document.getElementById("categoryTabs");
+  const carCardTemplate = document.getElementById("carCardTemplate");
+  const brandSliderTemplate = document.getElementById("brandSliderTemplate");
+  const searchInput = document.getElementById("searchInput");
+  const clearSearchButton = document.getElementById("clearSearch");
 
-    if (savedCategory) {
-      filterCars(savedCategory)
-    }
+  // Variables para controlar el estado de búsqueda
+  let isSearchActive = false; // Nueva variable para rastrear si la búsqueda está activa
 
-    if (savedSearch) {
-      searchInput.value = savedSearch
-      filterCarsBySearch(savedSearch)
-    }
-
-    setTimeout(() => {
-      if (savedScrollPosition) {
-        window.scrollTo(0, Number.parseInt(savedScrollPosition))
-      }
-      if (savedCategoryScroll) {
-        document.querySelector(".category-slider .tabs").scrollLeft = Number.parseInt(savedCategoryScroll)
-      }
-    }, 100) // Pequeño retraso para asegurar que el DOM esté listo
-  }
-
-  // Llamar a handleInitialLoad después de que el DOM esté listo
-  handleInitialLoad()
-
-  // Category order
+  // ======== ORDEN DE LAS CATEGORÍAS ========
   const categoryOrder = [
     "Street Tire 1",
     "Street Tire 2",
@@ -64,112 +26,217 @@ document.addEventListener("DOMContentLoaded", () => {
     "Rally Raid",
     "Rally",
     "Monster",
-  ]
+  ];
 
-  // Get unique categories and sort them according to categoryOrder
-  const categories = [...new Set(carsData.cars.map((car) => car.category))].sort(
-    (a, b) => categoryOrder.indexOf(a) - categoryOrder.indexOf(b),
-  )
+  // ======== FUNCIONES DE INICIALIZACIÓN Y ESTADO ========
+  
+  /**
+   * Maneja la carga inicial con una secuencia optimizada para evitar conflictos con animaciones
+   * Primero carga el DOM básico, luego aplica transiciones y finalmente restaura el estado
+   */
+  function handleInitialLoad() {
+    // Obtener parámetros de URL primero (tienen prioridad sobre localStorage)
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoryFromUrl = urlParams.get("category");
+    const categories = [...new Set(carsData.cars.map((car) => car.category))].sort(
+      (a, b) => categoryOrder.indexOf(a) - categoryOrder.indexOf(b),
+    );
 
-  // Create category tabs
-  categories.forEach((category, index) => {
-    const button = document.createElement("button")
-    button.className = `tab-button ${index === 0 ? "active" : ""}`
-    button.textContent = category
-    button.addEventListener("click", () => filterCars(category))
-    categoryTabs.appendChild(button)
-  })
+    // Primero, crea las pestañas de categorías para que estén disponibles
+    createCategoryTabs(categories);
+    
+    // Implementa el slider de categorías
+    implementCategorySlider();
+    
+    // Determina qué categoría mostrar inicialmente (URL > localStorage > default)
+    let initialCategory;
+    if (categoryFromUrl && categories.includes(categoryFromUrl)) {
+      initialCategory = categoryFromUrl;
+    } else {
+      const savedCategory = localStorage.getItem("currentCategory");
+      initialCategory = savedCategory && categories.includes(savedCategory) 
+        ? savedCategory 
+        : categories[0];
+    }
 
-  // Implement slider for categories
-  implementCategorySlider()
+    // Verifica si hay una búsqueda guardada
+    const savedSearch = localStorage.getItem("lastSearch");
+    
+    // Muestra inicialmente los autos sin animación
+    if (savedSearch && savedSearch.trim() !== "") {
+      searchInput.value = savedSearch;
+      isSearchActive = true;
+      filterCarsBySearch(savedSearch);
+    } else {
+      filterCars(initialCategory);
+    }
+    
+    // Ahora que el contenido básico está cargado, usa un pequeño retraso para 
+    // restaurar posiciones de scroll después de que el DOM esté estable
+    setTimeout(() => {
+      // Restaurar posiciones de scroll
+      const savedScrollPosition = localStorage.getItem("scrollPosition");
+      const savedCategoryScroll = localStorage.getItem("categoryScrollPosition");
+      
+      if (savedScrollPosition) {
+        window.scrollTo(0, Number.parseInt(savedScrollPosition));
+      }
+      
+      if (savedCategoryScroll) {
+        document.querySelector(".category-slider .tabs").scrollLeft = Number.parseInt(savedCategoryScroll);
+      }
+      
+      // Actualiza el estado del botón de limpiar búsqueda
+      toggleClearButton();
+    }, 100);
+  }
 
+  /**
+   * Crea las pestañas de categorías en la interfaz
+   * @param {string[]} categories - Lista de categorías disponibles
+   */
+  function createCategoryTabs(categories) {
+    categories.forEach((category, index) => {
+      const button = document.createElement("button");
+      button.className = `tab-button ${index === 0 ? "active" : ""}`;
+      button.textContent = category;
+      button.addEventListener("click", () => {
+        // Al hacer clic en una categoría, desactivamos el modo de búsqueda
+        isSearchActive = false;
+        searchInput.value = "";
+        toggleClearButton();
+        filterCars(category);
+      });
+      categoryTabs.appendChild(button);
+    });
+  }
+
+  // Llama a la función de carga inicial
+  handleInitialLoad();
+
+  // ======== CONFIGURACIÓN DE BÚSQUEDA ========
+  
   searchInput.addEventListener("input", () => {
-    const query = searchInput.value.toLowerCase().trim()
-    filterCarsBySearch(query)
-    toggleClearButton()
-  })
+    const query = searchInput.value.toLowerCase().trim();
+    
+    // Si hay texto en el campo, activamos modo búsqueda
+    isSearchActive = query.length > 0;
+    
+    filterCarsBySearch(query);
+    toggleClearButton();
+  });
 
   clearSearchButton.addEventListener("click", () => {
-    searchInput.value = ""
-    filterCarsBySearch("")
-    toggleClearButton()
-    searchInput.focus()
-    searchInput.style.border = "solid 1px #ffffff17" // Vuelve a enfocar el input después de borrar
-  })
+    searchInput.value = "";
+    isSearchActive = false;
+    
+    // Al limpiar, volvemos a la categoría que estaba seleccionada
+    const currentCategory = document.querySelector(".tab-button.active")?.textContent || categoryOrder[0];
+    filterCars(currentCategory);
+    
+    toggleClearButton();
+    searchInput.focus();
+    searchInput.style.border = "solid 1px #ffffff17";
+  });
 
   function toggleClearButton() {
-    clearSearchButton.style.display = searchInput.value ? "block" : "none"
+    clearSearchButton.style.display = searchInput.value ? "block" : "none";
     if (!searchInput.value) {
-      searchInput.style.border = "solid 1px #ffffff17"
+      searchInput.style.border = "solid 1px #ffffff17";
     }
   }
 
   function highlightText(text, searchTerms) {
-    if (!searchTerms || searchTerms.length === 0) return text
-    let highlightedText = text
+    if (!searchTerms || searchTerms.length === 0) return text;
+    let highlightedText = text;
     searchTerms.forEach((term) => {
-      const regex = new RegExp(`(${term})`, "gi")
-      highlightedText = highlightedText.replace(regex, '<span class="highlight">$1</span>')
-    })
-    return highlightedText
+      if (term.length > 0) { // Evitar términos vacíos
+        // Escapar caracteres especiales de RegExp
+        const escapedTerm = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const regex = new RegExp(`(${escapedTerm})`, "gi");
+        highlightedText = highlightedText.replace(regex, '<span class="highlight">$1</span>');
+      }
+    });
+    return highlightedText;
   }
 
+  // ======== CREACIÓN Y FILTRADO DE TARJETAS DE AUTOS ========
+  
   function createCarCard(car, searchTerms = []) {
-    const clone = carCardTemplate.content.cloneNode(true)
+    const clone = carCardTemplate.content.cloneNode(true);
 
-    const carImage = clone.querySelector(".car-image")
-    carImage.src = car.image
-    carImage.alt = car.name
-    carImage.style.viewTransitionName = `car-image-${car.id}`
+    const carImage = clone.querySelector(".car-image");
+    carImage.src = car.image;
+    carImage.alt = car.name;
+    carImage.style.viewTransitionName = `car-image-${car.id}`;
 
-    clone.querySelector(".brand-logo").src = car.brand.logo
-    clone.querySelector(".brand-logo").alt = car.brand.name
+    clone.querySelector(".brand-logo").src = car.brand.logo;
+    clone.querySelector(".brand-logo").alt = car.brand.name;
 
-    // Highlight matching text in car name
-    const carNameElement = clone.querySelector(".car-name")
-    carNameElement.innerHTML = highlightText(car.name, searchTerms)
+    const carNameElement = clone.querySelector(".car-name");
+    carNameElement.innerHTML = highlightText(car.name, searchTerms);
 
-    // Highlight matching text in car details
-    const carDetailsElement = clone.querySelector(".car-details")
-    const carDetails = `${car.brand.name} • ${car.year}`
-    carDetailsElement.innerHTML = highlightText(carDetails, searchTerms)
+    const carDetailsElement = clone.querySelector(".car-details");
+    const carDetails = `${car.brand.name} • ${car.year}`;
+    carDetailsElement.innerHTML = highlightText(carDetails, searchTerms);
 
-    // Highlight matching text in car description
-    const carDescriptionElement = clone.querySelector(".car-description")
-    carDescriptionElement.innerHTML = highlightText(car.description, searchTerms)
+    const carDescriptionElement = clone.querySelector(".car-description");
+    carDescriptionElement.innerHTML = highlightText(car.description, searchTerms);
 
-    const card = clone.querySelector(".car-card")
+    const card = clone.querySelector(".car-card");
     card.addEventListener("click", () => {
-      localStorage.setItem("viewingCarId", car.id)
-      localStorage.setItem("scrollPosition", window.scrollY)
-      localStorage.setItem("categoryScrollPosition", document.querySelector(".category-slider .tabs").scrollLeft)
-      localStorage.setItem("currentCategory", document.querySelector(".tab-button.active").textContent)
-      localStorage.setItem("lastSearch", searchInput.value)
-
-      if (document.startViewTransition) {
-        document.startViewTransition(() => {
-          window.location.href = `car-details.html?id=${encodeURIComponent(car.id)}`
-        })
-      } else {
-        window.location.href = `car-details.html?id=${encodeURIComponent(car.id)}`
+      // Primero guardamos el estado actual
+      localStorage.setItem("viewingCarId", car.id);
+      localStorage.setItem("scrollPosition", window.scrollY);
+      localStorage.setItem("categoryScrollPosition", document.querySelector(".category-slider .tabs").scrollLeft);
+      
+      // Guardar estado de búsqueda y categoría
+      localStorage.setItem("lastSearch", searchInput.value);
+      if (!isSearchActive) {
+        localStorage.setItem("currentCategory", document.querySelector(".tab-button.active")?.textContent || "");
       }
-    })
 
-    return card
+      // Usar un pequeño retraso para asegurar que el localStorage se actualice antes de la transición
+      setTimeout(() => {
+        if (document.startViewTransition) {
+          document.startViewTransition(() => {
+            window.location.href = `car-details.html?id=${encodeURIComponent(car.id)}`;
+          });
+        } else {
+          window.location.href = `car-details.html?id=${encodeURIComponent(car.id)}`;
+        }
+      }, 10);
+    });
+
+    return card;
   }
 
   function filterCarsBySearch(query) {
     if (!query) {
-      // Si no hay búsqueda, mostrar la categoría actual
-      searchInput.style.border = "solid 1px #ffffff17"
-      const currentCategory = document.querySelector(".tab-button.active").textContent
-      filterCars(currentCategory)
-      return
+      // Si no hay búsqueda y estábamos en modo búsqueda, volvemos a la categoría activa
+      if (isSearchActive) {
+        isSearchActive = false;
+        const activeCategory = document.querySelector(".tab-button.active")?.textContent;
+        if (activeCategory) {
+          filterCars(activeCategory);
+        } else {
+          // Si no hay categoría activa, usamos la primera
+          filterCars(categoryOrder[0]);
+        }
+      }
+      searchInput.style.border = "solid 1px #ffffff17";
+      return;
     }
 
-    const searchTerms = query.split(/\s+/)
+    // Cuando hay una búsqueda activa, desactivamos todas las categorías
+    if (query.length > 0) {
+      document.querySelectorAll(".tab-button").forEach(button => {
+        button.classList.remove("active");
+      });
+    }
 
-    // Filtrar todos los autos en todas las categorías
+    const searchTerms = query.split(/\s+/).filter(term => term.length > 0);
+
     const matchingCars = carsData.cars.filter((car) => {
       const searchableText = [
         car.name.toLowerCase(),
@@ -177,62 +244,46 @@ document.addEventListener("DOMContentLoaded", () => {
         car.category.toLowerCase(),
         car.description.toLowerCase(),
         car.year.toString(),
-      ].join(" ")
+      ].join(" ");
 
-      return searchTerms.every((term) => searchableText.includes(term))
-    })
+      return searchTerms.every((term) => searchableText.includes(term));
+    });
 
-    // Si hay coincidencias, agrupar por marca
     if (matchingCars.length > 0) {
-      // Agrupar por marca
       const carsByBrand = matchingCars.reduce((acc, car) => {
         if (!acc[car.brand.name]) {
-          acc[car.brand.name] = []
+          acc[car.brand.name] = [];
         }
-        acc[car.brand.name].push(car)
-        return acc
-      }, {})
+        acc[car.brand.name].push(car);
+        return acc;
+      }, {});
 
-      // Limpiar el grid
-      carGrid.innerHTML = ""
+      carGrid.innerHTML = "";
 
-      // Ordenar marcas alfabéticamente
-      const sortedBrands = Object.keys(carsByBrand).sort((a, b) => a.localeCompare(b))
+      const sortedBrands = Object.keys(carsByBrand).sort((a, b) => a.localeCompare(b));
 
-      // Mostrar solo las marcas que tienen autos coincidentes
       sortedBrands.forEach((brandName) => {
-        const cars = carsByBrand[brandName]
+        const cars = carsByBrand[brandName];
         if (cars.length > 0) {
-          // Solo crear el slider si hay autos para mostrar
-          const brandSlider = brandSliderTemplate.content.cloneNode(true)
-          brandSlider.querySelector(".brand-name").textContent = brandName
+          const brandSlider = brandSliderTemplate.content.cloneNode(true);
+          brandSlider.querySelector(".brand-name").textContent = brandName;
 
-          const sliderContent = brandSlider.querySelector(".slider-content")
+          const sliderContent = brandSlider.querySelector(".slider-content");
           cars.forEach((car) => {
-            const carCard = createCarCard(car, searchTerms)
-            sliderContent.appendChild(carCard)
-          })
+            const carCard = createCarCard(car, searchTerms);
+            sliderContent.appendChild(carCard);
+          });
 
-          carGrid.appendChild(brandSlider)
+          carGrid.appendChild(brandSlider);
 
-          // Implementar funcionalidad del slider
-          const slider = carGrid.lastElementChild
-          implementSlider(slider)
+          const slider = carGrid.lastElementChild;
+          implementSlider(slider);
         }
-      })
+      });
 
-      // Si encontramos coincidencias en una categoría diferente,
-      // actualizar la pestaña activa
-      if (matchingCars.length > 0) {
-        const firstMatchCategory = matchingCars[0].category
-        document.querySelectorAll(".tab-button").forEach((button) => {
-          button.classList.toggle("active", button.textContent === firstMatchCategory)
-        })
-      }
-      searchInput.style.border = "solid 1px #ffffff17"
+      searchInput.style.border = "solid 1px #ffffff17";
     } else {
-      // Si no hay coincidencias, mostrar un mensaje
-      searchInput.style.border = "solid 1px #ec0b0b"
+      searchInput.style.border = "solid 1px #ec0b0b";
       carGrid.innerHTML = `
         <div class="no-results">
           <p>No se encontraron autos que coincidan con "${query}"</p>
@@ -241,165 +292,152 @@ document.addEventListener("DOMContentLoaded", () => {
           </svg>
           </button>
         </div>
-      `
+      `;
     }
   }
 
-  // Filter cars by category
   function filterCars(category) {
-    // Update active buttons
-    document.querySelectorAll(".tab-button").forEach((button) => {
-      button.classList.toggle("active", button.textContent === category)
-    })
+    // Actualiza los botones activos solo si no estamos en modo búsqueda
+    if (!isSearchActive) {
+      document.querySelectorAll(".tab-button").forEach((button) => {
+        button.classList.toggle("active", button.textContent === category);
+      });
+    }
 
-    // Filter cars by category
-    const filteredCars = carsData.cars.filter((car) => car.category === category)
+    const filteredCars = carsData.cars.filter((car) => car.category === category);
 
-    // Group cars by brand
     const carsByBrand = filteredCars.reduce((acc, car) => {
       if (!acc[car.brand.name]) {
-        acc[car.brand.name] = []
+        acc[car.brand.name] = [];
       }
-      acc[car.brand.name].push(car)
-      return acc
-    }, {})
+      acc[car.brand.name].push(car);
+      return acc;
+    }, {});
 
-    // Sort brands alphabetically
-    const sortedBrands = Object.keys(carsByBrand).sort((a, b) => a.localeCompare(b))
+    const sortedBrands = Object.keys(carsByBrand).sort((a, b) => a.localeCompare(b));
 
-    // Clear grid and display cars by brand
-    carGrid.innerHTML = ""
+    carGrid.innerHTML = "";
     sortedBrands.forEach((brandName) => {
-      const cars = carsByBrand[brandName]
-      const brandSlider = brandSliderTemplate.content.cloneNode(true)
-      brandSlider.querySelector(".brand-name").textContent = brandName
+      const cars = carsByBrand[brandName];
+      const brandSlider = brandSliderTemplate.content.cloneNode(true);
+      brandSlider.querySelector(".brand-name").textContent = brandName;
 
-      const sliderContent = brandSlider.querySelector(".slider-content")
+      const sliderContent = brandSlider.querySelector(".slider-content");
       cars.forEach((car) => {
-        const carCard = createCarCard(car)
-        sliderContent.appendChild(carCard)
-      })
+        const carCard = createCarCard(car);
+        sliderContent.appendChild(carCard);
+      });
 
-      carGrid.appendChild(brandSlider)
+      carGrid.appendChild(brandSlider);
 
-      // Implement slider functionality
-      const slider = carGrid.lastElementChild
-      implementSlider(slider)
-    })
+      const slider = carGrid.lastElementChild;
+      implementSlider(slider);
+    });
 
-    // Save current category in local storage
-    localStorage.setItem("currentCategory", category)
+    // Solo guardar la categoría actual si no estamos en modo búsqueda
+    if (!isSearchActive) {
+      localStorage.setItem("currentCategory", category);
+    }
   }
 
-  // Implement slider functionality
+  // ======== IMPLEMENTACIÓN DE SLIDERS ========
+  
   function implementSlider(sliderElement) {
-    const content = sliderElement.querySelector(".slider-content")
-    const prevBtn = sliderElement.querySelector(".prev")
-    const nextBtn = sliderElement.querySelector(".next")
+    const content = sliderElement.querySelector(".slider-content");
+    const prevBtn = sliderElement.querySelector(".prev");
+    const nextBtn = sliderElement.querySelector(".next");
 
-    let scrollAmount = 0
-    const step = 200 // Adjust this value as needed
+    let scrollAmount = 0;
+    const step = 200;
 
     function updateArrows() {
-      prevBtn.style.display = content.scrollLeft > 0 ? "block" : "none"
-      nextBtn.style.display = content.scrollLeft < content.scrollWidth - content.clientWidth ? "block" : "none"
+      prevBtn.style.display = content.scrollLeft > 0 ? "block" : "none";
+      nextBtn.style.display = content.scrollLeft < content.scrollWidth - content.clientWidth ? "block" : "none";
     }
 
     nextBtn.addEventListener("click", () => {
-      scrollAmount += step
+      scrollAmount += step;
       if (scrollAmount > content.scrollWidth - content.clientWidth) {
-        scrollAmount = content.scrollWidth - content.clientWidth
+        scrollAmount = content.scrollWidth - content.clientWidth;
       }
       content.scrollTo({
         left: scrollAmount,
         behavior: "smooth",
-      })
-      updateArrows()
-    })
+      });
+      updateArrows();
+    });
 
     prevBtn.addEventListener("click", () => {
-      scrollAmount -= step
+      scrollAmount -= step;
       if (scrollAmount < 0) {
-        scrollAmount = 0
+        scrollAmount = 0;
       }
       content.scrollTo({
         left: scrollAmount,
         behavior: "smooth",
-      })
-      updateArrows()
-    })
+      });
+      updateArrows();
+    });
 
-    content.addEventListener("scroll", updateArrows)
+    content.addEventListener("scroll", () => {
+      scrollAmount = content.scrollLeft;
+      updateArrows();
+    });
 
-    // Initialize arrow visibility
-    updateArrows()
+    updateArrows();
   }
 
-  // Implement category slider
   function implementCategorySlider() {
-    const categorySlider = document.querySelector(".category-slider")
-    const tabs = categorySlider.querySelector(".tabs")
-    const prevBtn = categorySlider.querySelector(".prev")
-    const nextBtn = categorySlider.querySelector(".next")
+    const categorySlider = document.querySelector(".category-slider");
+    const tabs = categorySlider.querySelector(".tabs");
+    const prevBtn = categorySlider.querySelector(".prev");
+    const nextBtn = categorySlider.querySelector(".next");
 
-    let scrollAmount = 0
-    const step = 100 // Adjust this value as needed
+    let scrollAmount = 0;
+    const step = 100;
 
     function updateArrows() {
-      prevBtn.style.display = tabs.scrollLeft > 0 ? "block" : "none"
-      nextBtn.style.display = tabs.scrollLeft < tabs.scrollWidth - tabs.clientWidth ? "block" : "none"
+      prevBtn.style.display = tabs.scrollLeft > 0 ? "block" : "none";
+      nextBtn.style.display = tabs.scrollLeft < tabs.scrollWidth - tabs.clientWidth ? "block" : "none";
     }
 
     nextBtn.addEventListener("click", () => {
-      scrollAmount += step
+      scrollAmount += step;
       if (scrollAmount > tabs.scrollWidth - tabs.clientWidth) {
-        scrollAmount = tabs.scrollWidth - tabs.clientWidth
+        scrollAmount = tabs.scrollWidth - tabs.clientWidth;
       }
       tabs.scrollTo({
         left: scrollAmount,
         behavior: "smooth",
-      })
-      updateArrows()
-    })
+      });
+      updateArrows();
+    });
 
     prevBtn.addEventListener("click", () => {
-      scrollAmount -= step
+      scrollAmount -= step;
       if (scrollAmount < 0) {
-        scrollAmount = 0
+        scrollAmount = 0;
       }
       tabs.scrollTo({
         left: scrollAmount,
         behavior: "smooth",
-      })
-      updateArrows()
-    })
+      });
+      updateArrows();
+    });
 
-    tabs.addEventListener("scroll", updateArrows)
+    tabs.addEventListener("scroll", () => {
+      scrollAmount = tabs.scrollLeft;
+      updateArrows();
+    });
 
-    // Initialize arrow visibility
-    updateArrows()
+    updateArrows();
   }
 
-  // Check for category in URL or local storage
-  const urlParams = new URLSearchParams(window.location.search)
-  const categoryFromUrl = urlParams.get("category")
-
-  if (categoryFromUrl && categories.includes(categoryFromUrl)) {
-    filterCars(categoryFromUrl)
-  } else {
-    const savedCategory = localStorage.getItem("currentCategory")
-    if (savedCategory && categories.includes(savedCategory)) {
-      filterCars(savedCategory)
-    } else {
-      filterCars(categories[0]) // Default category
-    }
-  }
-
-  // Handle image loading errors
+  // ======== MANEJO DE ERRORES DE CARGA DE IMÁGENES ========
+  
   document.querySelectorAll(".car-image, .brand-logo").forEach((img) => {
     img.onerror = function () {
-      this.src = "/placeholder.svg"
-    }
-  })
-})
-
+      this.src = "/placeholder.svg";
+    };
+  });
+});
