@@ -20,16 +20,22 @@ document.addEventListener("DOMContentLoaded", () => {
     searchInput.value = ""
     filterCarsBySearch("")
     toggleClearButton()
-    searchInput.focus() // Vuelve a enfocar el input después de borrar
+    searchInput.focus()
+    searchInput.style.border = "solid 1px #ffffff17" // Vuelve a enfocar el input después de borrar
   })
 
   function toggleClearButton() {
     clearSearchButton.style.display = searchInput.value ? "block" : "none"
+
+    if (!hasValue) {
+      searchInput.style.border = "solid 1px #ffffff17"
+    }
   }
 
   function filterCarsBySearch(query) {
     if (!query) {
       // Si no hay búsqueda, mostrar la categoría actual
+      searchInput.style.border = "solid 1px #ffffff17"
       const currentCategory =
         document.querySelector(".tab-button.active").textContent;
       filterCars(currentCategory);
@@ -105,6 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     } else {
       // Si no hay coincidencias, mostrar un mensaje
+      searchInput.style.border = 'solid 1px #ec0b0b'
       carGrid.innerHTML = `
             <div class="no-results">
                 <p>No se encontraron autos que coincidan con "${query}"</p>
