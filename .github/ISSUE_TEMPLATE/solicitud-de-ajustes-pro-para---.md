@@ -3,8 +3,8 @@ name: Solicitud de Ajustes Pro para...
 about: 'Formulario de solicitud de ajustes pro para algun auto en especifico que no
   se encuentre dentro de la pagina '
 title: ''
-labels: ''
-assignees: ''
+labels: enhancement
+assignees: EDDIT8
 
 ---
 
