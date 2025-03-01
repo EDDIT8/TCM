@@ -1,0 +1,37 @@
+name: "🚗 Solicitud de configuración"
+description: "Pide una configuración de ajuste para un vehículo que no está en la lista"
+title: "[Solicitud] Ajuste para: "
+labels: ["Solicitud"]
+assignees:
+  - "EDDIT8"
+body:
+  - type: markdown
+    attributes:
+      value: "### 🚗 Información del vehículo\nPor favor, llena los datos del coche para que podamos agregarlo."
+
+  - type: input
+    id: marca
+    attributes:
+      label: "Marca"
+      description: "Ejemplo: Toyota"
+      placeholder: "Ejemplo: Nissan"
+    validations:
+      required: true
+
+  - type: input
+    id: modelo
+    attributes:
+      label: "Modelo"
+      description: "Ejemplo: Supra"
+      placeholder: "Ejemplo: Skyline GT-R"
+    validations:
+      required: true
+
+  - type: textarea
+    id: detalles
+    attributes:
+      label: "Detalles adicionales"
+      description: "Cualquier detalle adicional sobre la configuración del coche."
+      placeholder: "Ejemplo: Este coche tiene tracción AWD y 500HP."
+    validations:
+      required: false
