@@ -13,7 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const clearSearchButton = document.getElementById("clearSearch");
 
   // Variables para controlar el estado de búsqueda
-  let isSearchActive = false; // Nueva variable para rastrear si la búsqueda está activa
+  let isSearchActive = false; 
+  let lastActiveCategory = null; // Añadimos esta variable para rastrear la última categoría activa
 
   // ======== ORDEN DE LAS CATEGORÍAS ========
   const categoryOrder = [
@@ -58,23 +59,25 @@ document.addEventListener("DOMContentLoaded", () => {
         ? savedCategory 
         : categories[0];
     }
+    
+    // Establecer la última categoría activa
+    lastActiveCategory = initialCategory;
 
     // Verifica si hay una búsqueda guardada
     const savedSearch = localStorage.getItem("lastSearch");
     
-    // Muestra inicialmente los autos sin animación
-    if (savedSearch && savedSearch.trim() !== "") {
-      searchInput.value = savedSearch;
-      isSearchActive = true;
-      filterCarsBySearch(savedSearch);
-    } else {
-      filterCars(initialCategory);
-    }
-    
-    // Ahora que el contenido básico está cargado, usa un pequeño retraso para 
-    // restaurar posiciones de scroll después de que el DOM esté estable
+    // Aplicamos un pequeño retraso para mejorar la transición visual
     setTimeout(() => {
-      // Restaurar posiciones de scroll
+      // Muestra inicialmente los autos sin animación
+      if (savedSearch && savedSearch.trim() !== "") {
+        searchInput.value = savedSearch;
+        isSearchActive = true;
+        filterCarsBySearch(savedSearch);
+      } else {
+        filterCars(initialCategory);
+      }
+      
+      // Ahora que el contenido básico está cargado, restauramos posiciones de scroll
       const savedScrollPosition = localStorage.getItem("scrollPosition");
       const savedCategoryScroll = localStorage.getItem("categoryScrollPosition");
       
@@ -88,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
       
       // Actualiza el estado del botón de limpiar búsqueda
       toggleClearButton();
-    }, 100);
+    }, 50); // Reducimos el retraso para mejorar la percepción de velocidad
   }
 
   /**
@@ -98,11 +101,12 @@ document.addEventListener("DOMContentLoaded", () => {
   function createCategoryTabs(categories) {
     categories.forEach((category, index) => {
       const button = document.createElement("button");
-      button.className = `tab-button ${index === 0 ? "active" : ""}`;
+      button.className = `tab-button ${category === lastActiveCategory ? "active" : ""}`;
       button.textContent = category;
       button.addEventListener("click", () => {
         // Al hacer clic en una categoría, desactivamos el modo de búsqueda
         isSearchActive = false;
+        lastActiveCategory = category; // Actualizamos la última categoría activa
         searchInput.value = "";
         toggleClearButton();
         filterCars(category);
@@ -122,6 +126,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // Si hay texto en el campo, activamos modo búsqueda
     isSearchActive = query.length > 0;
     
+    // Actualizamos lastActiveCategory con la categoría actualmente seleccionada
+    if (!isSearchActive) {
+      const activeCategory = document.querySelector(".tab-button.active")?.textContent;
+      if (activeCategory) {
+        lastActiveCategory = activeCategory;
+      }
+    }
+    
     filterCarsBySearch(query);
     toggleClearButton();
   });
@@ -130,9 +142,8 @@ document.addEventListener("DOMContentLoaded", () => {
     searchInput.value = "";
     isSearchActive = false;
     
-    // Al limpiar, volvemos a la categoría que estaba seleccionada
-    const currentCategory = document.querySelector(".tab-button.active")?.textContent || categoryOrder[0];
-    filterCars(currentCategory);
+    // Al limpiar, volvemos a la última categoría activa
+    filterCars(lastActiveCategory || categoryOrder[0]);
     
     toggleClearButton();
     searchInput.focus();
@@ -185,27 +196,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const card = clone.querySelector(".car-card");
     card.addEventListener("click", () => {
-      // Primero guardamos el estado actual
+      // Guardamos el estado actual con menor retraso
       localStorage.setItem("viewingCarId", car.id);
       localStorage.setItem("scrollPosition", window.scrollY);
       localStorage.setItem("categoryScrollPosition", document.querySelector(".category-slider .tabs").scrollLeft);
       
       // Guardar estado de búsqueda y categoría
-      localStorage.setItem("lastSearch", searchInput.value);
-      if (!isSearchActive) {
-        localStorage.setItem("currentCategory", document.querySelector(".tab-button.active")?.textContent || "");
+      if (searchInput.value.trim() !== "") {
+        localStorage.setItem("lastSearch", searchInput.value);
+      } else {
+        localStorage.removeItem("lastSearch"); // Eliminamos la búsqueda si no hay ninguna
       }
+      
+      // Siempre guardamos la categoría actual, incluso en modo búsqueda
+      localStorage.setItem("currentCategory", lastActiveCategory || document.querySelector(".tab-button.active")?.textContent || categoryOrder[0]);
 
-      // Usar un pequeño retraso para asegurar que el localStorage se actualice antes de la transición
-      setTimeout(() => {
-        if (document.startViewTransition) {
-          document.startViewTransition(() => {
-            window.location.href = `car-details.html?id=${encodeURIComponent(car.id)}`;
-          });
-        } else {
+      // Usamos un transition más rápido
+      if (document.startViewTransition) {
+        document.startViewTransition(() => {
           window.location.href = `car-details.html?id=${encodeURIComponent(car.id)}`;
-        }
-      }, 10);
+        });
+      } else {
+        window.location.href = `car-details.html?id=${encodeURIComponent(car.id)}`;
+      }
     });
 
     return card;
@@ -213,12 +226,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function filterCarsBySearch(query) {
     if (!query) {
-      // Si no hay búsqueda y estábamos en modo búsqueda, volvemos a la categoría activa
+      // Si no hay búsqueda y estábamos en modo búsqueda, volvemos a la última categoría activa
       if (isSearchActive) {
         isSearchActive = false;
-        const activeCategory = document.querySelector(".tab-button.active")?.textContent;
-        if (activeCategory) {
-          filterCars(activeCategory);
+        if (lastActiveCategory) {
+          filterCars(lastActiveCategory);
         } else {
           // Si no hay categoría activa, usamos la primera
           filterCars(categoryOrder[0]);
@@ -228,8 +240,15 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Cuando hay una búsqueda activa, desactivamos todas las categorías
+    // Cuando hay una búsqueda activa, desactivamos todas las categorías en UI
+    // pero mantenemos el lastActiveCategory internamente
     if (query.length > 0) {
+      // Guardamos la categoría activa actual si no tenemos una guardada
+      if (!lastActiveCategory) {
+        lastActiveCategory = document.querySelector(".tab-button.active")?.textContent || categoryOrder[0];
+      }
+      
+      // Desactivamos todas las pestañas de categorías
       document.querySelectorAll(".tab-button").forEach(button => {
         button.classList.remove("active");
       });
@@ -297,12 +316,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function filterCars(category) {
-    // Actualiza los botones activos solo si no estamos en modo búsqueda
-    if (!isSearchActive) {
-      document.querySelectorAll(".tab-button").forEach((button) => {
-        button.classList.toggle("active", button.textContent === category);
-      });
-    }
+    // Establecemos la última categoría activa
+    lastActiveCategory = category;
+    
+    // Actualiza los botones activos
+    document.querySelectorAll(".tab-button").forEach((button) => {
+      button.classList.toggle("active", button.textContent === category);
+    });
 
     const filteredCars = carsData.cars.filter((car) => car.category === category);
 
@@ -334,10 +354,8 @@ document.addEventListener("DOMContentLoaded", () => {
       implementSlider(slider);
     });
 
-    // Solo guardar la categoría actual si no estamos en modo búsqueda
-    if (!isSearchActive) {
-      localStorage.setItem("currentCategory", category);
-    }
+    // Guardar la categoría actual en localStorage
+    localStorage.setItem("currentCategory", category);
   }
 
   // ======== IMPLEMENTACIÓN DE SLIDERS ========
@@ -435,9 +453,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ======== MANEJO DE ERRORES DE CARGA DE IMÁGENES ========
   
-  document.querySelectorAll(".car-image, .brand-logo").forEach((img) => {
-    img.onerror = function () {
-      this.src = "/placeholder.svg";
-    };
+  document.addEventListener('DOMNodeInserted', function(e) {
+    if (e.target.nodeType === 1) { // ELEMENT_NODE
+      const imgs = e.target.querySelectorAll('.car-image, .brand-logo');
+      imgs.forEach((img) => {
+        img.onerror = function() {
+          this.src = "/placeholder.svg";
+        };
+      });
+    }
   });
 });
