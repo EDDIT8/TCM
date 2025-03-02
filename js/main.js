@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
     filterCars(lastActiveCategory || categoryOrder[0]);
     
     toggleClearButton();
-    searchInput.focus();
+    searchInput.blur();
     searchInput.style.border = "solid 1px #ffffff17";
   });
 
