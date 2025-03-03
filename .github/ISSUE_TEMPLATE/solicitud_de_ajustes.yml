@@ -7,7 +7,7 @@ assignees:
 body:
   - type: markdown
     attributes:
-      value: "### 🚗 Información del vehículo\nPor favor, llena los datos del coche para que podamos agregarlo."
+      value: "### 🚗 Información del vehículo\nPor favor, llena los datos del coche para que pueda agregarlo."
 
   - type: input
     id: marca
