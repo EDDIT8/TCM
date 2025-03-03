@@ -1,6 +1,11 @@
+/* LISTA DE AUTOS
+   Aqui se organizan todos el auto en formato JSON, con sus respectivos datos, organizados por categorias. Basta con duplicar un diccionario y editar la informacion para agregar mas autos
+*/
 const carsData = {
   cars: [
-    //HYPERCAR
+
+    // === HYPERCAR === //
+    
     //Agera R
     {
       id: "koenigsegg-agera-r",
@@ -1580,7 +1585,9 @@ const carsData = {
         },
       },
     },
-    //STREET TIRE 2
+
+    // === STREET TIRE 2 === //
+
     //Porsche 911 GT3 RS
     {
       id: "Porsche 911 GT3 RS",
@@ -3418,7 +3425,9 @@ const carsData = {
         },
       },
     },
-    //STREET TIRE 1
+
+    // === STREET TIRE 1 === //
+
     //Porsche carrera RS
     {
       id: "Porsche 991 Carrera RS",
@@ -5032,7 +5041,9 @@ const carsData = {
         },
       },
     },
-    // MOTOCROSS
+
+    // === MOTOCROSS === //
+
     //Yamaha
     {
       id: "Yamaha YZ450F",
@@ -5184,7 +5195,9 @@ const carsData = {
         },
       },
     },
-    //Rally
+
+    // === RALLY === //
+
     //Porsche
     {
       id: "911 GT3 RS RD Limited Edition",
@@ -5590,6 +5603,7 @@ const carsData = {
         },
       },
     },
+    //PEUGEOT
     {
       id: "205 T16 EV02",
       name: "205 T16 EV02",
@@ -5994,7 +6008,9 @@ const carsData = {
         },
       },
     },
-    //RALLY RAID
+
+    // === RALLY RAID === //
+
     //Porsche
     {
       id: "Porsche 959 RAID",
@@ -6613,7 +6629,9 @@ const carsData = {
         },
       },
     },
-    //MONSTER
+
+    // === MONSTER === //
+
     //Chevreolet Silverado
     {
       id: "Chevrolet Silverado 1500",
@@ -6816,7 +6834,9 @@ const carsData = {
         },
       },
     },
-    //Racing
+
+    // === RACING === //
+
     //Gordon t.50s
     {
       id: "T.50s",
@@ -7420,7 +7440,9 @@ const carsData = {
         },
       },
     },
-    //DRIFT
+
+    // === DRIFT === //
+
     //Fors Hoonigan
     {
       id: "Ford Hoonicorn Mustang",
