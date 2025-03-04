@@ -6038,9 +6038,9 @@ const carsData = {
             potencia: {
               label: "Distribución de potencia",
               value: [45, 55],
-              min: 30,
+              min: 20,
               dualValues: true,
-              max: 80,
+              max: 55,
               leftLabel: "Delantero",
               rightLabel: "Trasero",
             },
@@ -6073,9 +6073,9 @@ const carsData = {
             equilibrio: {
               label: "Equilibrio de frenos",
               value: [50, 50],
-              min: 0,
+              min: 20,
               dualValues: true,
-              max: 70,
+              max: 50,
               leftLabel: "Delantero",
               rightLabel: "Trasero",
             },

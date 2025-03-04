@@ -79,47 +79,111 @@ function renderTuningControls(tuning) {
  * @param {Object} setting - Configuración específica del ajuste
  * @returns {DocumentFragment} Fragmento de documento con el control configurado
  */
+// function createTuningSlider(template, setting) {
+//   const clone = template.content.cloneNode(true);
+//   const container = clone.querySelector(".slider-container");
+
+//   // Aplicar destacado si corresponde
+//   if (setting.highlighted) {
+//     container.classList.add("highlighted");
+//   }
+
+//   // Configurar etiquetas y slider
+//   clone.querySelector(".slider-label").textContent = setting.label;
+//   const slider = clone.querySelector(".slider");
+//   slider.min = setting.min;
+//   slider.max = setting.max;
+//   slider.value = setting.value;
+//   slider.disabled = true; // Control de solo lectura
+
+//   clone.querySelector(".left-label").textContent = setting.leftLabel;
+//   clone.querySelector(".right-label").textContent = setting.rightLabel;
+
+//   // Manejar valores duales para transmisión y equilibrio de frenos
+//   if (setting.dualValues) {
+//     const [frontValue, rearValue] = setting.value;
+//     clone.querySelector(".slider-value-front").textContent = `${frontValue}% - `;
+//     clone.querySelector(".slider-value-rear").textContent = `${rearValue}%`;
+//     updateDualSliderPosition(slider, setting.min, setting.max, frontValue, rearValue);
+//   } else {
+//     // Configurar valor único
+//     let displayValue;
+//     if (setting.isAlignment && setting.value < 0) {
+//       // Formatear valores de alineación con dos decimales y signo de grado
+//       displayValue = `-0.${setting.value.toFixed(2)}°`;
+//     } else if {
+//       // Agregar signo de porcentaje para otros valores
+//       displayValue = `${setting.value}%`;
+//     }
+//     clone.querySelector(".slider-value").textContent = displayValue;
+//     updateSliderPosition(slider, setting.min, setting.max, setting.value);
+//   }
+
+//   return clone;
+// }
+
 function createTuningSlider(template, setting) {
-  const clone = template.content.cloneNode(true);
-  const container = clone.querySelector(".slider-container");
+  const clone = template.content.cloneNode(true)
+  const container = clone.querySelector(".slider-container")
 
   // Aplicar destacado si corresponde
   if (setting.highlighted) {
-    container.classList.add("highlighted");
+    container.classList.add("highlighted")
   }
 
   // Configurar etiquetas y slider
-  clone.querySelector(".slider-label").textContent = setting.label;
-  const slider = clone.querySelector(".slider");
-  slider.min = setting.min;
-  slider.max = setting.max;
-  slider.value = setting.value;
-  slider.disabled = true; // Control de solo lectura
+  clone.querySelector(".slider-label").textContent = setting.label
+  const slider = clone.querySelector(".slider")
 
-  clone.querySelector(".left-label").textContent = setting.leftLabel;
-  clone.querySelector(".right-label").textContent = setting.rightLabel;
+  // Para valores de alineación, usamos enteros internamente
+  if (setting.isAlignment) {
+    // Convertir el valor decimal a entero (multiplicar por 100)
+    const intValue = Math.round(setting.value * 100)
+    const intMin = Math.round(setting.min * 100)
+    const intMax = Math.round(setting.max * 100)
 
-  // Manejar valores duales para transmisión y equilibrio de frenos
-  if (setting.dualValues) {
-    const [frontValue, rearValue] = setting.value;
-    clone.querySelector(".slider-value-front").textContent = `${frontValue}% - `;
-    clone.querySelector(".slider-value-rear").textContent = `${rearValue}%`;
-    updateDualSliderPosition(slider, setting.min, setting.max, frontValue, rearValue);
-  } else {
-    // Configurar valor único
-    let displayValue;
-    if (setting.isAlignment) {
-      // Formatear valores de alineación con dos decimales y signo de grado
-      displayValue = `${setting.value.toFixed(2)}°`;
+    // Configurar el slider con valores enteros
+    slider.min = intMin
+    slider.max = intMax
+    slider.value = intValue
+
+    // Formatear el valor para mostrar (con 0. o -0. según corresponda)
+    let displayValue
+    if (setting.value < 0) {
+      // Valor negativo: -0.XX°
+      displayValue = `-0.${Math.abs(intValue).toString().padStart(2, "0")}°`
     } else {
-      // Agregar signo de porcentaje para otros valores
-      displayValue = `${setting.value}%`;
+      // Valor positivo: 0.XX°
+      displayValue = `0.${intValue.toString().padStart(2, "0")}°`
     }
-    clone.querySelector(".slider-value").textContent = displayValue;
-    updateSliderPosition(slider, setting.min, setting.max, setting.value);
+
+    clone.querySelector(".slider-value").textContent = displayValue
+    updateSliderPosition(slider, intMin, intMax, intValue)
+  } else {
+    // Para valores normales (no alineación), mantener el comportamiento original
+    slider.min = setting.min
+    slider.max = setting.max
+    slider.value = setting.value
+
+    // Manejar valores duales para transmisión y equilibrio de frenos
+    if (setting.dualValues) {
+      const [frontValue, rearValue] = setting.value
+      clone.querySelector(".slider-value-front").textContent = `${frontValue}% - `
+      clone.querySelector(".slider-value-rear").textContent = `${rearValue}%`
+      updateDualSliderPosition(slider, setting.min, setting.max, frontValue, rearValue)
+    } else {
+      // Configurar valor único con porcentaje
+      const displayValue = `${setting.value}%`
+      clone.querySelector(".slider-value").textContent = displayValue
+      updateSliderPosition(slider, setting.min, setting.max, setting.value)
+    }
   }
 
-  return clone;
+  slider.disabled = true // Control de solo lectura
+  clone.querySelector(".left-label").textContent = setting.leftLabel
+  clone.querySelector(".right-label").textContent = setting.rightLabel
+
+  return clone
 }
 
 /**
@@ -151,29 +215,43 @@ function configureBackButton() {
  * @param {number} max - Valor máximo
  * @param {number} value - Valor actual
  */
+
 function updateSliderPosition(slider, min, max, value) {
-  const range = max - min;
-  const percentage = ((value - min) / range) * 100;
+  const percentage = ((value - min) / (max - min)) * 100
   slider.style.backgroundSize = `${percentage}% 100%`;
 }
 
-/**
- * Actualiza la posición visual del deslizador para valores duales
- * @param {HTMLInputElement} slider - Elemento deslizador
- * @param {number} min - Valor mínimo
- * @param {number} max - Valor máximo
- * @param {number} frontValue - Valor frontal
- * @param {number} rearValue - Valor trasero
- */
 function updateDualSliderPosition(slider, min, max, frontValue, rearValue) {
-  const range = max - min;
-  const frontPercentage = ((frontValue - min) / range) * 100;
-  const rearPercentage = ((rearValue - min) / range) * 100;
-  slider.style.backgroundImage = `linear-gradient(to right, 
-    var(--primary-color) 0%, 
-    var(--primary-color) ${frontPercentage}%, 
-    #4a4a4a ${frontPercentage}%, 
-    #4a4a4a ${rearPercentage}%, 
-    var(--primary-color) ${rearPercentage}%, 
-    var(--primary-color) 100%)`;
+  const frontPercentage = ((frontValue - min) / (max - min)) * 100
+  const rearPercentage = ((rearValue - min) / (max - min)) * 100
+
+  // Use a different color or visual cue to distinguish the dual slider
+  slider.style.background = `linear-gradient(to right, #f7d538 ${frontPercentage}%, #fae27f ${rearPercentage}%, #ccc ${rearPercentage}%)`
 }
+
+// function updateSliderPosition(slider, min, max, value) {
+//   const range = max - min;
+//   const percentage = ((value - min) / range) * 100;
+//   slider.style.backgroundSize = `${percentage}% 100%`;
+// }
+
+// /**
+//  * Actualiza la posición visual del deslizador para valores duales
+//  * @param {HTMLInputElement} slider - Elemento deslizador
+//  * @param {number} min - Valor mínimo
+//  * @param {number} max - Valor máximo
+//  * @param {number} frontValue - Valor frontal
+//  * @param {number} rearValue - Valor trasero
+//  */
+// function updateDualSliderPosition(slider, min, max, frontValue, rearValue) {
+//   const range = max - min;
+//   const frontPercentage = ((frontValue - min) / range) * 100;
+//   const rearPercentage = ((rearValue - min) / range) * 100;
+//   slider.style.backgroundImage = `linear-gradient(to right, 
+//     var(--primary-color) 0%, 
+//     var(--primary-color) ${frontPercentage}%, 
+//     #4a4a4a ${frontPercentage}%, 
+//     #4a4a4a ${rearPercentage}%, 
+//     var(--primary-color) ${rearPercentage}%, 
+//     var(--primary-color) 100%)`;
+// }
