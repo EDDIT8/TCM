@@ -11,6 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const brandSliderTemplate = document.getElementById("brandSliderTemplate");
   const searchInput = document.getElementById("searchInput");
   const clearSearchButton = document.getElementById("clearSearch");
+  const matchCountSpan = document.getElementById("matchCount");
+
 
   // Variables para controlar el estado de búsqueda
   let isSearchActive = false; 
@@ -148,10 +150,14 @@ document.addEventListener("DOMContentLoaded", () => {
     toggleClearButton();
     searchInput.blur();
     searchInput.style.border = "solid 1px #ffffff17";
+
   });
 
   function toggleClearButton() {
     clearSearchButton.style.display = searchInput.value ? "block" : "none";
+    matchCountSpan.style.display = searchInput.value ? "block" : "none";
+    document.querySelector(".search-container").style.left = searchInput.value ? "-23px" : "0px";
+
     if (!searchInput.value) {
       searchInput.style.border = "solid 1px #ffffff17";
     }
@@ -268,6 +274,11 @@ document.addEventListener("DOMContentLoaded", () => {
       return searchTerms.every((term) => searchableText.includes(term));
     });
 
+    if (matchCountSpan) {
+      matchCountSpan.textContent = matchingCars.length.toString();
+      matchCountSpan.style.color = matchingCars.length > 0 ? "#00ff00" : "#ff0000";
+    }
+
     if (matchingCars.length > 0) {
       const carsByBrand = matchingCars.reduce((acc, car) => {
         if (!acc[car.brand.name]) {
@@ -301,8 +312,11 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       searchInput.style.border = "solid 1px #ffffff17";
+      matchCountSpan.style.border = "solid 1px #ffffff91";
+
     } else {
       searchInput.style.border = "solid 1px #ec0b0b";
+      matchCountSpan.style.border = "solid 1px #ec0b0b";
       carGrid.innerHTML = `
         <div class="no-results">
           <p>No se encontraron autos que coincidan con "${query}"</p>

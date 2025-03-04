@@ -396,6 +396,10 @@ p .car-details {
   .clear-search {
     right: 1.5rem !important;
   }
+
+  .match-count {
+    right: -25px !important;
+  }
 }
 
 @media (max-width: 767px) {
@@ -502,10 +506,23 @@ p .car-details {
   cursor: pointer;
   color: #999;
   display: none; /*Oculto por defecto*/
+  z-index: 10;
 }
 
 .clear-search:hover {
   color: #ec0b0b;
+}
+
+.match-count {
+  position: absolute;
+  top: 45%;
+  right: 0;
+  border: 1px solid rgb(255, 255, 255);
+  padding: 5px 7px;
+  border-radius: 50%;
+  font-size: 14px;
+  min-width: 32px;
+  display: none; /*Oculto por defecto*/
 }
 
 .search-bar:focus {
