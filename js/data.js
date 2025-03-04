@@ -2388,8 +2388,8 @@ const carsData = {
     },
     //Nissan Skyline GT-R R32
     {
-      id: "Skyline GT-R R32",
-      name: "Skiline GT-R R32",
+      id: "Skyline GT-R [R32]",
+      name: "Skyline GT-R [R32]",
       brand: {
         name: "Nissan",
         logo: "assets/icons/nissan.webp",
