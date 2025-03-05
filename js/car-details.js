@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
   
   // Actualizar metadatos y elementos principales
   document.getElementById("pageTitle").textContent = `${car.name} - The Crew Motorfest`;
+  // Actualizar los metadatos Open Graph dinámicamente
+  actualizarMetaTags(car);
   
   // Actualizar información del auto
   const brandLogo = document.getElementById("brandLogo");
@@ -41,6 +43,18 @@ document.addEventListener("DOMContentLoaded", () => {
   // ======== CONFIGURACIÓN DEL BOTÓN VOLVER ========
   configureBackButton();
 });
+
+/**
+ * 🔥 Actualiza los metadatos Open Graph dinámicamente
+ * @param {Object} car - Objeto con la información del auto
+ */
+function actualizarMetaTags(car) {
+  document.querySelector('meta[property="og:title"]').setAttribute("content", car.name);
+  document.querySelector('meta[property="og:description"]').setAttribute("content", car.description);
+  document.querySelector('meta[property="og:image"]').setAttribute("content", car.image);
+  document.querySelector('meta[property="og:url"]').setAttribute("content", window.location.href);
+}
+
 
 /**
  * Renderiza los controles de ajuste del vehículo
