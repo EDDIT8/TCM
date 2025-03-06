@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "Drift",
     "Racing",
     "Hypercar",
+    "Alpha GP",
     "Motocross",
     "Rally Raid",
     "Rally",
