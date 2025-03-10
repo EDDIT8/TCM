@@ -7,7 +7,7 @@
   "theme_color": "#f7d538",
   "icons": [
     {
-      "src": "/TCM/assets/other/TCM-ICON.png",
+      "src": "/assets/other/TCM-ICON.png",
       "sizes": "512x512",
       "type": "image/png"
     }
