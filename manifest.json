@@ -1,6 +1,6 @@
 {
   "name": "Pro Settings Motorfest",
-  "short_name": "Settings Motorfest",
+  "short_name": "TCM Tuner",
   "start_url": "/TCM/index.html",
   "display": "standalone",
   "background_color": "#1a1a1a",
