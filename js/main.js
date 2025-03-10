@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const carCardTemplate = document.getElementById("carCardTemplate");
   const brandSliderTemplate = document.getElementById("brandSliderTemplate");
   const searchInput = document.getElementById("searchInput");
+  const catSlider = document.getElementById("categorySlider");
   const clearSearchButton = document.getElementById("clearSearch");
   const matchCountSpan = document.getElementById("matchCount");
 
@@ -157,6 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function toggleClearButton() {
     clearSearchButton.style.display = searchInput.value ? "block" : "none";
     matchCountSpan.style.display = searchInput.value ? "block" : "none";
+    catSlider.style.display = searchInput.value ? "none" : "flex";
     document.querySelector(".search-container").style.left = searchInput.value ? "-23px" : "0px";
 
     if (!searchInput.value) {
