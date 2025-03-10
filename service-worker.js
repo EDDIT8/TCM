@@ -2,14 +2,14 @@ self.addEventListener('install', event => {
   event.waitUntil(
     caches.open('v1').then(cache => {
       return cache.addAll([
-        '/',
-        '/index.html',
-        '/styles.css',
-        '/js/main.js',
-        '/js/car-details.js',
-        '/js/data.js',
-        '/car-details.html',
-        '/assets/other/TCM-ICON.png',
+        '/TCM/',
+        '/TCM/index.html',
+        '/TCM/styles.css',
+        '/TCM/js/main.js',
+        '/TCM/js/car-details.js',
+        '/TCM/js/data.js',
+        '/TCM/car-details.html',
+        '/TCM/assets/other/TCM-ICON.png',
         '/placeholder.svg'
       ]);
     })
@@ -22,7 +22,7 @@ self.addEventListener('fetch', event => {
       return response || fetch(event.request).then(fetchResponse => {
         return caches.open('v1').then(cache => {
           // Cachear dinámicamente las imágenes de las carpetas cars e icons
-          if (event.request.url.includes('/assets/cars/') || event.request.url.includes('/assets/icons/')) {
+          if (event.request.url.includes('TCM/assets/cars/') || event.request.url.includes('TCM/assets/icons/')) {
             cache.put(event.request, fetchResponse.clone());
           }
           return fetchResponse;
