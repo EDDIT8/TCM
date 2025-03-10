@@ -558,16 +558,28 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(centerActiveTab, 100);
   }
 
-  document.addEventListener('DOMNodeInserted', function(e) {
-    if (e.target.nodeType === 1) { // ELEMENT_NODE
-      const imgs = e.target.querySelectorAll('.car-image, .brand-logo');
-      imgs.forEach((img) => {
-        img.onerror = function() {
-          this.src = "/placeholder.svg";
-        };
-      });
-    }
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.type === 'childList') {
+        mutation.addedNodes.forEach((node) => {
+          if (node.nodeType === 1) { // ELEMENT_NODE
+            const imgs = node.querySelectorAll('.car-image, .brand-logo');
+            imgs.forEach((img) => {
+              img.onerror = function() {
+                this.src = "/placeholder.svg";
+              };
+            });
+          }
+        });
+      }
+    });
   });
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+
 });
 
 if ('serviceWorker' in navigator) {
