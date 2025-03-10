@@ -4,11 +4,24 @@
   "start_url": "/TCM/index.html",
   "display": "standalone",
   "background_color": "#1a1a1a",
-  "theme_color": "#f7d538",
+  "theme_color": "#1a1a1a",
   "icons": [
     {
       "src": "/TCM/assets/other/TCM-ICON.png",
       "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/TCM/assets/screenshots/desktop-view.png",
+      "sizes": "1920x2965",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/TCM/assets/screenshots/mobile-view.png",
+      "sizes": "400x2917",
       "type": "image/png"
     }
   ]
