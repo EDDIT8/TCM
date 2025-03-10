@@ -9,7 +9,7 @@ self.addEventListener('install', event => {
         '/js/car-details.js',
         '/js/data.js',
         '/car-details.html',
-        '/assets/other/TCM-BG.png',
+        '/assets/other/TCM-ICON.png',
         '/placeholder.svg'
       ]);
     })
