@@ -422,6 +422,54 @@ document.addEventListener("DOMContentLoaded", () => {
     updateArrows();
   }
 
+  // function implementCategorySlider() {
+  //   const categorySlider = document.querySelector(".category-slider");
+  //   const tabs = categorySlider.querySelector(".tabs");
+  //   const prevBtn = categorySlider.querySelector(".prev");
+  //   const nextBtn = categorySlider.querySelector(".next");
+
+  //   let scrollAmount = 0;
+  //   const step = 100;
+
+  //   function updateArrows() {
+  //     prevBtn.style.display = tabs.scrollLeft > 0 ? "block" : "none";
+  //     nextBtn.style.display = tabs.scrollLeft < tabs.scrollWidth - tabs.clientWidth ? "block" : "none";
+  //   }
+
+  //   nextBtn.addEventListener("click", () => {
+  //     scrollAmount += step;
+  //     if (scrollAmount > tabs.scrollWidth - tabs.clientWidth) {
+  //       scrollAmount = tabs.scrollWidth - tabs.clientWidth;
+  //     }
+  //     tabs.scrollTo({
+  //       left: scrollAmount,
+  //       behavior: "smooth",
+  //     });
+  //     updateArrows();
+  //   });
+
+  //   prevBtn.addEventListener("click", () => {
+  //     scrollAmount -= step;
+  //     if (scrollAmount < 0) {
+  //       scrollAmount = 0;
+  //     }
+  //     tabs.scrollTo({
+  //       left: scrollAmount,
+  //       behavior: "smooth",
+  //     });
+  //     updateArrows();
+  //   });
+
+  //   tabs.addEventListener("scroll", () => {
+  //     scrollAmount = tabs.scrollLeft;
+  //     updateArrows();
+  //   });
+
+  //   updateArrows();
+  // }
+
+  // ======== MANEJO DE ERRORES DE CARGA DE IMÁGENES ========
+  
   function implementCategorySlider() {
     const categorySlider = document.querySelector(".category-slider");
     const tabs = categorySlider.querySelector(".tabs");
@@ -432,8 +480,40 @@ document.addEventListener("DOMContentLoaded", () => {
     const step = 100;
 
     function updateArrows() {
-      prevBtn.style.display = tabs.scrollLeft > 0 ? "block" : "none";
-      nextBtn.style.display = tabs.scrollLeft < tabs.scrollWidth - tabs.clientWidth ? "block" : "none";
+      // prevBtn.style.display = tabs.scrollLeft > 0 ? "block" : "none";
+      // nextBtn.style.display = tabs.scrollLeft < tabs.scrollWidth - tabs.clientWidth ? "block" : "none";
+    }
+
+    function centerActiveTab() {
+      const activeTab = tabs.querySelector(".tab-button.active");
+      if (!activeTab) return;
+      
+      // Obtener el índice de la pestaña activa
+      const tabButtons = Array.from(tabs.querySelectorAll(".tab-button"));
+      const activeIndex = tabButtons.indexOf(activeTab);
+      
+      // Si es la primera pestaña, scroll al inicio
+      if (activeIndex === 0) {
+        tabs.scrollLeft = 0;
+        return;
+      }
+      
+      // Si es la última pestaña, scroll al final
+      if (activeIndex === tabButtons.length - 1) {
+        tabs.scrollLeft = tabs.scrollWidth;
+        return;
+      }
+      
+      // Para las pestañas intermedias, centrar
+      const tabRect = activeTab.getBoundingClientRect();
+      const sliderRect = tabs.getBoundingClientRect();
+      
+      // Calcular la posición central
+      const tabCenter = tabRect.left + tabRect.width / 2;
+      const sliderCenter = sliderRect.left + sliderRect.width / 2;
+      
+      // Ajustar el scroll para centrar la pestaña
+      tabs.scrollLeft += (tabCenter - sliderCenter);
     }
 
     nextBtn.addEventListener("click", () => {
@@ -465,11 +545,19 @@ document.addEventListener("DOMContentLoaded", () => {
       updateArrows();
     });
 
+    // Añadir event listener para los clicks en las pestañas
+    tabs.querySelectorAll(".tab-button").forEach(button => {
+      button.addEventListener("click", () => {
+        // Esperar a que se actualice la clase active
+        setTimeout(centerActiveTab, 50);
+      });
+    });
+
     updateArrows();
+    // Centrar la pestaña activa al cargar
+    setTimeout(centerActiveTab, 100);
   }
 
-  // ======== MANEJO DE ERRORES DE CARGA DE IMÁGENES ========
-  
   document.addEventListener('DOMNodeInserted', function(e) {
     if (e.target.nodeType === 1) { // ELEMENT_NODE
       const imgs = e.target.querySelectorAll('.car-image, .brand-logo');

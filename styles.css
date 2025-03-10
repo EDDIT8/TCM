@@ -28,6 +28,8 @@ body {
   flex-direction: column;
   display: flex;
   overflow-x: hidden;
+  max-width: 1080px;
+  margin: 0 auto;
 }
 
 .container {
