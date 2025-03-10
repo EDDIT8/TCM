@@ -123,9 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
   handleInitialLoad();
 
   // ======== CONFIGURACIÓN DE BÚSQUEDA ========
-  searchInput.addEventListener("focus", () => {
-    this.removeAttribute("readonly");
-  });
+
   searchInput.addEventListener("input", () => {
     const query = searchInput.value.toLowerCase().trim();
     
