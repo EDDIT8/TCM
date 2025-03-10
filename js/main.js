@@ -76,6 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (savedSearch && savedSearch.trim() !== "") {
         searchInput.value = savedSearch;
         isSearchActive = true;
+        this.removeAttribute("readonly");
         filterCarsBySearch(savedSearch);
       } else {
         filterCars(initialCategory);
