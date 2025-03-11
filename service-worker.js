@@ -1,19 +1,19 @@
 self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open('v1').then(cache => {
-      return cache.addAll([
-        '/TCM/',
-        '/TCM/index.html',
-        '/TCM/styles.css',
-        '/TCM/js/main.js',
-        '/TCM/js/car-details.js',
-        '/TCM/js/data.js',
-        '/TCM/car-details.html',
-        '/TCM/assets/other/TCM-ICON.png',
-        '/placeholder.svg'
-      ]);
-    })
-  );
+  caches.open('v1').then(cache => {
+    return Promise.allSettled([
+      cache.add('/TCM/'),
+      cache.add('/TCM/index.html'),
+      cache.add('/TCM/styles.css'),
+      cache.add('/TCM/js/main.js'),
+      cache.add('/TCM/js/car-details.js'),
+      cache.add('/TCM/js/data.js'),
+      cache.add('/TCM/car-details.html'),
+      cache.add('/TCM/assets/other/TCM-ICON.png'),
+      cache.add('/placeholder.svg')
+    ]);
+  })
+);
 });
 
 self.addEventListener('fetch', event => {
