@@ -5,9 +5,9 @@ self.addEventListener('install', event => {
       cache.add('/TCM/'),
       cache.add('/TCM/index.html'),
       cache.add('/TCM/styles.css'),
-      cache.add('/TCM/js/main.js'),
-      cache.add('/TCM/js/car-details.js'),
-      cache.add('/TCM/js/data.js'),
+      cache.add('/TCM/js/main.min.js'),
+      cache.add('/TCM/js/car-details.min.js'),
+      cache.add('/TCM/js/data.min.js'),
       cache.add('/TCM/car-details.html'),
       cache.add('/TCM/assets/other/TCM-ICON.png'),
       cache.add('/placeholder.svg')
