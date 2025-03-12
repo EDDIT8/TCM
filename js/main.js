@@ -1,4 +1,4 @@
-// import { implementBrandScrollIndicator } from '../float-scroll.js';
+import { implementBrandScrollIndicator } from './float-scroll.js';
 document.addEventListener("DOMContentLoaded", () => {
   // Polyfill para View Transitions API
   if (!document.startViewTransition) {
@@ -580,7 +580,7 @@ document.addEventListener("DOMContentLoaded", () => {
     childList: true,
     subtree: true
   });
-  // implementBrandScrollIndicator();
+  implementBrandScrollIndicator();
 });
 
 if ('serviceWorker' in navigator) {
