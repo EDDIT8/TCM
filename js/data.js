@@ -3826,7 +3826,7 @@ const carsData = {
             },
             potencia: {
               label: "Distribución de potencia",
-              value: [45, 55],
+              value: [47, 53],
               dualValues: true,
               min: 30,
 
@@ -3885,7 +3885,7 @@ const carsData = {
           settings: {
             front: {
               label: "Carga delantera",
-              value: -15,
+              value: 0,
               min: -30,
               max: 0,
               leftLabel: "",
@@ -3906,7 +3906,7 @@ const carsData = {
           settings: {
             frontSuspension: {
               label: "Suspensión delantera",
-              value: 2,
+              value: 3,
               min: -20,
 
               max: 10,
@@ -3915,7 +3915,7 @@ const carsData = {
             },
             rearSuspension: {
               label: "Suspensión trasera",
-              value: -4,
+              value: 3,
               min: -20,
 
               max: 10,
@@ -3924,7 +3924,7 @@ const carsData = {
             },
             frontCompression: {
               label: "Compresión de amortiguador delantero",
-              value: -6,
+              value: -10,
               min: -20,
 
               max: 20,
@@ -3933,7 +3933,7 @@ const carsData = {
             },
             rearCompression: {
               label: "Compresión de amortiguador trasero",
-              value: -10,
+              value: -5,
               min: -20,
 
               max: 20,
@@ -3942,7 +3942,7 @@ const carsData = {
             },
             frontbump: {
               label: "Rebote delantero",
-              value: 10,
+              value: 5,
               min: -20,
 
               max: 20,
@@ -3951,7 +3951,7 @@ const carsData = {
             },
             rearbump: {
               label: "Rebote trasero",
-              value: 12,
+              value: 10,
               min: -20,
 
               max: 20,
@@ -3965,7 +3965,7 @@ const carsData = {
           settings: {
             front: {
               label: "Barra estabiizadora delantera",
-              value: 8,
+              value: 3,
               min: -20,
 
               max: 10,
@@ -3974,7 +3974,7 @@ const carsData = {
             },
             Rear: {
               label: "Barra estabiizadora Trasera",
-              value: 2,
+              value: 3,
               min: -20,
 
               max: 10,
