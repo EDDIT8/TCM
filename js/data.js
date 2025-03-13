@@ -4520,7 +4520,7 @@ const carsData = {
           settings: {
             frontSuspension: {
               label: "Suspensión delantera",
-              value: 5,
+              value: 4,
               min: -20,
 
               max: 10,
@@ -4529,7 +4529,7 @@ const carsData = {
             },
             rearSuspension: {
               label: "Suspensión trasera",
-              value: 2,
+              value: 4,
               min: -20,
 
               max: 10,
@@ -4538,7 +4538,7 @@ const carsData = {
             },
             frontCompression: {
               label: "Compresión de amortiguador delantero",
-              value: -7,
+              value: -6,
               min: -20,
 
               max: 20,
@@ -4556,7 +4556,7 @@ const carsData = {
             },
             frontbump: {
               label: "Rebote delantero",
-              value: 8,
+              value: 10,
               min: -20,
 
               max: 20,
@@ -4565,7 +4565,7 @@ const carsData = {
             },
             rearbump: {
               label: "Rebote trasero",
-              value: 11,
+              value: 13,
               min: -20,
 
               max: 20,
@@ -4579,7 +4579,7 @@ const carsData = {
           settings: {
             front: {
               label: "Barra estabiizadora delantera",
-              value: 5,
+              value: 4,
               min: -20,
 
               max: 10,
@@ -4588,7 +4588,7 @@ const carsData = {
             },
             Rear: {
               label: "Barra estabiizadora Trasera",
-              value: -2,
+              value: 3,
               min: -20,
 
               max: 10,
@@ -4602,7 +4602,7 @@ const carsData = {
           settings: {
             front: {
               label: "Ángulo de caida delantero",
-              value: -0.22,
+              value: -0.25,
               min: -0.25,
               isAlignment: true,
               max: 0.25,
@@ -4611,7 +4611,7 @@ const carsData = {
             },
             rear: {
               label: "Ángulo de caida trasero",
-              value: -0.15,
+              value: -0.25,
               min: -0.25,
               isAlignment: true,
               max: 0.25,
