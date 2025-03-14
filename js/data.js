@@ -3885,7 +3885,7 @@ const carsData = {
           settings: {
             front: {
               label: "Carga delantera",
-              value: 0,
+              value: -14,
               min: -30,
               max: 0,
               leftLabel: "",
@@ -3906,7 +3906,7 @@ const carsData = {
           settings: {
             frontSuspension: {
               label: "Suspensión delantera",
-              value: 3,
+              value: 7,
               min: -20,
 
               max: 10,
@@ -3915,7 +3915,7 @@ const carsData = {
             },
             rearSuspension: {
               label: "Suspensión trasera",
-              value: 3,
+              value: -1,
               min: -20,
 
               max: 10,
@@ -3933,7 +3933,7 @@ const carsData = {
             },
             rearCompression: {
               label: "Compresión de amortiguador trasero",
-              value: -5,
+              value: 12,
               min: -20,
 
               max: 20,
@@ -3951,7 +3951,7 @@ const carsData = {
             },
             rearbump: {
               label: "Rebote trasero",
-              value: 10,
+              value: 20,
               min: -20,
 
               max: 20,
@@ -3965,7 +3965,7 @@ const carsData = {
           settings: {
             front: {
               label: "Barra estabiizadora delantera",
-              value: 3,
+              value: 7,
               min: -20,
 
               max: 10,
@@ -3974,7 +3974,7 @@ const carsData = {
             },
             Rear: {
               label: "Barra estabiizadora Trasera",
-              value: 3,
+              value: -1,
               min: -20,
 
               max: 10,
