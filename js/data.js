@@ -3885,7 +3885,7 @@ const carsData = {
           settings: {
             front: {
               label: "Carga delantera",
-              value: -14,
+              value: -0,
               min: -30,
               max: 0,
               leftLabel: "",
