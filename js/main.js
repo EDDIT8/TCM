@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
     document.startViewTransition = (callback) => callback();
   }
 
+checkAndUpdateLocalStorageData();
+
   // ======== SELECCIÓN DE ELEMENTOS DEL DOM ========
   const carGrid = document.getElementById("carGrid");
   const categoryTabs = document.getElementById("categoryTabs");
@@ -423,54 +425,6 @@ document.addEventListener("DOMContentLoaded", () => {
     updateArrows();
   }
 
-  // function implementCategorySlider() {
-  //   const categorySlider = document.querySelector(".category-slider");
-  //   const tabs = categorySlider.querySelector(".tabs");
-  //   const prevBtn = categorySlider.querySelector(".prev");
-  //   const nextBtn = categorySlider.querySelector(".next");
-
-  //   let scrollAmount = 0;
-  //   const step = 100;
-
-  //   function updateArrows() {
-  //     prevBtn.style.display = tabs.scrollLeft > 0 ? "block" : "none";
-  //     nextBtn.style.display = tabs.scrollLeft < tabs.scrollWidth - tabs.clientWidth ? "block" : "none";
-  //   }
-
-  //   nextBtn.addEventListener("click", () => {
-  //     scrollAmount += step;
-  //     if (scrollAmount > tabs.scrollWidth - tabs.clientWidth) {
-  //       scrollAmount = tabs.scrollWidth - tabs.clientWidth;
-  //     }
-  //     tabs.scrollTo({
-  //       left: scrollAmount,
-  //       behavior: "smooth",
-  //     });
-  //     updateArrows();
-  //   });
-
-  //   prevBtn.addEventListener("click", () => {
-  //     scrollAmount -= step;
-  //     if (scrollAmount < 0) {
-  //       scrollAmount = 0;
-  //     }
-  //     tabs.scrollTo({
-  //       left: scrollAmount,
-  //       behavior: "smooth",
-  //     });
-  //     updateArrows();
-  //   });
-
-  //   tabs.addEventListener("scroll", () => {
-  //     scrollAmount = tabs.scrollLeft;
-  //     updateArrows();
-  //   });
-
-  //   updateArrows();
-  // }
-
-  // ======== MANEJO DE ERRORES DE CARGA DE IMÁGENES ========
-  
   function implementCategorySlider() {
     const categorySlider = document.querySelector(".category-slider");
     const tabs = categorySlider.querySelector(".tabs");
@@ -591,4 +545,30 @@ if ('serviceWorker' in navigator) {
       console.log('Error en el registro del ServiceWorker:', error);
     });
   });
+}
+
+// Define la versión actual de los datos
+const DATA_VERSION = '1.0.0';
+
+// Función para obtener datos del local storage
+function getLocalStorageData(key) {
+  const data = localStorage.getItem(key);
+  return data ? JSON.parse(data) : null;
+}
+
+// Función para guardar datos en el local storage
+function setLocalStorageData(key, data) {
+  localStorage.setItem(key, JSON.stringify(data));
+}
+
+// Función para verificar y actualizar los datos en el local storage
+function checkAndUpdateLocalStorageData() {
+  const storedVersion = localStorage.getItem('dataVersion');
+  if (storedVersion !== DATA_VERSION) {
+    // Las versiones no coinciden, actualiza los datos
+    localStorage.setItem('dataVersion', DATA_VERSION);
+    // Aquí puedes actualizar los datos en el local storage
+    // Por ejemplo, puedes volver a guardar los datos de los autos
+    setLocalStorageData('carsData', carsData);
+  }
 }

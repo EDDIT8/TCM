@@ -1,3 +1,4 @@
+/* Estilos para trancision con imagenes entre index y car-details */
 @view-transition {
   navigation: auto;
 }
