@@ -1,4 +1,4 @@
-const CACHE_NAME = 'v1.0.3'; // Cambia el nombre de la caché para forzar la actualización
+const CACHE_NAME = 'v1.0.5'; // Cambia el nombre de la caché para forzar la actualización
 const ASSETS_TO_CACHE = [
   '/TCM/',
   '/TCM/index.html',
