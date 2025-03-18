@@ -992,6 +992,204 @@ const carsData = {
         },
       },
     },
+    // Reventón
+    {
+      id: "Reventón",
+      name: "Reventón",
+      brand: {
+        name: "Lamborghini",
+        logo: "assets/icons/lamborghini.webp",
+      },
+      year: 2007,
+      category: "Hypercar",
+      description: "4x4 • 1665CV • 451km/h • 2.07s",
+      image: "assets/cars/rebentón.webp",
+      tuning: {
+        transmission: {
+          title: "Transmisión",
+          settings: {
+            finalRatio: {
+              label: "Relación final",
+              value: 0,
+              min: -20,
+              max: 0,
+              leftLabel: "Corto",
+              rightLabel: "Largo",
+            },
+            potencia: {
+              label: "Distribución de potencia",
+              value: [40, 60],
+              dualValues: true,
+              min: 40,
+              max: 60,
+              leftLabel: "Delantero",
+              rightLabel: "Trasero",
+            },
+          },
+        },
+        tires: {
+          title: "Neumáticos",
+          settings: {
+            frontGrip: {
+              label: "Agarre delantero",
+              value: 0,
+              min: -20,
+              max: 0,
+              leftLabel: "",
+              rightLabel: "",
+            },
+            rearGrip: {
+              label: "Agarre trasero",
+              value: 0,
+              min: -20,
+              max: 0,
+              leftLabel: "",
+              rightLabel: "",
+            },
+          },
+        },
+        brakes: {
+          title: "Frenos",
+          settings: {
+            equilibrio: {
+              label: "Equilibrio de frenos",
+              value: [63, 37],
+              dualValues: true,
+              min: 37,
+              max: 63,
+              leftLabel: "Delantero",
+              rightLabel: "Trasero",
+            },
+            potencia: {
+              label: "Potencia de frenos",
+              value: 0,
+              min: -20,
+              max: 0,
+              leftLabel: "",
+              rightLabel: "",
+            },
+          },
+        },
+        Aerodinamica: {
+          title: "Aerodinámica",
+          settings: {
+            front: {
+              label: "Carga delantera",
+              value: 0,
+              min: -30,
+              max: 0,
+              leftLabel: "",
+              rightLabel: "",
+            },
+            rear: {
+              label: "Carga trasera",
+              value: 0,
+              min: -30,
+              max: 0,
+              leftLabel: "",
+              rightLabel: "",
+            },
+          },
+        },
+        suspension: {
+          title: "Suspensión",
+          settings: {
+            frontSuspension: {
+              label: "Suspensión delantera",
+              value: 4,
+              min: -20,
+              max: 10,
+              leftLabel: "Suave",
+              rightLabel: "Rígido",
+            },
+            rearSuspension: {
+              label: "Suspensión trasera",
+              value: 7,
+              min: -20,
+              max: 10,
+              leftLabel: "Suave",
+              rightLabel: "Rígido",
+            },
+            frontCompression: {
+              label: "Compresión de amortiguador delantero",
+              value: -4,
+              min: -20,
+              max: 20,
+              leftLabel: "Suave",
+              rightLabel: "Rígido",
+            },
+            rearCompression: {
+              label: "Compresión de amortiguador trasero",
+              value: 3,
+              min: -20,
+              max: 20,
+              leftLabel: "Suave",
+              rightLabel: "Rígido",
+            },
+            frontbump: {
+              label: "Rebote delantero",
+              value: 13,
+              min: -20,
+              max: 20,
+              leftLabel: "Suave",
+              rightLabel: "Rigido",
+            },
+            rearbump: {
+              label: "Rebote trasero",
+              value: 18,
+              min: -20,
+              max: 20,
+              leftLabel: "Suave",
+              rightLabel: "Rigido",
+            },
+          },
+        },
+        Barras: {
+          title: "Barras Estabilizadoras",
+          settings: {
+            front: {
+              label: "Barra estabiizadora delantera",
+              value: 8,
+              min: -20,
+              max: 10,
+              leftLabel: "Suave",
+              rightLabel: "Rigido",
+            },
+            Rear: {
+              label: "Barra estabiizadora Trasera",
+              value: 0,
+              min: -20,
+              max: 10,
+              leftLabel: "Suave",
+              rightLabel: "Rigido",
+            },
+          },
+        },
+        Alineamiento: {
+          title: "Alineamiento",
+          settings: {
+            front: {
+              label: "Ángulo de caida delantero",
+              value: -0.25,
+              isAlignment: true,
+              min: -0.25,
+              max: 0.25,
+              leftLabel: "",
+              rightLabel: "",
+            },
+            rear: {
+              label: "Ángulo de caida trasero",
+              value: -0.25,
+              isAlignment: true,
+              min: -0.25,
+              max: 0.25,
+              leftLabel: "",
+              rightLabel: "",
+            },
+          },
+        },
+      },
+    },
     // 919 Street
     {
       id: "919 Street",
@@ -3826,7 +4024,7 @@ const carsData = {
             },
             potencia: {
               label: "Distribución de potencia",
-              value: [47, 53],
+              value: [43, 57],
               dualValues: true,
               min: 30,
 
@@ -3906,7 +4104,7 @@ const carsData = {
           settings: {
             frontSuspension: {
               label: "Suspensión delantera",
-              value: 7,
+              value: 2,
               min: -20,
 
               max: 10,
@@ -3915,7 +4113,7 @@ const carsData = {
             },
             rearSuspension: {
               label: "Suspensión trasera",
-              value: -1,
+              value: 8,
               min: -20,
 
               max: 10,
@@ -3924,7 +4122,7 @@ const carsData = {
             },
             frontCompression: {
               label: "Compresión de amortiguador delantero",
-              value: -10,
+              value: -6,
               min: -20,
 
               max: 20,
@@ -3933,7 +4131,7 @@ const carsData = {
             },
             rearCompression: {
               label: "Compresión de amortiguador trasero",
-              value: 12,
+              value: 4,
               min: -20,
 
               max: 20,
@@ -3942,7 +4140,7 @@ const carsData = {
             },
             frontbump: {
               label: "Rebote delantero",
-              value: 5,
+              value: 10,
               min: -20,
 
               max: 20,
@@ -3951,7 +4149,7 @@ const carsData = {
             },
             rearbump: {
               label: "Rebote trasero",
-              value: 20,
+              value: 17,
               min: -20,
 
               max: 20,
@@ -3965,7 +4163,7 @@ const carsData = {
           settings: {
             front: {
               label: "Barra estabiizadora delantera",
-              value: 7,
+              value: 8,
               min: -20,
 
               max: 10,
@@ -3974,7 +4172,7 @@ const carsData = {
             },
             Rear: {
               label: "Barra estabiizadora Trasera",
-              value: -1,
+              value: 1,
               min: -20,
 
               max: 10,

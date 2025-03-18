@@ -1,11 +1,22 @@
-// import { implementBrandScrollIndicator } from './float-scroll.js';
 document.addEventListener("DOMContentLoaded", () => {
   // Polyfill para View Transitions API
   if (!document.startViewTransition) {
     document.startViewTransition = (callback) => callback();
   }
 
-checkAndUpdateLocalStorageData();
+  // Cargar datos dinámicamente desde data.js
+  function loadDynamicData() {
+    // Asegúrate de que `carsData` esté disponible globalmente desde data.js
+    if (typeof carsData === "undefined") {
+      console.error("Error: carsData no está definido. Asegúrate de que data.js esté cargado.");
+      return;
+    }
+
+    // Actualiza los datos en la interfaz
+    handleInitialLoad();
+  }
+
+// checkAndUpdateLocalStorageData();
 
   // ======== SELECCIÓN DE ELEMENTOS DEL DOM ========
   const carGrid = document.getElementById("carGrid");
@@ -535,6 +546,9 @@ checkAndUpdateLocalStorageData();
     subtree: true
   });
   // implementBrandScrollIndicator();
+
+  // Llama a la función para cargar los datos dinámicamente
+  loadDynamicData();
 });
 
 if ('serviceWorker' in navigator) {
@@ -547,28 +561,28 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-// Define la versión actual de los datos
-const DATA_VERSION = '1.0.0';
+// // Define la versión actual de los datos
+// const DATA_VERSION = '1.0.0';
 
-// Función para obtener datos del local storage
-function getLocalStorageData(key) {
-  const data = localStorage.getItem(key);
-  return data ? JSON.parse(data) : null;
-}
+// // Función para obtener datos del local storage
+// function getLocalStorageData(key) {
+//   const data = localStorage.getItem(key);
+//   return data ? JSON.parse(data) : null;
+// }
 
-// Función para guardar datos en el local storage
-function setLocalStorageData(key, data) {
-  localStorage.setItem(key, JSON.stringify(data));
-}
+// // Función para guardar datos en el local storage
+// function setLocalStorageData(key, data) {
+//   localStorage.setItem(key, JSON.stringify(data));
+// }
 
-// Función para verificar y actualizar los datos en el local storage
-function checkAndUpdateLocalStorageData() {
-  const storedVersion = localStorage.getItem('dataVersion');
-  if (storedVersion !== DATA_VERSION) {
-    // Las versiones no coinciden, actualiza los datos
-    localStorage.setItem('dataVersion', DATA_VERSION);
-    // Aquí puedes actualizar los datos en el local storage
-    // Por ejemplo, puedes volver a guardar los datos de los autos
-    setLocalStorageData('carsData', carsData);
-  }
-}
+// // Función para verificar y actualizar los datos en el local storage
+// function checkAndUpdateLocalStorageData() {
+//   const storedVersion = localStorage.getItem('dataVersion');
+//   if (storedVersion !== DATA_VERSION) {
+//     // Las versiones no coinciden, actualiza los datos
+//     localStorage.setItem('dataVersion', DATA_VERSION);
+//     // Aquí puedes actualizar los datos en el local storage
+//     // Por ejemplo, puedes volver a guardar los datos de los autos
+//     setLocalStorageData('carsData', carsData);
+//   }
+// }
