@@ -8,7 +8,7 @@ const ASSETS_TO_CACHE = [
   '/TCM/js/data.min.js', // Asegúrate de incluir la versión actualizada
   '/TCM/car-details.html',
   '/TCM/assets/other/TCM-ICON.png',
-  '/placeholder.svg'
+  '/TCM/placeholder.svg'
 ];
 
 // Evento de instalación
