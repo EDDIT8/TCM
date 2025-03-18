@@ -2,7 +2,7 @@ const CACHE_NAME = 'v2'; // Cambia el nombre de la caché para forzar la actuali
 const ASSETS_TO_CACHE = [
   '/TCM/',
   '/TCM/index.html',
-  '/TCM/styles.css',
+  '/TCM/styles.min.css',
   '/TCM/js/main.min.js',
   '/TCM/js/car-details.min.js',
   '/TCM/js/data.min.js', // Asegúrate de incluir la versión actualizada
