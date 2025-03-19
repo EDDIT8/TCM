@@ -4,19 +4,24 @@ document.addEventListener("DOMContentLoaded", () => {
     document.startViewTransition = (callback) => callback();
   }
 
-  // Cargar datos dinámicamente desde data.js
+  // Función para cargar datos dinámicamente desde data.min.js
   function loadDynamicData() {
-    // Asegúrate de que `carsData` esté disponible globalmente desde data.js
-    if (typeof carsData === "undefined") {
-      console.error("Error: carsData no está definido. Asegúrate de que data.js esté cargado.");
-      return;
-    }
+    fetch('/TCM/js/data.min.js')
+      .then(response => response.json())
+      .then(data => {
+        // Actualiza los datos globales
+        window.carsData = data;
 
-    // Actualiza los datos en la interfaz
-    handleInitialLoad();
+        // Actualiza la interfaz con los nuevos datos
+        handleInitialLoad();
+      })
+      .catch(error => {
+        console.error("Error al cargar los datos dinámicamente:", error);
+      });
   }
 
-// checkAndUpdateLocalStorageData();
+  // Llama a la función para cargar los datos dinámicamente
+  loadDynamicData();
 
   // ======== SELECCIÓN DE ELEMENTOS DEL DOM ========
   const carGrid = document.getElementById("carGrid");
@@ -117,6 +122,9 @@ document.addEventListener("DOMContentLoaded", () => {
    * @param {string[]} categories - Lista de categorías disponibles
    */
   function createCategoryTabs(categories) {
+    // Limpia las pestañas existentes para evitar duplicados
+    categoryTabs.innerHTML = "";
+
     categories.forEach((category, index) => {
       const button = document.createElement("button");
       button.className = `tab-button ${category === lastActiveCategory ? "active" : ""}`;
@@ -546,9 +554,6 @@ document.addEventListener("DOMContentLoaded", () => {
     subtree: true
   });
   // implementBrandScrollIndicator();
-
-  // Llama a la función para cargar los datos dinámicamente
-  loadDynamicData();
 });
 
 if ('serviceWorker' in navigator) {
