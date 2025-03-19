@@ -4,61 +4,11 @@ document.addEventListener("DOMContentLoaded", () => {
     document.startViewTransition = (callback) => callback();
   }
 
-  // Función para mostrar notificaciones
-  function showNotification(title, body) {
-    if (Notification.permission === "granted") {
-      new Notification(title, {
-        body: body,
-        icon: "/TCM/assets/other/TCM-ICON.png", // Ruta al ícono de la notificación
-      });
-    } else if (Notification.permission !== "denied") {
-      Notification.requestPermission().then(permission => {
-        if (permission === "granted") {
-          new Notification(title, {
-            body: body,
-            icon: "/TCM/assets/other/TCM-ICON.png",
-          });
-        }
-      });
-    }
-  }
-
-  // Función para detectar cambios en los datos
-  function checkForUpdates(newData) {
-    const previousData = JSON.parse(localStorage.getItem("carsData")) || { cars: [] };
-
-    // Detectar autos nuevos
-    const newCars = newData.cars.filter(newCar =>
-      !previousData.cars.some(oldCar => oldCar.id === newCar.id)
-    );
-
-    // Detectar actualizaciones en autos existentes
-    const updatedCars = newData.cars.filter(newCar => {
-      const oldCar = previousData.cars.find(oldCar => oldCar.id === newCar.id);
-      return oldCar && JSON.stringify(oldCar) !== JSON.stringify(newCar);
-    });
-
-    // Mostrar notificaciones
-    newCars.forEach(car => {
-      showNotification("Nuevo auto agregado", `Se agregaron los ajustes del ${car.name}. ¡Échales un ojo!`);
-    });
-
-    updatedCars.forEach(car => {
-      showNotification("Actualización de ajustes", `Se actualizaron los ajustes del ${car.name}.`);
-    });
-
-    // Guardar los datos actuales en localStorage
-    localStorage.setItem("carsData", JSON.stringify(newData));
-  }
-
   // Función para cargar datos dinámicamente desde data.min.js
   function loadDynamicData() {
     fetch('/TCM/js/data.min.js')
       .then(response => response.json())
       .then(data => {
-        // Detectar cambios en los datos
-        checkForUpdates(data);
-
         // Actualiza los datos globales
         window.carsData = data;
 
@@ -70,23 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
-  // Función para realizar polling
-  function pollForUpdates() {
-    setInterval(() => {
-      loadDynamicData(); // Llama a la función para cargar datos dinámicamente
-    }, 60000); // Verifica cada 60 segundos
-  }
-
-  // Solicitar permiso para notificaciones al cargar la página
-  if (Notification.permission !== "granted") {
-    Notification.requestPermission();
-  }
-
-  // Llama a la función para cargar los datos inicialmente
+  // Llama a la función para cargar los datos dinámicamente
   loadDynamicData();
-
-  // Inicia el polling para verificar actualizaciones
-  pollForUpdates();
 
   // ======== SELECCIÓN DE ELEMENTOS DEL DOM ========
   const carGrid = document.getElementById("carGrid");
